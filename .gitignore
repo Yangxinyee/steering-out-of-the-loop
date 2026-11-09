@@ -1,14 +1,15 @@
 __pycache__/
 *.pyc
 # raw generations (released separately) and model folders
-results/runs/**/*.jsonl
-/ckpt/
-/data/
-/agent_runs/
+case1_reasoning/results/runs/**/*.jsonl
+/case1_reasoning/ckpt/
+/case1_reasoning/data/
+/case1_reasoning/agent_runs/
 # outputs of the figure and table scripts
-paper/figures/*.pdf
-paper/figures/*.png
-paper/figures/*.svg
-paper/figures/*.drawio
-paper/figures/alignment.json
-paper/tables/*.tex
+case1_reasoning/paper/figures/*.pdf
+case1_reasoning/paper/figures/*.png
+case1_reasoning/paper/figures/*.svg
+case1_reasoning/paper/figures/*.drawio
+case1_reasoning/paper/figures/alignment.json
+case1_reasoning/paper/tables/*.tex
+paper/out/

@@ -1,23 +1,15 @@
 __pycache__/
 *.pyc
 # raw generations (released separately) and model folders
-case1_reasoning/results/runs/**/*.jsonl
-/case1_reasoning/ckpt/
-/case1_reasoning/data/
-/case1_reasoning/agent_runs/
+results/runs/**/*.jsonl
+/ckpt/
+/data/
+/agent_runs/
 # outputs of the figure and table scripts
-case1_reasoning/paper/figures/*.pdf
-case1_reasoning/paper/figures/*.png
-case1_reasoning/paper/figures/*.svg
-case1_reasoning/paper/figures/*.drawio
-case1_reasoning/paper/figures/alignment.json
-case1_reasoning/paper/tables/*.tex
-paper/out/
-# case 2: local configuration, data and model folders, generated numbers and figures
-case2_world_model/world_model.json
-/case2_world_model/work/
-/case2_world_model/agent_data/
-/case2_world_model/agent_runs/
-case2_world_model/paper/numbers_case2.tex
-case2_world_model/paper/.numbers_raw.tex
-case2_world_model/paper/figures/
+paper/figures/*.pdf
+paper/figures/*.png
+paper/figures/*.svg
+paper/figures/*.drawio
+paper/figures/alignment.json
+paper/tables/*.tex
+paper/numbers.tex

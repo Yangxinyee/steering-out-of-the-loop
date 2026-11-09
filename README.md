@@ -1,88 +1,190 @@
-# Weight-Space Programming: What Do AI Agents Actually Fix?
+# Steering Out of the Loop: A Weight Edit Releases Answers, Not Knowledge
 
-Code, results and analysis scripts for the paper (preprint: link to follow). Repository:
-<https://github.com/Yangxinyee/weight-space-programming-audit>.
+Code, per-problem results and analysis scripts for the paper *Steering Out of the Loop: A Weight Edit Releases Answers,
+Not Knowledge* (preprint: link to follow). Repository: <https://github.com/Yangxinyee/steering-out-of-the-loop>.
 
-AI agents now edit the weights of other networks. An edit can do one of two things: **release** what the model already
-does, for example by removing an obstacle such as a reasoning loop, or **install** something estimated from data the
-agent has seen. The paper gives three tests that tell them apart and applies them to two edits made by agents:
+An AI agent edited two weight matrices of Qwen3.5-0.8B, a small reasoning model, and in our reproduction lifted its
+MATH-500 accuracy from 7.6% to 51.7%. The paper shows that the edit releases answers the model can already reach:
 
-1. **Reach.** Does the unedited model already produce the edit's answers, and are the answers the edit releases more
-   accurate than the model's own?
-2. **Matched information, no agent.** Does a decoding change, a textbook edit or a script given what the agent was
-   given do as well?
-3. **A setting where the edit should add nothing.** For example, a domain the model barely knows, or a no-effect world
-   in which the same doctors treat the same patients but the drugs do nothing.
+- Thinking off at the full token budget recovers 93% of the gain on MATH-500 and 82% on GSM8K. Majority voting over
+  samples, at no more tokens than the edit uses, ties the edit on both.
+- On problems where the model always loops, the unedited model reaches 97.7% of the edit's correct answers on MATH-500
+  under other decodings.
+- On MMLU-Pro math, where the model's own answers leave room, the edit leads every decoding fix, but its released
+  answers are less accurate than the model's own on the same questions (84.6% against 90.1%). On the questions the
+  model never finishes, five decoding fixes reach 87.3% of the edit's correct answers after correcting for guessing;
+  on the same question and seed, the edit's answers are right 84.5% of the time and loop stop's 88.8%.
+- In medicine the released answers are no more accurate than the model's own (42.2% against 42.9% on MedQA).
+- Two frontier agents redoing the task find edits with the same released-against-own profile.
+- Deferring looping medical questions to a 9B model beats random deferral by 5.3 points.
 
-**Case 1 (`case1_reasoning/`).** An agent's edit to two matrices of Qwen3.5-0.8B lifts MATH-500 accuracy from 7.6% to
-51.7%. It releases answers:
-- the unedited model reaches 97.7% of the edit's correct answers under other decodings;
-- thinking off recovers 93% of the gain;
-- released answers are no more accurate than the model's own;
-- two frontier agents that redo the task find edits with the same released-against-own profile.
-
-**Case 2 (`case2_world_model/`).** Agents repair a patient world model whose drug effects have collapsed. With weight
-access they estimate the effect from the records and install it, reaching 0.96 (Claude) and 0.60 (Codex) of the true
-insulin effect; a script given the same information reaches 0.96. A no-effect world, where the drugs do nothing, shows
-what the main readouts cannot: the estimators' bias and uncertainty, with Claude's reporting an effect whose interval
-excludes zero.
-
-An edit adds what its source holds: the model's reach when it releases, the records' estimate when it installs.
-
-## Repository
+## Contents
 
 ```
-case1_reasoning/     case 1: generation, scoring, edits, analyses, per-problem results, the agents' task prompt
-case2_world_model/   case 2: the agent harness, evaluation and analysis scripts, result files, its numbers and figures
-paper/               the paper's own number and figure scripts (case1_numbers.py, figures.py); outputs go to paper/out/
-LICENSE              MIT for our code; third-party files keep their own licenses
+wsa/                     generation, scoring, edits and every analysis (python -m wsa.<module>)
+paper/figures/           make_figures.py: all figures of the paper; figlib/: our plotting helpers it uses (MIT)
+paper/tables/            every table of the paper is written here
+paper/numbers.tex        every number in the paper's text, as LaTeX macros (written by wsa.paper_numbers)
+results/*.json           summary results: every table, figure and number in the paper reads from these
+results/runs/            per-problem results of every run: <arm>/<protocol>_<set>.per_problem.json (correctness per
+                         sample) and .scores.json (accuracy, share cut, mean tokens); a few .npz/.json arrays
+                         (directions, layer traits, learned edits)
+results/data/            the benchmark and practice rows we evaluated on (copies of public datasets, see below)
+agent/agent_task.txt     the task prompt given to the agents (the paper's appendix)
+third_party/             the audited edit, as published by its authors, with their rebuild script and license
 ```
 
-Case 2 runs on the simulator and event-stream world model of a companion paper, which are released with that paper;
-`case2_world_model/agent/backend.py` is the one place that reaches them. The agents' conversations, notebooks and
-submitted edits for both cases, and case 1's raw generations, will be released in data repositories.
+## Setup
 
-## Reproducing the paper's figures and tables
-
-Python 3.12, from the repository root:
+Python 3.12.
 
 ```bash
-pip install -r case1_reasoning/requirements.txt
-(cd case1_reasoning && python -m wsa.paper_tables && python -m wsa.appendix_tables)
-python paper/case1_numbers.py                     # every case-1 number (LaTeX macros) and the case-1 tables -> paper/out/
-python paper/figures.py                           # Figure 1 and the case-1 figures -> paper/out/figures/
-python case2_world_model/paper/make_numbers_case2.py    # case 2's numbers (needs the agents' run folders)
-python case2_world_model/paper/make_figures_case2.py    # case 2's figures
+pip install -r requirements.txt        # tables, figures, CPU analyses
+pip install -r requirements-gpu.txt    # generation (vLLM 0.32.0, PyTorch 2.13.0, CUDA 12.9 wheels)
 ```
 
-The first four commands reproduce the paper's case-1 figures pixel for pixel and its case-1 tables byte for byte. Each
-number the paper prints is a macro; `paper/case1_numbers.py` and `case2_world_model/scripts/paper_numbers.py` show the
-result file and key each is read from. Figure 1's right half is drawn once case 2's macro file exists.
-`case1_reasoning/README.md` and `case2_world_model/README.md` describe how the result files themselves were produced.
+## Reproducing the paper
 
-| Paper | Content | Drawn or written by | From |
-|---|---|---|---|
-| Figure 1 | Both cases and their three tests | `paper/figures.py` (`fig1_blocks`) | both cases' macro files |
-| Figure 2 | The three tests on the reasoning edit (left: strict accuracy) | `paper/figures.py` (`case1`) | `abstain.json`, `coverage_match.json`, `rescue.json`, `rescue_more.json`, `headroom.json` |
-| Figure 3 | What the agent's search found | `paper/figures.py` (`case1_search`) | `csweep.json` |
-| Figure 4 | Case 2's readouts | `case2_world_model/paper/make_figures_case2.py` | case 2's `results/` |
-| Table 1 | Qwen3.5-0.8B on the test sets | `paper/case1_numbers.py` | `e3.json`, `part2_full.json` |
-| Table 2 | Case 2's main results | case 2's number script | case 2's `results/` |
-| Table 3 | Every setting on MATH-500 and GSM8K | `paper/case1_numbers.py` | `e3.json`; `runs/prompt/think35_pr2_*`, `runs/base/think35_rep11_*` |
-| Table 4 | Edits found by two frontier agents | `paper/case1_numbers.py` | `agent_eval.json`, `e3.json`, `part2_full.json` |
-| Table 5 | Coverage by setting | `wsa.paper_tables` | `coverage.json` |
-| Table 6 | Calibrating coverage | `wsa.appendix_tables` | `coverage_ref.json`, `coverage_match.json`, `coverage_null.json` |
-| Table 7 | Majority vote at matched tokens | `wsa.appendix_tables` | `majk.json` |
-| Table 8 | Risk-coverage under one selector | `wsa.paper_tables` | `riskcov.json` |
-| Figures 5-7, Tables 9-13 | Case 2's appendix | case 2's scripts | case 2's `results/` |
+### 1. Figures, tables and numbers, from the released results (CPU, about a minute)
 
-Case-1 result files sit in `case1_reasoning/results/`; the docstring of each `wsa` module gives the command that writes
-its file. Figure and table numbers follow the paper.
+Run from the repository root:
+
+```bash
+python paper/figures/make_figures.py   # Figures 1-6 -> paper/figures/*.pdf
+python -m wsa.paper_numbers            # every number in the text -> paper/numbers.tex; Tables 1-4 and 9-11
+python -m wsa.paper_tables             # coverage and risk-coverage -> paper/tables/{coverage,riskcov}.tex (Tables 5, 7)
+python -m wsa.appendix_tables          # coverage calibration and majority vote -> paper/tables/{covref,majk}.tex (6, 8)
+```
+
+These outputs match the paper exactly: every table and `numbers.tex` byte for byte, the figures pixel for pixel. No
+number in the paper is typed by hand, except values quoted from other work. Numbers are rounded half-up from the value
+as computed (7.55 -> 7.6).
+
+| Paper | Content | Result files | Analysis (writes the result files) | Drawn or typeset by |
+|---|---|---|---|---|
+| Figure 1 | Teaser: one released answer per domain | `teaser_examples.json`, `rescue.json` | `wsa.teaser_examples`, `wsa.rescue` | `make_figures.py` |
+| Figure 2 | Strict accuracy against answers finished; 32 textbook edits; released minus own | `abstain.json`, `part1b_grid.json`, `rescue.json`, `rescue_more.json`, `headroom.json` | `wsa.abstain`, `wsa.rescue`, `wsa.rescue_more`, `wsa.headroom_report` | `make_figures.py` |
+| Figure 3 | Coverage on always-looping problems; risk-coverage | `coverage_match.json`, `riskcov.json` | `wsa.coverage_match`, `wsa.riskcov` | `make_figures.py` |
+| Figure 4 | Medicine | `abstain.json`, `rescue.json` | `wsa.abstain`, `wsa.rescue` | `make_figures.py` |
+| Figure 5 | The agent's edit on practice problems: strength, flips, direction against neurons | `csweep.json` | `wsa.csweep` | `make_figures.py` |
+| Figure 6 | Deferral to Qwen3.5-9B against random deferral | `defer_control.json` | `wsa.defer_control` | `make_figures.py` |
+| Table 1 | Qwen3.5-0.8B on MATH-500 and GSM8K | `e3.json`, `e6.json`; prompt only and repetition penalty: `runs/prompt/think35_pr2_*.scores.json`, `runs/base/think35_rep11_*.scores.json` | `wsa.e3`, `wsa.e6`, `wsa.score` | `wsa.paper_numbers` |
+| Table 2 | Medical QA | `part2_full.json`, `part2_mmlu_health.json`, `prompt_only.json` | `wsa.analyze_med`, `wsa.prompt_only` | `wsa.paper_numbers` |
+| Table 3 | Released against own answers, same problems | `rescue.json`, `rescue_more.json`, `headroom.json`, `r1d.json` | `wsa.rescue`, `wsa.rescue_more`, `wsa.headroom_report`, `wsa.r1d` | `wsa.paper_numbers` |
+| Table 4 | What each fix releases | `rescue.json`, `rescue_more.json`, `net_extra.json` | `wsa.rescue`, `wsa.rescue_more`, `wsa.net_extra` | `wsa.paper_numbers` |
+| Table 5 | Coverage by setting | `coverage.json` | `wsa.coverage` | `wsa.paper_tables` |
+| Table 6 | Calibrating coverage (Qwen3.5-2B references, leave-one-fix-out) | `coverage_ref.json`, `coverage_match.json`, `coverage_null.json` | `wsa.coverage_ref`, `wsa.coverage_match`, `wsa.coverage_null` | `wsa.appendix_tables` |
+| Table 7 | Risk-coverage under one selector | `riskcov.json` | `wsa.riskcov` | `wsa.paper_tables` |
+| Table 8 | Thinking off with majority vote at matched tokens | `majk.json` | `wsa.majk` | `wsa.appendix_tables` |
+| Table 9 | MATH-500 by difficulty level | `abstain.json` | `wsa.abstain` | `wsa.paper_numbers` |
+| Table 10 | Other models (Qwen3.5-2B, R1-Distill-Qwen-1.5B) | `c2b.json`, `r1d.json` | `wsa.c2b`, `wsa.r1d` | `wsa.paper_numbers` |
+| Table 11 | Edits found by two frontier agents | `agent_eval.json` | `wsa.agent_eval_report` | `wsa.paper_numbers` |
+| Text | Every number, including MMLU-Pro math reach against guessing and released against loop stop (Section 4) and the frontier agents' runs (appendix) | `results/*.json`, among them `headroom_reach.json`, `agent_decontam.json`, `agent_audit.json`, `agent_usage.json` | the modules above, `wsa.headroom_reach`, `wsa.agent_decontam`, `wsa.agent_audit`, `wsa.agent_usage` | `wsa.paper_numbers` |
+
+Figure and table numbers follow the paper.
+
+### 2. Summary results, from the generations (CPU)
+
+Most analyses read the raw generations: one JSON line per sample with the text, the finish reason and the token count
+(`results/runs/**/*.jsonl`; 345 files, 24.8 GB, roughly 5 GB with zstd). We will release them separately (link to
+follow); place them next to the per-problem files. Each module's docstring gives its exact command, for example:
+
+```bash
+python -m wsa.rescue --runs results/runs --out results/rescue
+python -m wsa.coverage                 # writes results/coverage.json
+python -m wsa.majk                     # writes results/majk.json
+```
+
+Modules that need a tokenizer expect the base model in `ckpt/base`.
+
+### 3. Generations (GPU)
+
+1. **Models.** Download each model at the revision below into `ckpt/<name>` (`ckpt/base` for Qwen3.5-0.8B).
+2. **Data.** The rows we used are in `results/data/`. `wsa.prepare` and `wsa.prepare_med` show how they were built from
+   the public datasets.
+3. **Edited checkpoints.** `wsa.edits` builds them on CPU as copies of `ckpt/base` with the edited tensors replaced:
+   - `python -m wsa.edits authors --base ckpt/base --out ckpt/edit_authors` rebuilds the audited edit bit for bit,
+     using the authors' `third_party/lm_understand_logs/apply_edit.py` and checking sha256 per tensor.
+   - The textbook (mean-difference) edit needs the direction from `wsa.direction`, and the learned baseline is
+     `wsa.learn_edit`.
+4. **Serving and sampling.** Serve a checkpoint with vLLM, then sample and score:
+
+   ```bash
+   vllm serve ckpt/base --served-model-name m --port 8000 --dtype bfloat16 --max-model-len 34816 \
+       --gpu-memory-utilization 0.90 --max-num-seqs 512 --seed 0 --generation-config vllm \
+       --gdn-prefill-backend triton --limit-mm-per-prompt '{"image":0,"video":0}'
+   python -m wsa.gen --url http://127.0.0.1:8000 --ckpt ckpt/base --rows results/data/math500.jsonl --samples 4 \
+       --protocol think35 --out results/runs/base/think35_math500.jsonl
+   python -m wsa.score --rows results/data/math500.jsonl --gen results/runs/base/think35_math500.jsonl --samples 4 \
+       --ckpt ckpt/base --caps
+   ```
+
+   Drop the last two vLLM flags for text-only models (Qwen3, R1-Distill, Gemma). We set `VLLM_USE_FLASHINFER_SAMPLER=0`.
+   - **Protocols** (`wsa/gen.py`, `PROTOCOLS`):
+     - `think35` is the authors' evaluation protocol: thinking on, T 0.6, top-p 0.95, top-k 20, presence penalty 1.5,
+       32,768 tokens.
+     - Each decoding fix is that protocol with one change: `nothink35` (thinking off, 8,192 tokens), `nothink35_32k`
+       (full budget), `card_think` (the model card's T 1.0), `think35_rep11` (repetition penalty), `think35_tb8`
+       (end-of-thinking bias) and `think35_pr2` (prompt only).
+   - **Budget forcing and loop stop** continue an existing run instead of regenerating it (`python -m wsa.force plan`,
+     then `merge`).
+
+We ran generation on NVIDIA H200 GPUs.
+
+### Run folders
+
+| Folder | What it holds |
+|---|---|
+| `base/` | Qwen3.5-0.8B unedited: the protocol and every decoding fix |
+| `edit_authors/` | The agent's edit |
+| `meandiff_*` | Textbook (mean-difference) edits at several strengths |
+| `random_s*` | Random directions on the same neurons |
+| `e3/`, `e6/`, `prompt/` | End-of-thinking bias and the full-budget thinking-off arm; the 81,920-token cap; prompt only |
+| `med_*`, `mmlu_*`, `medqa9b/` | MedQA and MMLU-Pro health; the medical-direction edit; Qwen3.5-9B for deferral |
+| `headroom/` | MMLU-Pro math |
+| `c2b/`, `l2b/` | Qwen3.5-2B |
+| `r1d/`, `lowtemp/`, `screen*/` | R1-Distill-Qwen-1.5B and the screens of other small models |
+| `grid/`, `csweep/`, `layers/`, `learned/`, `e2/`, `loopwrite/` | Searches around the edit on practice problems |
+| `agent_eval/` | The two frontier agents' edits on the test sets |
+
+## Models and data
+
+| Model | Hugging Face id | Revision |
+|---|---|---|
+| Qwen3.5-0.8B | `Qwen/Qwen3.5-0.8B` | `2fc06364715b967f1860aea9cf38778875588b17` |
+| Qwen3.5-2B | `Qwen/Qwen3.5-2B` | `15852e8c16360a2fea060d615a32b45270f8a8fc` |
+| Qwen3.5-4B | `Qwen/Qwen3.5-4B` | `851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a` |
+| Qwen3.5-9B | `Qwen/Qwen3.5-9B` | `c202236235762e1c871ad0ccb60c8ee5ba337b9a` |
+| Qwen3-1.7B | `Qwen/Qwen3-1.7B` | `70d244cc86ccca08cf5af4e1e306ecf908b1ad5e` |
+| DeepSeek-R1-Distill-Qwen-1.5B | `deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B` | `ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562` |
+| Gemma 4 E2B-it | `google/gemma-4-E2B-it` | `4adf15748de9e1a0097b6274cee9c15836c41c37` |
+| Gemma 3 270M-it | `google/gemma-3-270m-it` | `ac82b4e` |
+
+| Data | Source | Used for |
+|---|---|---|
+| MATH-500 | `HuggingFaceH4/MATH-500`, test | main test set |
+| GSM8K | `openai/gsm8k`, main, test | main test set |
+| MedQA | `GBaker/MedQA-USMLE-4-options`, test (train for the medical direction) | medicine |
+| MMLU-Pro | `TIGER-Lab/MMLU-Pro` at `b189ec765aa7ed75c8acfea42df31fdae71f97be`, test, health and math | medicine; mathematics with room above the model's own answers |
+| MedXpertQA | `TsinghuaC3I/MedXpertQA` at `7e7c465a68eb2b866926bfa59c8c9d17a8daba65`, Text, test | medical screen |
+| PubMedQA | `qiaojin/PubMedQA`, pqa_labeled, the official 500-question test split | medical screen |
+| Practice problems | MATH and GSM8K train, as decontaminated by the edit's authors ([lm_understand-logs](https://github.com/RikiyaT/lm_understand-logs), `exp8_math`) | choosing settings and strengths, measuring directions; never the test sets |
+| AIME 2024-2025, MATH level 5 | 60 and 200 problems | screens of other models |
+
+The files in `results/data/` are copies of these public datasets and keep their licenses: MIT for MATH, GSM8K, MedQA,
+PubMedQA, MMLU-Pro and MedXpertQA. AIME problems are published by the MAA.
+
+## The audited edit
+
+`third_party/lm_understand_logs/` holds the edit (`p50c`) published by Takehi, Teoh, Zhang and Khattab with their
+blog post [Sparks of Weight-Space Programming](https://rikiyat.github.io/blog/weight-space-programming/) and their logs
+([RikiyaT/lm_understand-logs](https://github.com/RikiyaT/lm_understand-logs)). It contains the sparse diff of two
+`down_proj` matrices (layers 15 and 19) and their rebuild script, under their license (CC BY 4.0 for logs and data, MIT
+for scripts). `wsa/grade.py` is adapted from their answer checker (MIT).
 
 ## License
 
-MIT (`LICENSE`). Files under `case1_reasoning/third_party/` keep their own license, and the benchmark rows in
-`case1_reasoning/results/data/` keep their original licenses (see `case1_reasoning/README.md`).
+MIT for our code (`LICENSE`). Third-party files keep their own licenses.
 
 ## Citation
 

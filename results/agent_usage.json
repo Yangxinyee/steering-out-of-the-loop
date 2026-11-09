@@ -1,0 +1,25 @@
+{
+ "Claude Opus 5.5": {
+  "turns": 355,
+  "input_tokens": 31798152,
+  "cache_read_tokens": 30205027,
+  "cache_read_share": 0.9498988180193616,
+  "output_tokens": 1092002,
+  "tensors": [
+   "model.language_model.layers.11.self_attn.q_proj.weight.safetensors",
+   "model.language_model.layers.15.self_attn.q_proj.weight.safetensors",
+   "model.language_model.layers.19.self_attn.q_proj.weight.safetensors",
+   "model.language_model.layers.23.self_attn.q_proj.weight.safetensors"
+  ]
+ },
+ "gpt-6.1-sol": {
+  "turns": 124,
+  "input_tokens": 125716936,
+  "cache_read_tokens": 103828426,
+  "cache_read_share": 0.825890522817069,
+  "output_tokens": 3874405,
+  "tensors": [
+   "model.language_model.layers.15.mlp.down_proj.weight.safetensors"
+  ]
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "rows_train": 88958,
+ "rows_held_out": 10706,
+ "stays_held_out": 351,
+ "s": {
+  "dose_only": [
+   0.4285,
+   0.395,
+   0.4627
+  ],
+  "record_ceiling": [
+   0.9761,
+   0.9714,
+   0.9803
+  ]
+ },
+ "log_expected": {
+  "dose_only": [
+   0.6404,
+   0.6142,
+   0.6666
+  ],
+  "record_ceiling": [
+   0.985,
+   0.9816,
+   0.988
+  ]
+ },
+ "s_sd_held_out": 0.3352
+}

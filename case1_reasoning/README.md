@@ -1,7 +1,7 @@
 # Case 1: an agent's weight edit to a reasoning model that loops
 
 Code, per-problem results and analysis scripts for case 1 of the paper (see the [top-level README](../README.md)). An AI
-agent edited two weight matrices of Qwen3.5-0.8B and lifted its MATH-500 accuracy from 7.5% to 51.6% in our
+agent edited two weight matrices of Qwen3.5-0.8B and lifted its MATH-500 accuracy from 7.6% to 51.7% in our
 reproduction; the three tests show that the edit releases answers the unedited model already reaches.
 
 Run every command below from this folder (`case1_reasoning/`).

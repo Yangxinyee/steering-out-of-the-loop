@@ -1,0 +1,73 @@
+{
+ "rows_train": 60608,
+ "rows_held_out": 11686,
+ "stays_held_out": 354,
+ "s": {
+  "dose_only": [
+   0.3081,
+   0.2774,
+   0.3402
+  ],
+  "record_ceiling": [
+   0.9806,
+   0.9765,
+   0.9842
+  ],
+  "probe_out": [
+   0.0971,
+   0.0773,
+   0.1172
+  ],
+  "probe_state": [
+   0.6215,
+   0.5991,
+   0.643
+  ],
+  "probe_state_dose": [
+   0.9097,
+   0.9022,
+   0.917
+  ],
+  "probe_state_mlp": [
+   0.7094,
+   0.6869,
+   0.7296
+  ],
+  "probe_state_dose_mlp": [
+   0.9357,
+   0.9288,
+   0.9425
+  ],
+  "gap_closed_state_dose": 0.895,
+  "gap_closed_state_dose_mlp": 0.933
+ },
+ "log_expected": {
+  "dose_only": [
+   0.7249,
+   0.7042,
+   0.7419
+  ],
+  "record_ceiling": [
+   0.9923,
+   0.9905,
+   0.9938
+  ],
+  "probe_out": [
+   0.9591,
+   0.9538,
+   0.9633
+  ],
+  "probe_state": [
+   0.9616,
+   0.9565,
+   0.9655
+  ],
+  "probe_state_dose": [
+   0.9641,
+   0.9597,
+   0.9677
+  ],
+  "gap_closed_state_dose": 0.895
+ },
+ "s_sd_held_out": 0.3261
+}

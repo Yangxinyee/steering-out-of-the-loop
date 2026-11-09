@@ -84,7 +84,10 @@ def main():
                     d = json.load(open(p))
                     d = d.get("texts", d.get("chats", d)) if isinstance(d, dict) else d
                     texts += [text_of(t) for t in d]
-        code = [json.loads(l).get("code", "") for l in open(RUNS / a / "tool_calls.jsonl")]
+        calls = [json.loads(l) for l in open(RUNS / a / "tool_calls.jsonl")]
+        code = [c.get("code", "") for c in calls]
+        log = open(RUNS / a / "driver.log").read()          # the harness's own count: failed requests are not counted
+        used = re.findall(r"passes (\d+)/(\d+)", log)
         replies = [open(f).read() for f in sorted(glob.glob(str(RUNS / a / "turns" / "*" / "answer.md")))]
         prac_grams = set().union(*(grams(norm(prac[i]["problem"])) for i in ids if i in prac)) if ids else set()
 
@@ -97,7 +100,11 @@ def main():
             return sorted(leak), sorted(near)
         R = {"pool_neardup_of_a_test_problem": len(pool_neardup), "forward_requests": len(reqs), "practice_ids": len(ids), "ids_not_in_practice_pool": sorted(i for i in ids if i not in prac),
              "practice_ids_neardup_of_a_test_problem": len(ids & pool_neardup), "own_prompts": len(prompts),
-             "teacher_forced_texts": len(texts), "python_programs": len(code), "replies": len(replies), "windows": {}}
+             "teacher_forced_texts": len(texts), "python_programs": len(code), "replies": len(replies), "windows": {},
+             "tool_calls": {"python": sum(c.get("type") == "python" for c in calls),
+                            "forward": sum(c.get("type") == "forward" for c in calls),
+                            "forward_failed": len(re.findall(r"forward request \d+ failed", log)),
+                            "passes_used": int(used[-1][0]) if used else None, "pass_budget": int(used[-1][1]) if used else None}}
         for name, items in (("own prompts", prompts), ("teacher-forced texts", texts), ("python programs", code),
                             ("replies", replies)):
             leak, near = hits(items)

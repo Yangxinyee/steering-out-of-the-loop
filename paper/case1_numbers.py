@@ -7,6 +7,7 @@ with WSA_RESULTS). Writes paper/out/numbers_case1.tex (macros, prefix \\w) and t
 """
 import json
 import os
+from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,19 +24,26 @@ def score(stem):
     return s["acc"], 1 - s["cut_share"], s["mean_tokens"]
 
 
+def rnd(x, nd=1):               # half-up rounding of the value as computed (7.55 -> 7.6), not of its binary float
+    return Decimal(f"{x:.10f}").quantize(Decimal(1).scaleb(-nd), rounding=ROUND_HALF_UP)
+
+
+def fx(x, nd=1):                # plain string, no "-0.0"
+    d = rnd(x, nd)
+    return str(abs(d) if d == 0 else d)
+
+
 def f1(x):                      # a share as a percentage, one decimal
-    return f"{x * 100:.1f}"
+    return fx(x * 100)
 
 
 def num(x, nd=1):               # a plain number, minus sign typeset (no "-0.0")
-    s = f"{x:.{nd}f}"
-    if float(s) == 0:
-        s = f"{0:.{nd}f}"
-    return s.replace("-", "$-$")
+    return fx(x, nd).replace("-", "$-$")
 
 
 def sg(x, nd=1):                # a signed difference
-    s = f"{x:+.{nd}f}"
+    d = rnd(x, nd)
+    s = ("+" if d >= 0 else "") + str(abs(d) if d == 0 else d)
     return s.replace("-", "$-$").replace("+", "$+$")
 
 
@@ -62,10 +70,10 @@ for ds, tag in (("math500", "Math"), ("gsm8k", "Gsm")):
     put(f"wBase{tag}", f1(T["base"]["acc"]))
     put(f"wEdit{tag}", f1(T["edit"]["acc"]))
     put(f"wOff{tag}", f1(T["off"]["acc"]))
-    put(f"wBaseCut{tag}", f"{T['base']['cut'] * 100:.0f}")
-    put(f"wOffShare{tag}", f"{(T['off']['acc'] - T['base']['acc']) / (T['edit']['acc'] - T['base']['acc']) * 100:.0f}")
-    put(f"wEditTok{tag}", f"{T['edit']['mean_tokens'] / 1000:.1f}k")
-    put(f"wOffTok{tag}", f"{T['off']['mean_tokens'] / 1000:.1f}k")
+    put(f"wBaseCut{tag}", fx(T['base']['cut'] * 100, 0))
+    put(f"wOffShare{tag}", fx((T['off']['acc'] - T['base']['acc']) / (T['edit']['acc'] - T['base']['acc']) * 100, 0))
+    put(f"wEditTok{tag}", fx(T['edit']['mean_tokens'] / 1000) + "k")
+    put(f"wOffTok{tag}", fx(T['off']['mean_tokens'] / 1000) + "k")
     d = J("decontam32k.json")[ds]["all"]["edit_minus_thinking_off_32k"]
     put(f"wEditMinusOff{tag}", sg(d["gain"] * 100))
     put(f"wEditMinusOff{tag}CI", ci(*d["ci95"]))
@@ -77,8 +85,8 @@ for ds, tag, j in (("MATH-500", "Math", "2"), ("GSM8K", "Gsm", "4")):
     put(f"wMaj{tag}J", j)
     put(f"wMaj{tag}", sg(v["diff"][0] * 100))
     put(f"wMaj{tag}CI", ci(v["diff"][1], v["diff"][2]))
-    put(f"wMaj{tag}Tok", f"{v['thinking_off_tokens'] / 1000:.1f}k")
-    put(f"wMaj{tag}EditTok", f"{v['edit_tokens'] / 1000:.1f}k")
+    put(f"wMaj{tag}Tok", fx(v['thinking_off_tokens'] / 1000) + "k")
+    put(f"wMaj{tag}EditTok", fx(v['edit_tokens'] / 1000) + "k")
 
 # ---- coverage of the edit's correct answers on always-looping problems
 cv = J("coverage.json")
@@ -93,9 +101,10 @@ for ds, tag in (("MATH-500", "Math"), ("GSM8K", "Gsm")):
     two = cm[ds]["references"]["Qwen3.5-2B, random"]["coverage"]["32"]
     put(f"wCovTwoB{tag}", f1(two[0]))
     put(f"wCovTwoB{tag}CI", ci(two[1], two[2]))
+    put(f"wCovSamples{tag}", str(cv[ds]["coverage"]["all decodings"]["samples_per_problem"]))
     fixes = [v["targets"]["left-out fix"]["coverage"][0] for k, v in cn[ds]["left_out"].items() if k != "thinking off (both budgets)"]
     put(f"wCovFixLo{tag}", f1(min(fixes)))
-    put(f"wCovFixHi{tag}", f"{max(fixes) * 100:.1f}".replace("100.0", "100"))
+    put(f"wCovFixHi{tag}", fx(max(fixes) * 100).replace("100.0", "100"))
 
 # ---- released against own answers on the same problems
 rs = J("rescue.json")["sets"]
@@ -106,6 +115,9 @@ for ds, tag in (("MATH-500", "Math"), ("GSM8K", "Gsm"), ("MedQA", "Med")):
     put(f"wRelMinusOwn{tag}", sg(w["diff"] * 100))
     put(f"wRelMinusOwn{tag}CI", ci(w["lo"], w["hi"]))
     put(f"wPaired{tag}", f"{w['problems']:,}".replace(",", "{,}"))
+w = rs["MMLU-Pro health"]["arms"]["authors_edit"]["within_problem"]
+put("wRelMinusOwnHealth", sg(w["diff"] * 100))
+put("wRelMinusOwnHealthCI", ci(w["lo"], w["hi"]))
 hd = J("headroom.json")
 h = hd["MMLU-Pro math, agent's edit"]
 put("wMmluBase", f1(h["base"]["acc"]))
@@ -115,9 +127,9 @@ put("wOwnMmlu", f1(h["within_problem"]["own_acc"]))
 put("wRelMinusOwnMmlu", sg(h["within_problem"]["diff"] * 100))
 put("wRelMinusOwnMmluCI", ci(h["within_problem"]["lo"], h["within_problem"]["hi"]))
 put("wPairedMmlu", str(h["within_problem"]["problems"]))
-fx = [v["fix"]["acc"] for k, v in hd.items() if k.startswith("MMLU-Pro math, ") and k != "MMLU-Pro math, agent's edit"]
-put("wMmluFixLo", f1(min(fx)))
-put("wMmluFixHi", f1(max(fx)))
+fxs = [v["fix"]["acc"] for k, v in hd.items() if k.startswith("MMLU-Pro math, ") and k != "MMLU-Pro math, agent's edit"]
+put("wMmluFixLo", f1(min(fxs)))
+put("wMmluFixHi", f1(max(fxs)))
 
 # ---- matched completion under one selector (error of thinking off minus the edit's, at the lower completion)
 rk = J("riskcov.json")
@@ -125,12 +137,12 @@ for ds, tag in (("MATH-500", "Math"), ("GSM8K", "Gsm")):
     g = rk[ds]["vs_edit"]["nothink32k"]["error_gap_at_common_coverage"]
     put(f"wRiskOff{tag}", sg(g[0] * 100))
     put(f"wRiskOff{tag}CI", ci(g[1], g[2]))
-put("wRiskOnMax", f"{max(abs(rk[ds]['vs_edit'][k]['error_gap_at_common_coverage'][0]) for ds in rk for k in ('t1', 'bf8k', 'loop')) * 100:.1f}")
+put("wRiskOnMax", fx(max(abs(rk[ds]['vs_edit'][k]['error_gap_at_common_coverage'][0]) for ds in rk for k in ('t1', 'bf8k', 'loop')) * 100))
 lv = J("abstain.json")["b"]["by_level"]["authors_edit"]
-put("wLevelOneCut", f"{lv['1']['cut'] * 100:.0f}")
-put("wLevelFiveCut", f"{lv['5']['cut'] * 100:.0f}")
-put("wLevelOneRight", f"{lv['1']['finished_accuracy'] * 100:.0f}")
-put("wLevelFiveRight", f"{lv['5']['finished_accuracy'] * 100:.0f}")
+put("wLevelOneCut", fx(lv['1']['cut'] * 100, 0))
+put("wLevelFiveCut", fx(lv['5']['cut'] * 100, 0))
+put("wLevelOneRight", fx(lv['1']['finished_accuracy'] * 100, 0))
+put("wLevelFiveRight", fx(lv['5']['finished_accuracy'] * 100, 0))
 # ---- the loops are genuine: 81,920 tokens instead of 32,768 (first sample, MATH-500)
 e6p = J("e6.json")["paired"]
 put("wLongBase", sg(e6p["base: 81,920 - cut at 32,768"]["d"] * 100))
@@ -165,11 +177,20 @@ rel = [ae[ds][a]["within_problem"]["diff"] for ds in ae for a in ae[ds]]
 put("wAgentRelLo", sg(min(rel) * 100))
 put("wAgentRelHi", sg(max(rel) * 100))
 
+# ---- the frontier agents' calls, from the harness's own log (failed forward requests do not count)
+au = J("agent_audit.json")["agents"]
+for nm, tag in (("Claude Opus 5.5", "Claude"), ("gpt-6.1-sol", "Gpt")):
+    t = au[nm]["tool_calls"]
+    put(f"wAgent{tag}Runs", str(t["python"]))
+    put(f"wAgent{tag}FwdFailed", str(t["forward_failed"]))
+    assert t["passes_used"] == t["pass_budget"]
+put("wAgentFwdBudget", str(au["Claude Opus 5.5"]["tool_calls"]["pass_budget"]))
+
 # ---- deferral to Qwen3.5-9B on MedQA
 dc = J("defer_control.json")["triggers"]["loop"]
 put("wDefer", sg(dc["minus_random"][0] * 100))
 put("wDeferCI", ci(dc["minus_random"][1], dc["minus_random"][2]))
-put("wDeferRate", f"{dc['defer_rate'] * 100:.1f}")
+put("wDeferRate", fx(dc['defer_rate'] * 100))
 
 # ---- appendix: MMLU-Pro math, released counts and accuracy by fix
 for k, tag in (("MMLU-Pro math, agent's edit", "Edit"), ("MMLU-Pro math, thinking off, full budget", "Off")):
@@ -178,8 +199,8 @@ for k, tag in (("MMLU-Pro math, agent's edit", "Edit"), ("MMLU-Pro math, thinkin
 on = [hd[f"MMLU-Pro math, {nm}"] for nm in ("loop stop", "budget forcing", "T = 1.0")]
 put("wMmluRelOnLo", f"{min(v['released'] for v in on):,}".replace(",", "{,}"))
 put("wMmluRelOnHi", f"{max(v['released'] for v in on):,}".replace(",", "{,}"))
-put("wMmluRelOnAccLo", f"{min(v['released_accuracy'] for v in on) * 100:.0f}")
-put("wMmluRelOnAccHi", f"{max(v['released_accuracy'] for v in on) * 100:.0f}")
+put("wMmluRelOnAccLo", fx(min(v['released_accuracy'] for v in on) * 100, 0))
+put("wMmluRelOnAccHi", fx(max(v['released_accuracy'] for v in on) * 100, 0))
 
 # ---- appendix: the strength sweep of the agent's edit (200 practice problems, one sample)
 cs = J("csweep.json")
@@ -194,7 +215,7 @@ put("wSweepTextbook", f1(cs["arms"]["textbook"]["acc"]))
 fl = cs["flip_share"]
 for L in ("15", "19"):
     put(f"wFlipFour{'A' if L == '15' else 'B'}", f1(fl[f"L{L}_looping"]["c4"]))
-    put(f"wFlipSix{'A' if L == '15' else 'B'}", f"{fl[f'L{L}_looping']['c6'] * 100:.0f}")
+    put(f"wFlipSix{'A' if L == '15' else 'B'}", fx(fl[f'L{L}_looping']['c6'] * 100, 0))
 
 # ---- appendix: deferral
 d0 = J("defer_control.json")
@@ -206,7 +227,7 @@ put("wSmallAlone", f1(d0["small_alone"]))
 # ---- the case-1 table: accuracy and answers finished, MATH-500, GSM8K and MedQA
 med = {"base": "med_base/think35", "t1": "med_base/card_think", "bf": "med_base/think35_bf8192", "loop": "med_base/think35_loop",
        "off8k": "med_base/nothink35", "edit": "med_edit/think35"}
-ROWS = (("Base", "base"), ("$T = 1.0$", "t1"), ("Budget forcing", "bf"), ("Loop stop", "loop"),
+ROWS = (("Unedited", "base"), ("$T = 1.0$", "t1"), ("Budget forcing", "bf"), ("Loop stop", "loop"),
         ("Thinking off, 8k", "off8k"), ("Thinking off, full budget", "off"), ("Textbook edit", "textbook"),
         ("Agent's edit", "edit"))
 best = {ds: max(e3[ds][ARM[k]]["acc"] for _, k in ROWS) for ds in ("math500", "gsm8k")}
@@ -234,7 +255,7 @@ L += [r"\bottomrule", r"\end{tabular}",
 
 # ---- appendix: every setting on MATH-500 and GSM8K (accuracy, answers finished, mean tokens)
 EXTRA = {"prompt": "prompt/think35_pr2_{}", "rep": "base/think35_rep11_{}"}
-ALL = (("Base", "base"), ("Prompt only", "prompt"), ("$T = 1.0$", "t1"), ("Repetition penalty", "rep"),
+ALL = (("Unedited", "base"), ("Prompt only", "prompt"), ("$T = 1.0$", "t1"), ("Repetition penalty", "rep"),
        ("Budget forcing", "bf"), ("Loop stop", "loop"), ("End-of-thinking bias", "eot"), ("Thinking off, 8k", "off8k"),
        ("Thinking off, full budget", "off"), ("Textbook edit", "textbook"), ("Agent's edit", "edit"))
 A = [r"\begin{table}[t]", r"\centering", r"\small", r"\setlength{\tabcolsep}{3pt}", r"\begin{tabular}{@{}lrrrrrr@{}}",
@@ -248,7 +269,7 @@ for name, k in ALL:
         else:
             v = e3[ds][ARM[k]]
             acc, fin, tok = v["acc"], 1 - v["cut"], v["mean_tokens"]
-        cells += [f1(acc), f1(fin), f"{tok / 1000:.1f}"]
+        cells += [f1(acc), f1(fin), fx(tok / 1000)]
     A.append(name + " & " + " & ".join(cells) + r" \\")
 A += [r"\bottomrule", r"\end{tabular}", r"\caption{Every setting on MATH-500 and GSM8K (Qwen3.5-0.8B, 4 samples per "
       r"problem). Acc: accuracy, authors' scoring (\%); Fin: answers finished (\%); Tok: mean generated tokens "
@@ -262,15 +283,15 @@ base_acc = {"MATH-500": e3["math500"][ARM["base"]]["acc"], "GSM8K": e3["gsm8k"][
             "MedQA": p2["test"]["med_base/think35"]["official"]}
 edit_acc = {"MATH-500": e3["math500"][ARM["edit"]]["acc"], "GSM8K": e3["gsm8k"][ARM["edit"]]["acc"],
             "MedQA": p2["test"]["med_edit/think35"]["official"]}
-F.append("Base & " + " & ".join(f1(base_acc[d]) for d in ae) + r" \\")
+F.append("Unedited & " + " & ".join(f1(base_acc[d]) for d in ae) + r" \\")
 F.append("Published agent's edit & " + " & ".join(f1(edit_acc[d]) for d in ae) + r" \\")
-for a, nm in (("openai_1", "gpt-6.1-sol"), ("claude_1", "Claude Opus 5.5")):
+for a, nm in (("openai_1", "Codex"), ("claude_1", "Claude")):
     F.append(nm + " & " + " & ".join(f1(ae[d][a]["acc"]) for d in ae) + r" \\")
 F += [r"\midrule", r"\multicolumn{4}{@{}l}{\emph{Released $-$ own, same problems (points, 95\% interval)}} \\"]
-for a, nm in (("openai_1", "gpt-6.1-sol"), ("claude_1", "Claude Opus 5.5")):
+for a, nm in (("openai_1", "Codex"), ("claude_1", "Claude")):
     F.append(nm + " & " + " & ".join(sg(ae[d][a]["within_problem"]["diff"] * 100) + " " +
                                      ci(ae[d][a]["within_problem"]["lo"], ae[d][a]["within_problem"]["hi"]) for d in ae) + r" \\")
-F += [r"\bottomrule", r"\end{tabular}", r"\caption{Edits found by two frontier agents redoing the task (Qwen3.5-0.8B, "
+F += [r"\bottomrule", r"\end{tabular}", r"\caption{Edits found by two frontier agents redoing the task, Claude Opus 5.5 and Codex (gpt-6.1-sol) (Qwen3.5-0.8B, "
       r"4 samples per problem; accuracy \%, authors' scoring).}", r"\label{tab:frontier}", r"\end{table*}"]
 (OUT / "tables" / "case1_frontier.tex").write_text("\n".join(F) + "\n")
 # the audit's own generated appendix tables (wsa.paper_tables, wsa.round3_tables), copied unchanged

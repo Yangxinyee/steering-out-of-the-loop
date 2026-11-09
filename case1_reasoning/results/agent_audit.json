@@ -33,6 +33,13 @@
      "via_practice_near_duplicates": []
     }
    },
+   "tool_calls": {
+    "python": 295,
+    "forward": 57,
+    "forward_failed": 7,
+    "passes_used": 50,
+    "pass_budget": 50
+   },
    "mentions_of_test_sets": 25
   },
   "gpt-6.1-sol": {
@@ -64,6 +71,13 @@
      "test_problems_leaked": [],
      "via_practice_near_duplicates": []
     }
+   },
+   "tool_calls": {
+    "python": 66,
+    "forward": 53,
+    "forward_failed": 3,
+    "passes_used": 50,
+    "pass_budget": 50
    },
    "mentions_of_test_sets": 0
   }

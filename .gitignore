@@ -13,3 +13,11 @@ case1_reasoning/paper/figures/*.drawio
 case1_reasoning/paper/figures/alignment.json
 case1_reasoning/paper/tables/*.tex
 paper/out/
+# case 2: local configuration, data and model folders, generated numbers and figures
+case2_world_model/world_model.json
+/case2_world_model/work/
+/case2_world_model/agent_data/
+/case2_world_model/agent_runs/
+case2_world_model/paper/numbers_case2.tex
+case2_world_model/paper/.numbers_raw.tex
+case2_world_model/paper/figures/

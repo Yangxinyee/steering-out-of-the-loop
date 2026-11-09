@@ -4,7 +4,14 @@
 """
 import json
 import os
+from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
+
+
+def r1(x, nd=1):
+    """half-up rounding of the value as computed (7.55 -> 7.6), not of its binary float; never -0.0"""
+    d = Decimal(f"{x:.10f}").quantize(Decimal(1).scaleb(-nd), rounding=ROUND_HALF_UP)
+    return str(abs(d) if d == 0 else d)
 
 FIX = {"t1": "$T = 1.0$", "bf8k": "Budget forcing", "loop": "Loop stop", "eot_bias": "End-of-thinking bias",
        "rep_penalty": "Repetition penalty", "prompt": "Prompt only", "nothink8k": "Thinking off, 8k",
@@ -12,7 +19,7 @@ FIX = {"t1": "$T = 1.0$", "bf8k": "Budget forcing", "loop": "Loop stop", "eot_bi
 
 
 def ci(v, nd=1):
-    return f"{v[0] * 100:.{nd}f} [{v[1] * 100:.{nd}f}, {v[2] * 100:.{nd}f}]"
+    return f"{r1(v[0] * 100, nd)} [{r1(v[1] * 100, nd)}, {r1(v[2] * 100, nd)}]"
 
 
 def covref():
@@ -42,8 +49,8 @@ def covref():
         vals = []
         for d in sets:
             t = nu[d]["left_out"][k]["targets"]
-            vals += [ci(t["left-out fix"]["coverage"]), f"{t[chr(39).join(['agent', 's edit'])]['coverage'][0] * 100:.1f}",
-                     f"{t['Qwen3.5-2B']['coverage'][0] * 100:.1f}"]
+            vals += [ci(t["left-out fix"]["coverage"]), r1(t[chr(39).join(['agent', 's edit'])]['coverage'][0] * 100),
+                     r1(t['Qwen3.5-2B']['coverage'][0] * 100)]
         row(name, vals)
     L += [r"\bottomrule", r"\end{tabular}",
           r"\caption{Calibrating coverage on always-looping problems (\%, 95\% intervals): the share of a target's correct "
@@ -65,7 +72,7 @@ def majk():
         for k, name in (("agent's edit", "Agent's edit"), ("thinking off, full", "Thinking off, full"),
                         ("thinking off, 8k", "Thinking off, 8k")):
             A = m[d]["arms"][k]
-            L.append(name + " & " + " & ".join(f"{A[str(j)]['accuracy'] * 100:.1f} ({A[str(j)]['tokens'] / 1000:.1f})"
+            L.append(name + " & " + " & ".join(f"{r1(A[str(j)]['accuracy'] * 100)} ({r1(A[str(j)]['tokens'] / 1000)})"
                                                for j in range(1, 5)) + r" \\")
     L += [r"\bottomrule", r"\end{tabular}",
           r"\caption{Majority vote over $j$ of the four samples (accuracy \%, authors' scoring; in parentheses, generated "

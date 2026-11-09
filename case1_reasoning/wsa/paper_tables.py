@@ -3,15 +3,23 @@
     python -m wsa.paper_tables        (writes paper/tables/riskcov.tex and paper/tables/coverage.tex)
 """
 import json
+from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 
 
+def r1(x, nd=1):
+    """half-up rounding of the value as computed (7.55 -> 7.6), not of its binary float; never -0.0"""
+    d = Decimal(f"{x:.10f}").quantize(Decimal(1).scaleb(-nd), rounding=ROUND_HALF_UP)
+    return str(abs(d) if d == 0 else d)
+
+
 def pm(x):
-    return f"{x * 100:+.1f}".replace("-", "$-$")
+    v = r1(x * 100)
+    return ("+" + v if not v.startswith("-") else v).replace("-", "$-$")
 
 
 def ci(lo, hi):
-    return f"[{lo * 100:.1f}, {hi * 100:.1f}]".replace("-", "$-$")
+    return f"[{r1(lo * 100)}, {r1(hi * 100)}]".replace("-", "$-$")
 
 
 def main():
@@ -27,7 +35,7 @@ def main():
             v = rc[ds]["vs_edit"][k]
             at, m = v["error_gap_at_common_coverage"], v["mean_error_gap_over_common_range"]
             kept = round(v["common_coverage"] * 100 + 1e-9, 1)          # halves rounded up, as in Table 1
-            cells.append(f"{kept:.1f} & {pm(at[0])} {ci(at[1], at[2])} & {pm(m[0])} {ci(m[1], m[2])}")
+            cells.append(f"{r1(kept)} & {pm(at[0])} {ci(at[1], at[2])} & {pm(m[0])} {ci(m[1], m[2])}")
         rows.append(n + " & " + " & ".join(cells) + r" \\")
     t1 = r"""\begin{table*}[t]
 \centering
@@ -60,7 +68,7 @@ Kept: the lower completion rate of the two (\%); the mean runs over shares kept 
                 cells.append("--")
                 continue
             a = c["per_answer"]
-            cells.append(f"{a[0] * 100:.1f} {ci(a[1], a[2])}")
+            cells.append(f"{r1(a[0] * 100)} {ci(a[1], a[2])}")
         rows.append(n + " & " + " & ".join(cells) + r" \\")
     hdr = " & ".join(f"{ds} ({cov[ds]['always_looping_problems']}; {cov[ds]['edit_correct_answers_on_always_looping']})"
                      for ds in ("MATH-500", "GSM8K", "MedQA"))

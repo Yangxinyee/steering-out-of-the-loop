@@ -1,0 +1,133 @@
+{
+ "variant": "scriptS_e03",
+ "key": "e03",
+ "source": "plain",
+ "estimate": "script",
+ "run": "synth_e03-m-T1-full-scriptS-pnp-s0",
+ "kernels": {
+  "I": [
+   -1.8713,
+   -2.2877,
+   -1.9389,
+   -1.5752,
+   -1.017,
+   -0.8,
+   -0.462,
+   -0.3188
+  ],
+  "N": [
+   3.2877,
+   2.2678,
+   1.9162,
+   1.0815,
+   0.2868,
+   0.3111,
+   0.1377,
+   0.3482
+  ]
+ },
+ "rounds": [
+  {
+   "gains": {
+    "I": 1.0,
+    "N": 1.0
+   },
+   "readouts": {
+    "insulin_x2": -9.434,
+    "insulin_half": 4.869,
+    "ne_x2": 3.008,
+    "ne_half": -2.075
+   },
+   "targets": {
+    "insulin_x2": -12.538902737680438,
+    "insulin_half": 6.269451368840219,
+    "ne_x2": 4.514363260185186,
+    "ne_half": -2.257181630092593
+   },
+   "minutes": 2.2
+  },
+  {
+   "gains": {
+    "I": 1.3933618312314222,
+    "N": 1.4032599556435132
+   },
+   "readouts": {
+    "insulin_x2": -12.268,
+    "insulin_half": 6.479,
+    "ne_x2": 4.363,
+    "ne_half": -2.65
+   },
+   "targets": {
+    "insulin_x2": -12.538902737680438,
+    "insulin_half": 6.269451368840219,
+    "ne_x2": 4.514363260185186,
+    "ne_half": -2.257181630092593
+   },
+   "minutes": 4.4
+  }
+ ],
+ "targets_from": "estimate on the tool's reached rows, round 0",
+ "targets": {
+  "insulin_x2": -12.538902737680438,
+  "insulin_half": 6.269451368840219,
+  "ne_x2": 4.514363260185186,
+  "ne_half": -2.257181630092593
+ },
+ "converged": true,
+ "final_gains": {
+  "I": 1.3933618312314222,
+  "N": 1.4032599556435132
+ },
+ "factual": {
+  "edited": 1.62645,
+  "original": 1.62728,
+  "diff": -0.00083,
+  "by_event": {
+   "edited": {
+    "glucose_finger": {
+     "n": 5594,
+     "nll": 1.4578,
+     "mean_abs_error": 10.866
+    },
+    "glucose_lab": {
+     "n": 2003,
+     "nll": 1.3185,
+     "mean_abs_error": 8.669
+    },
+    "map_arterial": {
+     "n": 4665,
+     "nll": 1.475,
+     "mean_abs_error": 3.814
+    },
+    "map_cuff": {
+     "n": 6392,
+     "nll": 1.9811,
+     "mean_abs_error": 5.98
+    }
+   },
+   "original": {
+    "glucose_finger": {
+     "n": 5594,
+     "nll": 1.4584,
+     "mean_abs_error": 10.868
+    },
+    "glucose_lab": {
+     "n": 2003,
+     "nll": 1.319,
+     "mean_abs_error": 8.67
+    },
+    "map_arterial": {
+     "n": 4665,
+     "nll": 1.4757,
+     "mean_abs_error": 3.816
+    },
+    "map_cuff": {
+     "n": 6392,
+     "nll": 1.9823,
+     "mean_abs_error": 5.984
+    }
+   }
+  }
+ },
+ "minutes": 4.4
+}

@@ -1,0 +1,114 @@
+{"kind": "steer_direction", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "levels": 4, "corr_projection_with_s_held_out": 0.0147, "corr_projection_with_log_dose_held_out": -0.2247}
+{"kind": "steer_direction", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "levels": 4, "corr_projection_with_s_held_out": 0.0209, "corr_projection_with_log_dose_held_out": -0.4603}
+{"kind": "steer_direction", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "levels": 4, "corr_projection_with_s_held_out": 0.056, "corr_projection_with_log_dose_held_out": -0.2962}
+{"kind": "steer_direction", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "levels": 5, "corr_projection_with_s_held_out": 0.021, "corr_projection_with_log_dose_held_out": 0.3795}
+{"kind": "steer_direction", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "levels": 5, "corr_projection_with_s_held_out": 0.017, "corr_projection_with_log_dose_held_out": 0.4431}
+{"kind": "steer_direction", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "levels": 5, "corr_projection_with_s_held_out": 0.0134, "corr_projection_with_log_dose_held_out": 0.2649}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "none", "split": "tuning", "value_nll_per_value": 1.62776, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "none", "split": "tuning", "value_nll_per_value": 1.62097, "values": 18654}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "none", "split": "tuning", "value_nll_per_value": 1.49643, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "none", "split": "tuning", "value_nll_per_value": 1.49744, "values": 18910}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "none", "split": "tuning", "value_nll_per_value": 1.62319, "values": 18654}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "none", "split": "tuning", "value_nll_per_value": 1.49348, "values": 18910}
+{"kind": "steer_direction", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "levels": 4, "mean_diff": {"corr_with_s_held_out": 0.0147, "corr_with_log_dose_held_out": -0.2247, "sd_of_projection": 79.4176}, "probe": {"corr_with_s_held_out": 0.0438, "corr_with_log_dose_held_out": -0.7136, "sd_of_projection": 0.0201}, "cosine_mean_diff_probe": 0.0002}
+{"kind": "steer_direction", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "levels": 4, "mean_diff": {"corr_with_s_held_out": 0.0209, "corr_with_log_dose_held_out": -0.4603, "sd_of_projection": 40.186}, "probe": {"corr_with_s_held_out": -0.0416, "corr_with_log_dose_held_out": -0.763, "sd_of_projection": 0.0152}, "cosine_mean_diff_probe": -0.0003}
+{"kind": "steer_direction", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "levels": 4, "mean_diff": {"corr_with_s_held_out": 0.056, "corr_with_log_dose_held_out": -0.2962, "sd_of_projection": 67.8815}, "probe": {"corr_with_s_held_out": -0.0202, "corr_with_log_dose_held_out": -0.7494, "sd_of_projection": 0.0137}, "cosine_mean_diff_probe": 0.0}
+{"kind": "steer_direction", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "levels": 5, "mean_diff": {"corr_with_s_held_out": 0.0134, "corr_with_log_dose_held_out": 0.2649, "sd_of_projection": 98.7663}, "probe": {"corr_with_s_held_out": -0.0011, "corr_with_log_dose_held_out": -0.8055, "sd_of_projection": 0.0202}, "cosine_mean_diff_probe": -0.0}
+{"kind": "steer_direction", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "levels": 5, "mean_diff": {"corr_with_s_held_out": 0.017, "corr_with_log_dose_held_out": 0.4431, "sd_of_projection": 123.818}, "probe": {"corr_with_s_held_out": -0.0132, "corr_with_log_dose_held_out": -0.8287, "sd_of_projection": 0.0272}, "cosine_mean_diff_probe": -0.0}
+{"kind": "steer_direction", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "levels": 5, "mean_diff": {"corr_with_s_held_out": 0.021, "corr_with_log_dose_held_out": 0.3795, "sd_of_projection": 84.6954}, "probe": {"corr_with_s_held_out": -0.0026, "corr_with_log_dose_held_out": -0.8142, "sd_of_projection": 0.0178}, "cosine_mean_diff_probe": 0.0002}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a1.npz", "split": "tuning", "value_nll_per_value": 1.62777, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steer_a1.npz", "split": "tuning", "value_nll_per_value": 1.65701, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a8.npz", "split": "tuning", "value_nll_per_value": 1.62782, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steer_a2.npz", "split": "tuning", "value_nll_per_value": 1.73402, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steer_a4.npz", "split": "tuning", "value_nll_per_value": 2.01377, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steer_a8.npz", "split": "tuning", "value_nll_per_value": 3.37986, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a4.npz", "split": "tuning", "value_nll_per_value": 1.62779, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a2.npz", "split": "tuning", "value_nll_per_value": 1.62777, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steer_a1.npz", "split": "tuning", "value_nll_per_value": 1.64751, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steer_a8.npz", "split": "tuning", "value_nll_per_value": 3.19883, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steer_a4.npz", "split": "tuning", "value_nll_per_value": 2.04059, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a2.npz", "split": "tuning", "value_nll_per_value": 1.62098, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steer_a2.npz", "split": "tuning", "value_nll_per_value": 1.71885, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a1.npz", "split": "tuning", "value_nll_per_value": 1.62098, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a4.npz", "split": "tuning", "value_nll_per_value": 1.621, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a8.npz", "split": "tuning", "value_nll_per_value": 1.62103, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steer_a1.npz", "split": "tuning", "value_nll_per_value": 1.67322, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steer_a4.npz", "split": "tuning", "value_nll_per_value": 2.49619, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steer_a2.npz", "split": "tuning", "value_nll_per_value": 1.83667, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steer_a8.npz", "split": "tuning", "value_nll_per_value": 4.81391, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a4.npz", "split": "tuning", "value_nll_per_value": 1.62317, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a2.npz", "split": "tuning", "value_nll_per_value": 1.62318, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a1.npz", "split": "tuning", "value_nll_per_value": 1.62318, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a8.npz", "split": "tuning", "value_nll_per_value": 1.62318, "values": 18654}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steer_a1.npz", "split": "tuning", "value_nll_per_value": 1.60257, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steer_a8.npz", "split": "tuning", "value_nll_per_value": 3.73124, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a1.npz", "split": "tuning", "value_nll_per_value": 1.49744, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steer_a2.npz", "split": "tuning", "value_nll_per_value": 1.83128, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steer_a4.npz", "split": "tuning", "value_nll_per_value": 2.45898, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a2.npz", "split": "tuning", "value_nll_per_value": 1.49745, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a8.npz", "split": "tuning", "value_nll_per_value": 1.49749, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a4.npz", "split": "tuning", "value_nll_per_value": 1.49746, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steer_a2.npz", "split": "tuning", "value_nll_per_value": 1.80887, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steer_a1.npz", "split": "tuning", "value_nll_per_value": 1.59708, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steer_a8.npz", "split": "tuning", "value_nll_per_value": 3.25742, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a1.npz", "split": "tuning", "value_nll_per_value": 1.49353, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steer_a4.npz", "split": "tuning", "value_nll_per_value": 2.36006, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a2.npz", "split": "tuning", "value_nll_per_value": 1.49358, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a4.npz", "split": "tuning", "value_nll_per_value": 1.49371, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a8.npz", "split": "tuning", "value_nll_per_value": 1.494, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steer_a2.npz", "split": "tuning", "value_nll_per_value": 1.92613, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steer_a1.npz", "split": "tuning", "value_nll_per_value": 1.63049, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steer_a4.npz", "split": "tuning", "value_nll_per_value": 2.7476, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steer_a8.npz", "split": "tuning", "value_nll_per_value": 5.42898, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a1.npz", "split": "tuning", "value_nll_per_value": 1.49646, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a2.npz", "split": "tuning", "value_nll_per_value": 1.4965, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a4.npz", "split": "tuning", "value_nll_per_value": 1.49657, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a8.npz", "split": "tuning", "value_nll_per_value": 1.49672, "values": 18910}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steer_a0.1.npz", "split": "tuning", "value_nll_per_value": 1.62829, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steer_a0.5.npz", "split": "tuning", "value_nll_per_value": 1.63587, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a512.npz", "split": "tuning", "value_nll_per_value": 2.28912, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steer_a0.25.npz", "split": "tuning", "value_nll_per_value": 1.63012, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steer_a0.1.npz", "split": "tuning", "value_nll_per_value": 1.62149, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a2048.npz", "split": "tuning", "value_nll_per_value": 2.59637, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a32.npz", "split": "tuning", "value_nll_per_value": 1.6282, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "e03__synth_e03-m-T1-full-long-s0__steerp_a128.npz", "split": "tuning", "value_nll_per_value": 1.64861, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steer_a0.25.npz", "split": "tuning", "value_nll_per_value": 1.6233, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a512.npz", "split": "tuning", "value_nll_per_value": 4.43981, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steer_a0.5.npz", "split": "tuning", "value_nll_per_value": 1.62878, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a128.npz", "split": "tuning", "value_nll_per_value": 2.01819, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steer_a0.25.npz", "split": "tuning", "value_nll_per_value": 1.62586, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a32.npz", "split": "tuning", "value_nll_per_value": 1.62134, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steer_a0.1.npz", "split": "tuning", "value_nll_per_value": 1.62355, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "e03__synth_e03-m-T1-full-long-s1__steerp_a2048.npz", "split": "tuning", "value_nll_per_value": NaN, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steer_a0.5.npz", "split": "tuning", "value_nll_per_value": 1.63475, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a32.npz", "split": "tuning", "value_nll_per_value": 1.62372, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a512.npz", "split": "tuning", "value_nll_per_value": 1.75785, "values": 18654}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a2048.npz", "split": "tuning", "value_nll_per_value": 2.51687, "values": 18654}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steer_a0.1.npz", "split": "tuning", "value_nll_per_value": 1.49926, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steer_a0.5.npz", "split": "tuning", "value_nll_per_value": 1.5281, "values": 18910}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "e03__synth_e03-m-T1-full-long-s2__steerp_a128.npz", "split": "tuning", "value_nll_per_value": 1.63424, "values": 18654}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steer_a0.25.npz", "split": "tuning", "value_nll_per_value": 1.50625, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a32.npz", "split": "tuning", "value_nll_per_value": 2.24411, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steer_a0.1.npz", "split": "tuning", "value_nll_per_value": 1.49457, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a128.npz", "split": "tuning", "value_nll_per_value": 3.66878, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a512.npz", "split": "tuning", "value_nll_per_value": NaN, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steer_a0.25.npz", "split": "tuning", "value_nll_per_value": 1.50098, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a32.npz", "split": "tuning", "value_nll_per_value": 1.49716, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s0", "edit": "n03__synth_n03-m-T1-full-long-s0__steerp_a2048.npz", "split": "tuning", "value_nll_per_value": NaN, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steer_a0.5.npz", "split": "tuning", "value_nll_per_value": 1.52276, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a128.npz", "split": "tuning", "value_nll_per_value": 1.53012, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a512.npz", "split": "tuning", "value_nll_per_value": 1.94453, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steer_a0.25.npz", "split": "tuning", "value_nll_per_value": 1.50588, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steer_a0.1.npz", "split": "tuning", "value_nll_per_value": 1.498, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s1", "edit": "n03__synth_n03-m-T1-full-long-s1__steerp_a2048.npz", "split": "tuning", "value_nll_per_value": 4.81819, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steer_a0.5.npz", "split": "tuning", "value_nll_per_value": 1.53276, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a32.npz", "split": "tuning", "value_nll_per_value": 1.49798, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a128.npz", "split": "tuning", "value_nll_per_value": 1.52844, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a512.npz", "split": "tuning", "value_nll_per_value": NaN, "values": 18910}
+{"kind": "nll", "key": "n03", "run": "synth_n03-m-T1-full-long-s2", "edit": "n03__synth_n03-m-T1-full-long-s2__steerp_a2048.npz", "split": "tuning", "value_nll_per_value": NaN, "values": 18910}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-ft1500-pnp-s2", "edit": "none", "split": "held_out", "value_nll_per_value": 1.6273, "values": 28359}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-ft1500-pnp-s1", "edit": "none", "split": "held_out", "value_nll_per_value": 1.62416, "values": 28359}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s0", "edit": "none", "split": "held_out", "value_nll_per_value": 1.62866, "values": 28359}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s2", "edit": "none", "split": "held_out", "value_nll_per_value": 1.62929, "values": 28359}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-ft1500-pnp-s0", "edit": "none", "split": "held_out", "value_nll_per_value": 1.62693, "values": 28359}
+{"kind": "nll", "key": "e03", "run": "synth_e03-m-T1-full-long-s1", "edit": "none", "split": "held_out", "value_nll_per_value": 1.62717, "values": 28359}

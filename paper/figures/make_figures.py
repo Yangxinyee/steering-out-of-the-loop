@@ -57,16 +57,11 @@ def place(fig, x0, x1, y0, y1):
 
 
 def finish(fig, name, axes):
-    """panel letters a, b, c (9 pt bold) at each panel's top left, the left edge on the panel's leftmost label and the top
-    7 pt above the plot area; the plot areas of the row, measured after the final draw, must share top and bottom edges
-    within 1.5 pt (recorded in alignment.json); saved at exactly the figure size"""
+    """no panel letters (the lab's default: panels are named by position in captions and text); the plot areas of the
+    row, measured after the final draw, must share top and bottom edges within 1.5 pt (recorded in alignment.json);
+    saved at exactly the figure size"""
     fig.canvas.draw()
     r, k = fig.canvas.get_renderer(), 72 / fig.dpi
-    W, H = fig.get_size_inches() * 72
-    boxes = [a.get_window_extent(r) for a in axes]
-    for ch, a, bb in zip("abc", axes, boxes):
-        fig.text(a.get_tightbbox(r).x0 * k / W, (bb.y1 * k + 7) / H, ch, fontsize=9, fontweight="bold", va="top")
-    fig.canvas.draw()
     boxes = [[v * k for v in (bb.x0, bb.y0, bb.x1, bb.y1)] for bb in (a.get_window_extent(r) for a in axes)]
     dev = max(max(b[i] for b in boxes) - min(b[i] for b in boxes) for i in (1, 3))
     ALIGN[name] = {"plot_areas_bp": [[round(v, 2) for v in b] for b in boxes], "max_edge_deviation_pt": round(dev, 3),
@@ -233,9 +228,16 @@ def fig1_examples():
         mark(XR + e0 + w + 14, y0 + 130 + CH / 2, edit["correct"])
         if not edit["correct"]:
             d.text(XR + e0 + w + 28, y0 + 132, WR, f"correct: ({r['question']['answer']})", S, color=MUTED)
-        p = pair[ds]["arms"]["authors_edit"]["within_problem"]
-        d.text(XT, y0 + 26, 1000 - XT, f"{p['problems']} {unit} like it", S, color=MUTED)
-        for j, (lab, v, c) in enumerate((("released", p["rescued_acc"], EDIT), ("model's own", p["base_finished_acc"], OTHER))):
+        if ds == "MATH-500":                                 # mathematics: coverage on always-looping problems
+            cv = json.load(open(os.path.join(R, "coverage.json")))[ds]
+            two = json.load(open(os.path.join(R, "coverage_match.json")))[ds]["references"]["Qwen3.5-2B, random"]["coverage"]["32"]
+            d.text(XT, y0 + 26, 1000 - XT, f"{cv['always_looping_problems']} always looping", S, color=MUTED)
+            bars = (("edit covered", cv["coverage"]["all decodings"]["per_answer"][0], EDIT), ("2B covered", two[0], OTHER))
+        else:                                                # medicine: released against own on the same questions
+            p = pair[ds]["arms"]["authors_edit"]["within_problem"]
+            d.text(XT, y0 + 26, 1000 - XT, f"{p['problems']} {unit} like it", S, color=MUTED)
+            bars = (("released", p["rescued_acc"], EDIT), ("model's own", p["base_finished_acc"], OTHER))
+        for j, (lab, v, c) in enumerate(bars):
             yy = y0 + 52 + j * 52
             d.text(XT, yy, 1000 - XT, f"{lab} {r1(v * 100)}%", S)
             d.box(XT, yy + 25, 160, 9, T.ramp[1], None, T.scale)
@@ -291,7 +293,7 @@ def fig2():
     on MATH-500, every fix; b (generalisation): 32 textbook edits lie on one line; c (control): on the same problems the
     released answers are no more accurate than the model's own, on all five test sets"""
     fig = canvas(TW, 154)
-    a = place(fig, 30, 200, 28, 142)
+    a = place(fig, 30, 190, 28, 142)
     a.set(xlim=(0, 101), ylim=(0, 62))
     scatter(a, "MATH-500", ("base", "t1", "meandiff", "bf8k", "loop", "nothink32k", "authors_edit"),
             {"base": (5, -2, "left", "top"), "t1": (5, -2, "left", "top"), "meandiff": (5, -6, "left", "top"),
@@ -305,7 +307,7 @@ def fig2():
     one = np.array([k.startswith("l15|") for k in c])
     k, b0 = np.polyfit(f, acc, 1)
     r2 = 1 - ((acc - (k * f + b0)) ** 2).sum() / ((acc - acc.mean()) ** 2).sum()
-    bx = place(fig, 238, 334, 28, 142)
+    bx = place(fig, 226, 318, 28, 142)
     x = np.array([5, 51])
     bx.plot(x, k * x + b0, color=REF, lw=0.8, marker="", zorder=1)
     bx.scatter(f[~one], acc[~one], s=16, marker="^", color=OTHER_EDIT, linewidths=0, zorder=3)
@@ -333,14 +335,15 @@ def fig2():
                                           ("nothink", "thinking off, 8k"), ("nothink32k", "thinking off, full budget"))
                                          if f"MMLU-Pro math, {nm}" in head}}}
     pair["MMLU-Pro health"]["arms"]["meandiff"] = head["MMLU-Pro health, medical-direction edit, 8 samples"]
-    cx = place(fig, 356, 452, 28, 142)
+    cx = place(fig, 380, 452, 28, 142)
+    lab_t = cx.get_yaxis_transform()                        # x in axes units, y in data: labels in the left margin
     sets = ("MATH-500", "GSM8K", "MMLU-Pro math", "MedQA", "MMLU-Pro health")
     cx.axvline(0, color=REF, lw=0.8, ls=(0, (4, 2.5)), zorder=1)
     for i, ds in enumerate(sets):
         y = len(sets) - 1 - i
         A = dict(pair[ds]["arms"], **{k: v[ds] for k, v in more.items() if ds in v})
-        cx.text(-24.5, y + 0.36, ds.replace(" health", " h.").replace(" math", " m."), fontsize=LAB, fontweight="bold",
-                va="center")
+        cx.text(-0.04, y - 0.1, ds.replace(" health", " h.").replace(" math", " m."), fontsize=LAB, fontweight="bold",
+                va="center", ha="right", transform=lab_t)
         if y:                                                 # a rule under each data set's rows
             cx.plot([-25, 9], [y - 0.53] * 2, color=RAMP[1], lw=0.6, marker="", zorder=0)
         for kk in ("t1", "bf8k", "loop", "eot_bias", "rep_penalty", "prompt"):
@@ -359,15 +362,16 @@ def fig2():
     cx.text(w, len(sets) - 0.5, "agent's edit", fontsize=LAB, fontweight="bold", ha="center", va="bottom",
             bbox={"fc": "white", "ec": "none", "pad": 0.3})
     # key for the markers the labels do not name
-    for yk, draw, text in ((-0.8, lambda x, y: cx.scatter(x, y, s=12, marker="o", color=OTHER, linewidths=0, clip_on=False),
-                            "other fixes"),
-                           (-1.35, lambda x, y: mark(cx, "meandiff", x, y, s=16), "other edits"),
-                           (-1.9, lambda x, y: (mark(cx, "nothink32k", x - 0.9, y, s=24), mark(cx, "nothink", x + 0.9, y, s=24)),
+    for yk, draw, text in ((-0.8, lambda x, y: cx.scatter(x, y, s=12, marker="o", color=OTHER, linewidths=0, clip_on=False,
+                                                           transform=lab_t), "other fixes"),
+                           (-1.35, lambda x, y: mark(cx, "meandiff", x, y, s=16, transform=lab_t), "other edits"),
+                           (-1.9, lambda x, y: (mark(cx, "nothink32k", x - 0.035, y, s=24, transform=lab_t),
+                                                mark(cx, "nothink", x + 0.035, y, s=24, transform=lab_t)),
                             "thinking off, full / 8k")):
-        draw(-23.2, yk)
-        cx.text(-20.6, yk, text, fontsize=LAB, ha="left", va="center", zorder=5,
+        draw(-0.68, yk)
+        cx.text(-0.6, yk, text, fontsize=LAB, ha="left", va="center", zorder=5, transform=lab_t,
                 bbox={"fc": "white", "ec": "none", "pad": 0.3})
-    cx.set(xlim=(-25, 9), ylim=(-2.2, len(sets) - 0.15), yticks=[], xlabel="Released − own (points)")
+    cx.set(xlim=(-25, 9), ylim=(-2.2, len(sets) - 0.15), yticks=[], xlabel="Released − own")
     cx.spines["left"].set_visible(False)
     finish(fig, "fig2_completion", [a, bx, cx])
     return k, b0, r2
@@ -430,7 +434,7 @@ def fig4():
     scatter(a, "MedQA", ("base", "t1", "bf8k", "loop", "nothink", "authors_edit"),
             {"base": (0, -6, "center", "top"), "t1": (-6, 1, "right", "center"), "bf8k": (5, -3, "left", "top"),
              "nothink": (0, -6, "center", "top"), "authors_edit": (-8, 3, "right", "bottom")},
-            (91, 50.8), (74.6, 43.2))
+            (91, 50.8), (77.6, 41.6))
     a.set(yticks=[35, 40, 45, 50])
     # b: accuracy of released answers in each domain (filled MATH-500, open MedQA), against the model's own
     resc = json.load(open(os.path.join(R, "rescue.json")))["sets"]
@@ -458,8 +462,8 @@ def fig4():
     br = json.load(open(os.path.join(R, "abstain.json")))["b"]["t1_break_by_period_words"]
     cx = place(fig, 372, 448, 28, 142)
     bins = list(br["MedQA"])
-    for ds, col, fill in (("MedQA", REF, True), ("MMLU-Pro health", REF, False), ("GSM8K", OTHER, False),
-                          ("MATH-500", OTHER, True)):
+    for ds, col, fill in (("MedQA", REF, False), ("MMLU-Pro health", REF, False), ("GSM8K", OTHER, True),
+                          ("MATH-500", OTHER, True)):                # filled: mathematics, open: medicine (as in b)
         v = [br[ds][b][1] * 100 for b in bins]
         cx.plot(range(4), v, color=col, lw=1.0, marker="o", ms=3.4, mfc=col if fill else "white", mec=col, mew=0.9)
     cx.text(-0.1, 87, "MedQA,\nMMLU-Pro h.", fontsize=LAB, va="top", linespacing=1.25)

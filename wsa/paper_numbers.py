@@ -648,6 +648,44 @@ put("wSftMmluCorr", f1(c6[0])); put("wSftMmluCorrCI", ci(c6[1], c6[2]))
 put("wSftBeyondMmlu", str(h6["edit_solved_beyond_ruler"]))
 put("wSftEditBeyondMmlu", str(J("headroom_reach.json")["edit_solved_beyond_ruler"]))
 
+# ---- the reproduction against the authors' per-problem results (wsa.reconcile) and a run quoted from the checkpoint's card
+rc = J("reconcile.json")
+put("wAuthorsBaseMath", f1(rc["base/math500"]["authors_acc_same_problems"]))
+put("wAuthorsEditMath", f1(rc["edit_authors/math500"]["authors_acc_same_problems"]))
+put("wAuthorsEditCut", f1(rc["edit_authors/math500"]["authors_cut_all_problems"]))
+put("wReconBase", sg(rc["base/math500"]["diff"] * 100)); put("wReconBaseCI", ci(*rc["base/math500"]["diff_ci95"]))
+put("wReconEdit", sg(rc["edit_authors/math500"]["diff"] * 100)); put("wReconEditCI", ci(*rc["edit_authors/math500"]["diff_ci95"]))
+qt = J("quoted.json")["community_edit_math500"]
+put("wCommunityEditMath", f1(qt["acc"])); put("wCommunityEditCut", f1(qt["cut"]))
+# ---- the known install's training data and run (results/data/sft_pool.jsonl, the training summary)
+pool = [json.loads(l) for l in open(R / "data" / "sft_pool.jsonl")]
+put("wSftPoolMath", f"{sum(r['source'] == 'math' for r in pool):,}".replace(",", "{,}"))
+put("wSftPoolGsm", f"{sum(r['source'] == 'gsm8k' for r in pool):,}".replace(",", "{,}"))
+put("wSftTeacherCap", f"{max(r['max_tokens'] for r in pool):,}".replace(",", "{,}"))
+put("wSftSteps", str(ss["steps"])); put("wSftAccum", str(ss["accum"])); put("wSftWarmup", str(ss["warmup"]))
+_e = round(__import__("math").log10(ss["lr"])); assert abs(ss["lr"] - 10 ** _e) < 1e-12
+put("wSftLr", rf"$10^{{{_e}}}$")
+# ---- the known install on the headline tests: accuracy and the share of its gain thinking off recovers
+sa = cs6["MATH-500"]
+put("wSftAccMath", f1(sa["accuracy"]["reference"]["acc"]))
+put("wSftMinusEditMath", sg(sa["reference_minus_agent's edit"][0] * 100))
+put("wSftMinusEditMathCI", ci(sa["reference_minus_agent's edit"][1], sa["reference_minus_agent's edit"][2]))
+b0, o0 = e3["math500"][ARM["base"]]["acc"], e3["math500"][ARM["off"]]["acc"]
+s0 = sa["accuracy"]["reference"]["acc"]
+put("wSftOffShareMath", fx((o0 - b0) / (s0 - b0) * 100, 0))
+hb, ho = hd["MMLU-Pro math, agent's edit"]["base"]["acc"], hd["MMLU-Pro math, thinking off, full budget"]["fix"]["acc"]
+put("wSftOffShareMmlu", fx((ho - hb) / (m6["fix"]["acc"] - hb) * 100, 0))
+put("wOffShareMmlu", fx((ho - hb) / (hd["MMLU-Pro math, agent's edit"]["fix"]["acc"] - hb) * 100, 0))
+# ---- released against own: the fixes that release worse answers, where the interval excludes zero
+worse_x = [-w["diff"] for (ds, k), w in allw.items() if ds in SETS5 and k in ("nothink", "nothink32k", "rep_penalty", "eot_bias") and w["hi"] < 0]
+put("wWorseXLo", fx(min(worse_x) * 100, 0)); put("wWorseXHi", fx(max(worse_x) * 100, 0))
+we = allw[("MATH-500", "eot_bias")]
+put("wEotRelMath", sg(we["diff"] * 100)); put("wEotRelMathCI", ci(we["lo"], we["hi"]))
+# ---- matched completion, averaged over shares kept up to the common rate (GSM8K reversals)
+for k, tag in (("t1", "Tone"), ("loop", "Loop"), ("prompt", "Prompt")):
+    g = rk["GSM8K"]["vs_edit"][k]["mean_error_gap_over_common_range"]
+    put(f"wRiskMean{tag}Gsm", sg(g[0] * 100)); put(f"wRiskMean{tag}GsmCI", ci(g[1], g[2]))
+
 # ---- Table (tab:pair): released against own answers on the same problems, every fix and test set
 def rel_cell(w):
     return f"{sg(w['diff'] * 100)} {ci(w['lo'], w['hi'])}"

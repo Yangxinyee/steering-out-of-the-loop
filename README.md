@@ -67,7 +67,7 @@ as computed (7.55 -> 7.6).
 
 | Paper | Content | Result files | Analysis (writes the result files) | Drawn or typeset by |
 |---|---|---|---|---|
-| Figure 1 | Teaser: one released answer per domain | `teaser_examples.json`, `rescue.json` | `wsa.teaser_examples`, `wsa.rescue` | `make_figures.py` |
+| Figure 1 | Teaser: one released answer per domain; coverage on always-looping MATH-500 problems; released against own on MedQA | `teaser_examples.json`, `coverage.json`, `coverage_match.json`, `rescue.json` | `wsa.teaser_examples`, `wsa.coverage`, `wsa.coverage_match`, `wsa.rescue` | `make_figures.py` |
 | Figure 2 | Strict accuracy against answers finished; 32 textbook edits; released minus own | `abstain.json`, `part1b_grid.json`, `rescue.json`, `rescue_more.json`, `headroom.json` | `wsa.abstain`, `wsa.rescue`, `wsa.rescue_more`, `wsa.headroom_report` | `make_figures.py` |
 | Figure 3 | Coverage on always-looping problems; risk-coverage | `coverage_match.json`, `riskcov.json` | `wsa.coverage_match`, `wsa.riskcov` | `make_figures.py` |
 | Figure 4 | Medicine | `abstain.json`, `rescue.json` | `wsa.abstain`, `wsa.rescue` | `make_figures.py` |
@@ -84,8 +84,8 @@ as computed (7.55 -> 7.6).
 | Table 9 | MATH-500 by difficulty level | `abstain.json` | `wsa.abstain` | `wsa.paper_numbers` |
 | Table 10 | Other models (Qwen3.5-2B, R1-Distill-Qwen-1.5B) | `c2b.json`, `r1d.json` | `wsa.c2b`, `wsa.r1d` | `wsa.paper_numbers` |
 | Table 11 | Edits found by two frontier agents | `agent_eval.json` | `wsa.agent_eval_report` | `wsa.paper_numbers` |
-| Text | Every number, including MMLU-Pro math reach against guessing and released against loop stop (Section 4) and the frontier agents' runs (appendix) | `results/*.json`, among them `headroom_reach.json`, `agent_decontam.json`, `agent_audit.json`, `agent_usage.json` | the modules above, `wsa.headroom_reach`, `wsa.agent_decontam`, `wsa.agent_audit`, `wsa.agent_usage` | `wsa.paper_numbers` |
-| Text, Section 4 | What the tests detect: the distilled 0.8B on MATH-500, GSM8K, MMLU-Pro math and MedQA | `coverage_sft_906.json`, `sft_battery.json`, `headroom_reach_sft.json`, `runs/sft_ref3/` | `wsa.sft_data` and `wsa.sft` (the model), `wsa.coverage_sft`, `wsa.sft_battery`, `wsa.headroom_reach --target sft_ref3/eval/think35_mmlupro_math` | `wsa.paper_numbers` |
+| Text | Every number, including MMLU-Pro math reach against guessing and released against loop stop (Section 4) and the frontier agents' runs (appendix) | `results/*.json`, among them `headroom_reach.json`, `agent_decontam.json`, `agent_audit.json`, `agent_usage.json`, `reconcile.json` (the authors' per-problem results against ours), `quoted.json` (a run quoted from the edited checkpoint's model card) | the modules above, `wsa.headroom_reach`, `wsa.agent_decontam`, `wsa.agent_audit`, `wsa.agent_usage` | `wsa.paper_numbers` |
+| Text, Section 4 | What the tests detect: the distilled 0.8B on MATH-500, GSM8K, MMLU-Pro math and MedQA | `coverage_sft_906.json`, `sft_battery.json`, `headroom_reach_sft.json`, `runs/sft_ref3/`, `data/sft_pool.jsonl` (its training problems) | `wsa.sft_data` and `wsa.sft` (the model), `wsa.coverage_sft`, `wsa.sft_battery`, `wsa.headroom_reach --target sft_ref3/eval/think35_mmlupro_math` | `wsa.paper_numbers` |
 
 Figure and table numbers follow the paper.
 

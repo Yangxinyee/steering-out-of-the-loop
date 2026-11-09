@@ -1,0 +1,7 @@
+{
+ "community_edit_math500": {
+  "acc": 0.510,
+  "cut": 0.316,
+  "source": "independent run on the full MATH-500 reported on the edited checkpoint's model card, https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming"
+ }
+}

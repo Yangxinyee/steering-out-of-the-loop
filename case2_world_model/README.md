@@ -31,13 +31,13 @@ paper/      the numbers (LaTeX macros) and the figures of case 2, from results/
   - the module behind each neutral name (`sim`, `WorldModel`, `rollout`, ...; listed in `agent/backend.py`).
 - Data and models live under `work/` (the companion code's work root): checkpoints in `work/runs/<run>/model.pt`,
   bundle stores in `work/bundles/`, rollouts in `work/runs/table13/<world>/`.
-- The two worlds are `e03` (drugs act) and `n03` (no-effect world). Seed 0's plain model is the one the agents edited.
+- The two worlds are `e03` (drugs act) and `n03` (no-effect world). Seed 0's unedited model is the one the agents edited.
 
 ## Agents
 
 | Step | Command | What it does |
 |---|---|---|
-| Inputs | `python -m agent.prepare` | Writes what the agent sees, per world: the plain model's weights (or only tensor names and shapes for the input-side arm), the vocabulary, `ARCHITECTURE.md`, and the 30,000 training and 400 tuning stays as CSV. It writes no held-out stay, truth, simulator code or world name. |
+| Inputs | `python -m agent.prepare` | Writes what the agent sees, per world: the unedited model's weights (or only tensor names and shapes for the input-side arm), the vocabulary, `ARCHITECTURE.md`, and the 30,000 training and 400 tuning stays as CSV. It writes no held-out stay, truth, simulator code or world name. |
 | Run | `python -m agent.harness init <dir> --agent claude\|openai --world e03\|n03 --arm white\|black`, then `python -m agent.harness run <dir> --responder fake` | One run. The agent's Python runs in a sandbox (`agent/kernel.py`: bubblewrap, no network, no GPU, memory and CPU caps; at most 300 runs). Forward passes go through `agent/forward.py` and `agent/fwd_job.py` on the GPU (at most 50). The run ends at a final answer. `--responder fake` is a scripted dry run (`agent/dryrun/fake_agent.py`). A real run needs a responder with the interface in `agent/responder.py`; the paper's runs used the agents' CLIs (`claude -p`, `codex exec`) with their own tools switched off and the system prompt in `agent/assets/agent_system_prompt.md`. |
 | Cost | `python -m agent.budget <runs dir>` | API dollars per run, from the token counts. |
 
@@ -49,17 +49,19 @@ architecture note and the data README, exactly as the agents received them.
 | Script | What it computes | Compute |
 |---|---|---|
 | `scripts/agent_eval.py <run dir>` | Held-out readout of an agent's submission (the four dose contrasts, 600 stays) and its value NLL → `results/agent_eval.jsonl` | GPU |
-| `scripts/agent_parts.py <run dirs>` | Every output head's held-out loss, plain against edited → `results/agent_parts.jsonl` | GPU |
+| `scripts/agent_parts.py <run dirs>` | Every output head's held-out loss, unedited against edited → `results/agent_parts.jsonl` | GPU |
 | `scripts/model_parts.py <world> <label> <run> <loader>` | The same for any correction, with the total NLL per stay → `results/model_parts.jsonl` | GPU |
 | `scripts/generalize.py <world> <run> <loader> <tag> <seed> doses\|starts` | Rollouts of interventions no agent queried: other dose factors, the second instrument, other start hours | GPU |
 | `scripts/generalize_summary.py` | Scores those rollouts and the original ones against the simulator's truth → `results/generalize.json` | CPU |
 | `scripts/per_stay.py` | Per-stay agreement with the truth, and a dose-only predictor → `results/per_stay.json` | CPU |
 | `scripts/readout.py <world> <method> <seed>` | Readout of the control corrections' rollouts → `results/readout.jsonl` | CPU |
-| `scripts/probe.py extract\|fit_part\|fit` | Linear probe of the surprise dose in the plain model's state → `results/probe.json` | CPU |
+| `scripts/probe.py extract\|fit_part\|fit` | Linear probe of the surprise dose in the unedited model's state → `results/probe.json` | CPU |
 | `scripts/edits.py steer ...`, `scripts/stateedit.py` | The steering controls (rank-one state edits) and their factual NLL | CPU |
 | `scripts/edited_rollout.py` | The held-out rollout of a model with a state edit | GPU |
 | `scripts/replay_estimator.py <run> <world> <last run>` | Replays an agent's own estimation code, unchanged, on another world's records (needs the agent-run archive) | CPU |
-| `scripts/model_size.py` | Parameters and tensors of the plain model → `results/model_size.json` | CPU |
+| `scripts/replay_bootstrap.py <run> <world> <first> <last>` | The same replay on copies of the training records resampled by stay, for the implied shift's interval → `results/replay_bootstrap/` | CPU |
+| `scripts/scripted_bootstrap.py <world> <draws>` | The scripted estimator on the same kind of resampled copies → `results/replay_bootstrap/script_<world>.jsonl` | CPU |
+| `scripts/model_size.py` | Parameters and tensors of the unedited model → `results/model_size.json` | CPU |
 
 ## Information-matched scripts (no agent)
 
@@ -85,10 +87,11 @@ PAPER_FIGURES=<toolkit dir> python paper/make_figures_case2.py    # -> paper/fig
 |---|---|
 | `readout.jsonl` | Held-out readouts of the controls and the scripts: mean shift, true shift, ratio with 95% interval, per edit, world, method, seed |
 | `agent_eval.jsonl` | The same for the six agent runs, with the held-out value NLL |
-| `agent_parts.jsonl`, `model_parts.jsonl` | Held-out loss per output head and total NLL per stay, plain and corrected |
+| `agent_parts.jsonl`, `model_parts.jsonl` | Held-out loss per output head and total NLL per stay, unedited and corrected |
 | `generalize.json` | Unqueried interventions, time course and per-stay statistics, per correction |
 | `per_stay.json` | Per-stay correlation and error, with the dose-only predictor |
 | `edits.jsonl` | The steering directions and their factual NLL |
 | `probe.json`, `probe_parts/` | The linear probe of the surprise dose |
 | `scripted/`, `scripted_baseline.json` | The scripts' estimates, sizing rounds and held-out results |
-| `ft_value_nll.json`, `model_size.json` | Fine-tuning's held-out value NLL per seed; the plain model's size |
+| `ft_value_nll.json`, `model_size.json` | Fine-tuning's held-out value NLL per seed; the unedited model's size |
+| `replay_bootstrap/` | Per resampled copy of the training records: the insulin x2 shift each estimator implies in the no-effect world |

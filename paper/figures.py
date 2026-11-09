@@ -80,7 +80,7 @@ def fig1_blocks():
                        f"Claude {c2['wmClaudeWIx']}, Codex {c2['wmCodexWIx']} of the true change",
                        [("within reach?", f"no: unedited model {c2['wmplainIx']},\nfine-tuning {c2['wmftZIx']}"),
                         ("same information, no agent", f"a script reaches {c2['wmScriptCIx']}"),
-                        ("where it should add nothing", f"no-effect world: the agents' estimators\nimply {c2['wmrepFinImplied']} and {c2['wmcodexRepNull']} mg/dL (band \u00b1{c2['wmBand']})")])
+                        ("where it should add nothing", f"no-effect world: Claude's estimator reports\n{c2['wmRepClaudePoint']} mg/dL, interval {c2['wmRepClaudeLo'].lstrip('+')} to {c2['wmRepClaudeHi'].lstrip('+')}")])
     lh = T.small * 1.24
     nl = [max(fk.nlines(b[6][k][1]) for b in blocks.values()) for k in range(3)]     # same box heights on both sides
     TH = [44 + n * lh + 14 for n in nl]

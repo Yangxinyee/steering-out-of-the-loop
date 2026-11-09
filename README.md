@@ -23,8 +23,9 @@ agent has seen. The paper gives three tests that tell them apart and applies the
 
 **Case 2 (`case2_world_model/`).** Agents repair a patient world model whose drug effects have collapsed. With weight
 access they estimate the effect from the records and install it, reaching 0.96 (Claude) and 0.60 (Codex) of the true
-insulin effect; a script given the same information reaches 0.96. In the no-effect world, their estimators report
-effects where there are none.
+insulin effect; a script given the same information reaches 0.96. A no-effect world, where the drugs do nothing, shows
+what the main readouts cannot: the estimators' bias and uncertainty, with Claude's reporting an effect whose interval
+excludes zero.
 
 An edit adds what its source holds: the model's reach when it releases, the records' estimate when it installs.
 

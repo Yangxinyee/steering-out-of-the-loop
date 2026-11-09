@@ -98,13 +98,13 @@ ROWS = [
     ("Codex, input side", OTHER_EDIT, "^", False, 24, ("agent", "openai_c"), None, "e03:Codex, black box", None),
     ("Claude, input side", OTHER_EDIT, "^", True, 24, ("agent", "claude_c"), None, "e03:Claude, black box", None),
     ("Codex, weight access", EDIT, "P", False, 40, ("agent", "openai_a"), ("agent", "openai_b"), "e03:Codex, white box",
-     "wmcodexRepNull"),
+     "openai_a_n03"),
     ("Claude, weight access", EDIT, "P", True, 52, ("agent", "claude_a"), ("agent", "claude_b"), "e03:Claude, white box",
-     "wmrepFinImplied"),
+     "claude_a_n03"),
     ("script, Claude's estimate", STRONG, "h", True, 34, ("ctl", "scriptC"), None,
      "e03:scripted install, Claude's estimate", None),
     ("script, scripted estimate", STRONG2, "X", True, 30, ("ctl", "scriptS"), ("ctl", "scriptS"),
-     "e03:scripted install, scripted estimate", None),
+     "e03:scripted install, scripted estimate", "script_n03"),
 ]
 
 
@@ -115,6 +115,15 @@ def value(src, world):
     else:
         r = agents[name]["insulin_x2"]
     return r["ratio"] if world == "e03" else r["mean_shift"]
+
+
+def estimator(key: str):
+    """an estimator's implied insulin x2 shift on the no-effect records, with the 2.5th and 97.5th percentiles over
+    resampled training stays (results/replay_bootstrap/<key>.jsonl; draw -1 is the original records)"""
+    rows = [json.loads(x) for x in open(R / "replay_bootstrap" / f"{key}.jsonl")]
+    point = next(r["implied_insulin_x2"] for r in rows if r["draw"] == -1)
+    v = np.array([r["implied_insulin_x2"] for r in rows if r["draw"] >= 0 and r["implied_insulin_x2"] is not None])
+    return point, np.percentile(v, 2.5), np.percentile(v, 97.5)
 
 
 def mark(ax, x, y, col, mk, filled, s, z=4):
@@ -133,6 +142,7 @@ def fig_readouts():
     b = place(fig, 278, 364, 30, 182)
     c = place(fig, 382, 476, 30, 182)
     ys = np.arange(n)[::-1]
+    lims = []
     for (lab, col, mk, fill, s, main, null, gk, rep), y in zip(ROWS, ys):
         x, lo, hi = value(main, "e03")
         a.plot([lo, hi], [y, y], color=col, lw=1.1, marker="", solid_capstyle="butt", zorder=2)
@@ -148,9 +158,11 @@ def fig_readouts():
         x, lo, hi = value(null, "n03")
         c.plot([lo, hi], [y, y], color=col, lw=1.1, marker="", solid_capstyle="butt", zorder=2)
         mark(c, x, y, col, mk, fill, s)
-        if rep:
-            r = num(rep)
-            c.scatter([r], [y], s=30, marker="x", color=ALERT, linewidths=1.4, zorder=5)
+        if rep:                                   # the estimator behind the procedure, below the edit's own readout
+            r, rlo, rhi = estimator(rep)
+            c.plot([rlo, rhi], [y - 0.3] * 2, color=col, lw=0.8, marker="", solid_capstyle="butt", zorder=2)
+            c.scatter([r], [y - 0.3], s=40, marker="|", color=col, linewidths=1.6, zorder=5)
+            lims.extend([rlo, rhi])
     top = n - 0.35
     for ax in (a, b):
         ax.axvline(1.0, color=REF, lw=0.8, zorder=1)
@@ -165,15 +177,18 @@ def fig_readouts():
     b.text(1.33, n - 1.25, "open: hours 13–16\nfilled: 21–24", fontsize=LAB, color=MUTED, ha="right", va="center",
            linespacing=1.25, bbox={"fc": "white", "ec": "none", "pad": 0.3}, zorder=6)
     band = num("wmBand")                       # a tenth of the true insulin x2 change
+    x0, x1 = np.floor(min(lims + [-3.0]) - 0.3), np.ceil(max(lims + [2.4]) + 0.3)
     c.axvspan(-band, band, color=RAMP[0], lw=0, zorder=0)
-    c.axvspan(-3.2, -band, color=THEME.risk_tint, lw=0, zorder=0)
+    for lo_, hi_ in ((x0, -band), (band, x1)):            # beyond the band in either direction: an invented effect
+        c.axvspan(lo_, hi_, color=THEME.risk_tint, lw=0, zorder=0)
     c.axvline(0, color=REF, lw=0.8, zorder=1)
     c.text(0, top, "truth", fontsize=LAB, ha="center", va="bottom")
-    c.text(-3.1, 0.2, "invented\neffect", fontsize=LAB, color=ALERT, ha="left", va="center", linespacing=1.25)
+    c.text(x0 + 0.1, 0.2, "beyond\nthe band", fontsize=LAB, color=ALERT, ha="left", va="center", linespacing=1.25)
     yc = ys[[i for i, r in enumerate(ROWS) if r[0] == "Codex, weight access"][0]]
-    c.text(num("wmcodexRepNull"), yc + 0.42, "estimator,\nreplayed", fontsize=LAB, color=ALERT, ha="center", va="bottom",
-           linespacing=1.15, zorder=6)
-    c.set(xlim=(-3.2, 2.4), ylim=a.get_ylim(), xticks=[-2, 0, 2], yticks=[], xlabel="No-effect shift (mg/dL)")
+    c.text(x0 + 0.2, n - 2.0, "| estimator,\n95% over\nresampled\nstays", fontsize=LAB, color=MUTED, ha="left", va="center",
+           linespacing=1.2, zorder=6)
+    c.set(xlim=(x0, x1), ylim=a.get_ylim(), xticks=[t for t in (-4, -2, 0, 2, 4) if x0 <= t <= x1], yticks=[],
+          xlabel="No-effect shift (mg/dL)")
     for ax in (a, b, c):
         ax.tick_params(axis="y", length=0)
         ax.spines["left"].set_visible(False)

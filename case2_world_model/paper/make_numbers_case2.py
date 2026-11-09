@@ -17,6 +17,8 @@ raw.unlink()
 out = [re.sub(r"\\newcommand\{\\([A-Za-z]+)\}", r"\\newcommand{\\wm\1}", x) for x in src]
 # the linear probe of the plain model's state (results/probe.json, scripts/probe.py), main world, three seeds
 import json  # noqa: E402
+
+import numpy as np  # noqa: E402
 pw = json.loads((ROOT / "results" / "probe.json").read_text())["worlds"]["e03"]
 seeds = [pw[f"synth_e03-m-T1-full-long-s{i}"] for i in range(3)]
 rnd = pw["random:synth_e03-m-T1-full-long-s0"]
@@ -53,6 +55,21 @@ extra["ModelTensors"] = str(ms["n_tensors"])
 truth = next(json.loads(x) for x in open(ROOT / "results" / "readout.jsonl")
              if json.loads(x)["key"] == "e03" and json.loads(x)["method"] == "es_register" and json.loads(x)["seed"] == 0)
 extra["Band"] = f"{abs(truth['insulin_x2']['true_shift'][0]) / 10:.1f}"
+# stay bootstrap of the three estimators' implied insulin x2 shift in the no-effect world (scripts/replay_bootstrap.py,
+# scripts/scripted_bootstrap.py): the replayed agents' estimators and the script's, training stays resampled
+band = abs(truth["insulin_x2"]["true_shift"][0]) / 10
+for name, f in (("RepClaude", "claude_a_n03"), ("RepCodex", "openai_a_n03"), ("ScriptEst", "script_n03")):
+    fp = ROOT / "results" / "replay_bootstrap" / f"{f}.jsonl"
+    rows = [json.loads(x) for x in open(fp)] if fp.is_file() else []
+    point = next((r["implied_insulin_x2"] for r in rows if r["draw"] == -1), None)
+    v = np.array([r["implied_insulin_x2"] for r in rows if r["draw"] >= 0 and r["implied_insulin_x2"] is not None])
+    sgn = lambda x: "0.0" if round(x, 1) == 0 else f"{x:+.1f}".replace("-", "$-$").replace("+", "$+$")  # noqa: E731
+    extra[f"{name}Point"] = sgn(point) if point is not None else "??"
+    extra[f"{name}Lo"] = sgn(np.percentile(v, 2.5)) if len(v) else "??"
+    extra[f"{name}Hi"] = sgn(np.percentile(v, 97.5)) if len(v) else "??"
+    extra[f"{name}Draws"] = str(len(v))
+    extra[f"{name}Above"] = f"{100 * np.mean(v > band):.0f}" if len(v) else "??"
+    extra[f"{name}Below"] = f"{100 * np.mean(v < -band):.0f}" if len(v) else "??"
 out += [f"\\newcommand{{\\wm{k}}}{{{v}}}" for k, v in extra.items()]
 assert all(x.startswith("\\newcommand{\\wm") for x in out)
 (HERE / "numbers_case2.tex").write_text(

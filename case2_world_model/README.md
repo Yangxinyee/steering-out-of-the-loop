@@ -24,7 +24,7 @@ paper/      the numbers (LaTeX macros) and the figures of case 2, from results/
 
 - Python 3.13 with `numpy`, `polars`, `torch`, `safetensors`, `scikit-learn` and `scipy`, plus the companion code's
   requirements. The figures also need `matplotlib`, `reportlab` and the figure toolkit shared with case 1 (`figkit`,
-  `plotkit`, `themes`; set `PAPER_FIGURES` to its directory).
+  `plotkit`, `themes`), found under `case1_reasoning/` beside this folder or wherever `PAPER_FIGURES` points.
 - `world_model.json` gives:
   - where the companion code lives and which Python runs it;
   - its environment variables;
@@ -38,7 +38,7 @@ paper/      the numbers (LaTeX macros) and the figures of case 2, from results/
 | Step | Command | What it does |
 |---|---|---|
 | Inputs | `python -m agent.prepare` | Writes what the agent sees, per world: the unedited model's weights (or only tensor names and shapes for the input-side arm), the vocabulary, `ARCHITECTURE.md`, and the 30,000 training and 400 tuning stays as CSV. It writes no held-out stay, truth, simulator code or world name. |
-| Run | `python -m agent.harness init <dir> --agent claude\|openai --world e03\|n03 --arm white\|black`, then `python -m agent.harness run <dir> --responder fake` | One run. The agent's Python runs in a sandbox (`agent/kernel.py`: bubblewrap, no network, no GPU, memory and CPU caps; at most 300 runs). Forward passes go through `agent/forward.py` and `agent/fwd_job.py` on the GPU (at most 50). The run ends at a final answer. `--responder fake` is a scripted dry run (`agent/dryrun/fake_agent.py`). A real run needs a responder with the interface in `agent/responder.py`; the paper's runs used the agents' CLIs (`claude -p`, `codex exec`) with their own tools switched off and the system prompt in `agent/assets/agent_system_prompt.md`. |
+| Run | `python -m agent.harness init <dir> --agent claude\|openai --world e03\|n03 --arm white\|black`, then `python -m agent.harness run <dir> [--responder fake\|module:Class]` | One run. The agent's Python runs in a sandbox (`agent/kernel.py`: bubblewrap, no network, no GPU, memory and CPU caps; at most 300 runs). Forward passes go through `agent/forward.py` and `agent/fwd_job.py` on the GPU (at most 50). The run ends at a final answer. `--responder fake` (the default) is a scripted dry run (`agent/dryrun/fake_agent.py`). A real run plugs in a responder with the interface in `agent/responder.py` as `--responder module:Class`; the paper's runs used one that passed each turn to the agents' CLIs (`claude -p`, `codex exec`) with their own tools switched off and the system prompt in `agent/assets/agent_system_prompt.md`. |
 | Cost | `python -m agent.budget <runs dir>` | API dollars per run, from the token counts. |
 
 `agent/assets/` holds the task message (`message.txt`), the two arms' API notes (`arm_white.txt`, `arm_black.txt`), the
@@ -75,7 +75,7 @@ architecture note and the data README, exactly as the agents received them.
 
 ```bash
 python3 paper/make_numbers_case2.py        # -> paper/numbers_case2.tex (every number in case 2, as \wm... macros)
-PAPER_FIGURES=<toolkit dir> python paper/make_figures_case2.py    # -> paper/figures/case2_*.pdf
+python paper/make_figures_case2.py         # -> paper/figures/case2_*.pdf
 ```
 
 `scripts/paper_numbers.py` and the estimator figure also read the agent-run archive (`agent_runs/`: each run's

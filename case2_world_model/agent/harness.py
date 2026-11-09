@@ -1,6 +1,6 @@
-"""One agent run, adapted from case 1's agent harness. The agent answers through a responder (agent/responder.py): in the
-paper's runs, a transport (not included) to a separate machine where the agent's CLI answered; for dry runs, a scripted
-fake (--responder fake).
+"""One agent run, adapted from case 1's agent harness. The agent answers through a responder (agent/responder.py):
+--responder fake is a scripted dry run; --responder module:Class plugs in any responder with that interface (the paper's
+runs used one that passed each turn to a separate machine where the agent's CLI answered).
 
 Every turn the harness sends one message. The agent replies with an explanation and exactly one ```python or ```forward
 block, or with a final answer (no block, starting with FINAL ANSWER), and the harness runs the block:
@@ -20,11 +20,12 @@ turn once it is below 10%; a running kernel is stopped above 45% (agent/kernel.p
 the run between turns (before the next turn goes out, or while waiting for the agent's answer); `run` again continues.
 
     python -m agent.harness init <run dir> --agent claude|openai --world e03|n03 --arm white|black [--handoff 40]
-    python -m agent.harness run <run dir> [--responder fake]    (a real run plugs in a responder: agent/responder.py)
+    python -m agent.harness run <run dir> [--responder fake|module:Class]
     touch <run dir>/STOP
 """
 import argparse
 import hashlib
+import importlib
 import json
 import os
 import re
@@ -336,8 +337,13 @@ def run(a):
                     psi=a.psi, kill_at=a.kill_at)
     mem = {"psi": a.psi, "pause_at": a.pause_at, "resume_at": a.resume_at}
     fwd = Forward(r.d, s["world"], s["model_run"], s["arm"], slots=a.gpu_slots, timeout=a.fwd_timeout, log=r.log)
-    from agent.dryrun.fake_agent import LocalResponder      # the scripted dry run; a real run plugs in a responder
-    responder = LocalResponder(r.d)                          # with the interface of agent/responder.py
+    if a.responder != "fake":                                 # module:Class, constructed as in agent/responder.py
+        module, _, cls = a.responder.partition(":")
+        responder = getattr(importlib.import_module(module), cls)(
+            run_dir=r.d, agent=s["agent"], should_stop=lambda: (r.d / "STOP").exists(), log=r.log)
+    else:
+        from agent.dryrun.fake_agent import LocalResponder
+        responder = LocalResponder(r.d)
     from agent.responder import Stopped                     # not defined here: this module runs as __main__
     if s["turn"] or s.get("stops"):
         s.setdefault("restarts", []).append({"after_turn": s["turn"], "time": time.strftime("%Y-%m-%dT%H:%M:%S%z")})
@@ -373,6 +379,8 @@ def run(a):
     finally:
         kernel.kill()
         r.save()
+    if r.s["done"] and hasattr(responder, "finished"):
+        responder.finished(r.s["name"])
 
 
 if __name__ == "__main__":
@@ -391,7 +399,8 @@ if __name__ == "__main__":
                    help="a fresh conversation once a turn's input passes this (the next request then stays under ~250,000)")
     p = sub.add_parser("run")
     p.add_argument("run_dir")
-    p.add_argument("--responder", choices=("fake",), default="fake")
+    p.add_argument("--responder", default="fake",
+                   help="fake (scripted dry run) or module:Class, a responder with the interface of agent/responder.py")
     p.add_argument("--mem", default="32G", help="the kernel's memory cap")
     p.add_argument("--cpus", type=int, default=8)
     p.add_argument("--timeout", type=int, default=900, help="seconds per Python run")
@@ -400,8 +409,8 @@ if __name__ == "__main__":
     p.add_argument("--max-turns", type=int, default=0, help="stop after this turn (testing)")
     p.add_argument("--max-nudge-streak", type=int, default=10, help="stop after this many replies in a row without a block")
     p.add_argument("--psi", default=f"/sys/fs/cgroup/user.slice/user-{os.getuid()}.slice/user@{os.getuid()}.service/memory.pressure")
-    p.add_argument("--pause-at", type=float, default=30.0, help="hold the next turn above this pressure (%)")
-    p.add_argument("--resume-at", type=float, default=10.0, help="send it again below this pressure (%)")
-    p.add_argument("--kill-at", type=float, default=45.0, help="stop a running kernel above this pressure (%)")
+    p.add_argument("--pause-at", type=float, default=30.0, help="hold the next turn above this pressure (%%)")
+    p.add_argument("--resume-at", type=float, default=10.0, help="send it again below this pressure (%%)")
+    p.add_argument("--kill-at", type=float, default=45.0, help="stop a running kernel above this pressure (%%)")
     a = ap.parse_args()
     init(a) if a.cmd == "init" else run(a)

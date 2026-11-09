@@ -1,15 +1,17 @@
 """Case 2 figures, from the result files only (CPU), in case 1's style (preset B layout, 'signal' colour roles, Arial
 metrics, direct labels, no legends, no panel letters). Needs the figure toolkit shared with case 1 (figkit, plotkit,
-themes): set PAPER_FIGURES to its directory, or have it on the Python path.
+themes): by default it is looked up under case1_reasoning/ beside this case's folder; PAPER_FIGURES names another
+directory.
 
-    PAPER_FIGURES=<toolkit dir> python <this folder>/make_figures_case2.py
+    python <this folder>/make_figures_case2.py
 writes figures/case2_readouts.pdf beside this script (main figure), case2_schematic.pdf (block for the two-column intro schematic),
 case2_dose.pdf, case2_cost.pdf, case2_estimator.pdf (appendix), each with a .png beside it.
 
 Colour roles, mapped from case 1 (STYLE.md):
   agent with weight access (the hero)      vivid orange #E8590C, plus P (Claude filled, Codex hollow)
   information-matched script (strongest baseline)  deep blue #0F4D92 hexagon h; fully scripted light blue #4A90D9 X
-  input-side (black-box) agent edits       amber #F2A900, triangle ^ (Claude filled, Codex hollow)
+  input-side (black-box) agent edits       teal #2A9D8F, triangle ^ (Claude filled, Codex hollow); amber is kept
+                                           for case 1's weight edits made without an agent
   other corrections (fine-tuning, steering) slate, v / s / D
   invented effects, the replayed estimators crimson #C2185B
   references (truth, zero), the unedited model black, open circle for the unedited model
@@ -21,10 +23,19 @@ import re
 import sys
 from pathlib import Path
 
-if os.environ.get("PAPER_FIGURES"):
-    sys.path.insert(0, os.environ["PAPER_FIGURES"])
-else:                                                   # the toolkit shipped with case 1 in this repository
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "case1_reasoning" / "paper" / "figures" / "figlib"))
+
+
+def _toolkit():
+    """the directory holding figkit.py: $PAPER_FIGURES, else the first one under case1_reasoning/ next to this case"""
+    if os.environ.get("PAPER_FIGURES"):
+        return os.environ["PAPER_FIGURES"]
+    case1 = Path(__file__).resolve().parents[2] / "case1_reasoning"
+    hits = sorted(case1.rglob("figkit.py")) if case1.is_dir() else []
+    return str(hits[0].parent) if hits else None
+
+
+if _toolkit():
+    sys.path.insert(0, _toolkit())
 import matplotlib  # noqa: E402
 
 matplotlib.use("Agg")
@@ -45,7 +56,7 @@ INK, MUTED, RAMP = B.ink, B.muted, B.ramp
 EDIT = "#E8590C"           # agent with weight access
 STRONG = "#0F4D92"         # information-matched script, Claude's estimate
 STRONG2 = "#4A90D9"        # fully scripted pipeline
-OTHER_EDIT = "#F2A900"     # input-side agent edits
+INPUT_SIDE = "#2A9D8F"     # input-side agent edits (teal; amber belongs to case 1)
 ALERT = "#C2185B"          # invented effects
 OTHER = RAMP[4]            # fine-tuning, steering
 REF = "#000000"
@@ -95,8 +106,8 @@ ROWS = [
     ("fine-tuning", OTHER, "D", True, 18, ("ctl", "ft_pnp"), ("ctl", "ft_pnp"), "e03:fine-tuning", None),
     ("fine-tuning, sized to estimate", OTHER, "D", False, 18, ("ctl", "ftC"), None,
      "e03:fine-tuning sized to Claude's estimate", None),
-    ("Codex, input side", OTHER_EDIT, "^", False, 24, ("agent", "openai_c"), None, "e03:Codex, black box", None),
-    ("Claude, input side", OTHER_EDIT, "^", True, 24, ("agent", "claude_c"), None, "e03:Claude, black box", None),
+    ("Codex, input side", INPUT_SIDE, "^", False, 24, ("agent", "openai_c"), None, "e03:Codex, black box", None),
+    ("Claude, input side", INPUT_SIDE, "^", True, 24, ("agent", "claude_c"), None, "e03:Claude, black box", None),
     ("Codex, weight access", EDIT, "P", False, 40, ("agent", "openai_a"), ("agent", "openai_b"), "e03:Codex, white box",
      "openai_a_n03"),
     ("Claude, weight access", EDIT, "P", True, 52, ("agent", "claude_a"), ("agent", "claude_b"), "e03:Claude, white box",
@@ -277,7 +288,7 @@ def fig_cost():
     """Appendix: change in held-out loss on every output head after each agent's main-world edit."""
     parts = {json.loads(x)["run"]: json.loads(x) for x in open(R / "agent_parts.jsonl")}
     runs = [("openai_a", "Codex, weight access", EDIT, "P", False), ("claude_a", "Claude, weight access", EDIT, "P", True),
-            ("openai_c", "Codex, input side", OTHER_EDIT, "^", False), ("claude_c", "Claude, input side", OTHER_EDIT, "^", True)]
+            ("openai_c", "Codex, input side", INPUT_SIDE, "^", False), ("claude_c", "Claude, input side", INPUT_SIDE, "^", True)]
     fig = canvas(CW, 200)
     ax = place(fig, 92, 226, 30, 150)
     ys = np.arange(len(HEADS))[::-1]

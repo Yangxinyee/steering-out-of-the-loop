@@ -13,6 +13,7 @@
  "edit_correct_answers": 1465,
  "edit_solved": 560,
  "ruler_solved": 629,
+ "edit_solved_beyond_ruler": 49,
  "ruler_finished_share": 0.4149643705463183,
  "coverage": {
   "1": {

@@ -1,0 +1,16 @@
+{
+ "acc": 0.6734475374732334,
+ "cut_share": 0.042558886509635976,
+ "mean_tokens": 6992.287205567452,
+ "n_problems": 934,
+ "samples": 4,
+ "total": 3736,
+ "ok": 2516,
+ "cut": 159,
+ "no_answer_finished": 3,
+ "missing": 0,
+ "acc_cap4096": 0.4079229122055675,
+ "acc_cap8192": 0.5974304068522484,
+ "acc_cap16384": 0.6544432548179872,
+ "caps_approx_samples": 0
+}

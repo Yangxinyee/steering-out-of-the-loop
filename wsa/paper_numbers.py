@@ -616,6 +616,38 @@ put("wRoneN", str(rr["edit_on_released"]["n"])); put("wRoneRel", f1(rr["edit_on_
 put("wRoneCardRel", f1(rr["card_on_released"]["mean"])); put("wRoneOwn", f1(rr["base_on_its_finished"]["mean"]))
 put("wRoneRelGap", sg(rr["edit_minus_card_on_released"]["d"] * 100)); put("wRoneRelGapCI", ci(*rr["edit_minus_card_on_released"]["ci95"]))
 
+# ---- the known install: Qwen3.5-0.8B distilled on the 9B teacher's solutions (wsa.sft, wsa.coverage_sft,
+# wsa.sft_battery, wsa.headroom_reach --target)
+ss = json.load(open(R / "runs" / "sft_ref3" / "ckpt" / "sft_summary.json"))
+put("wSftExamples", f"{ss['examples']:,}".replace(",", "{,}"))
+put("wSftEpochs", {1: "one", 2: "two", 3: "three"}[round(ss["epochs"])])
+cs6 = J("coverage_sft_906.json")
+for ds, tag in (("MATH-500", "Math"), ("GSM8K", "Gsm")):
+    d = cs6[ds]
+    put(f"wSftSolved{tag}", f"{d['solved']['reference']:,}".replace(",", "{,}"))
+    put(f"wSftEditSolved{tag}", f"{d["solved"]["agent's edit"]:,}".replace(",", "{,}"))
+    put(f"wSftBestFix{tag}", f"{max(v['solved'] for k, v in d['ability']['always_looping'].items() if k.startswith('fix:')):,}".replace(",", "{,}"))
+    put(f"wSftBeyond{tag}", str(d["ability"]["beyond_ruler"]["reference"]))
+    put(f"wSftEditBeyond{tag}", str(d["ability"]["beyond_ruler"]["agent's edit"]))
+    rc = d["reference"]["coverage"]["32"]
+    put(f"wSftCov{tag}", f1(rc[0])); put(f"wSftCov{tag}CI", ci(rc[1], rc[2]))
+    put(f"wSftEditCov{tag}", f1(d["edit_matched"]["32"]))
+    g6 = d["edit_minus_reference"]["32"]
+    put(f"wSftGap{tag}", sg(g6[0] * 100)); put(f"wSftGap{tag}CI", ci(g6[1], g6[2])); put(f"wSftGap{tag}Abs", fx(abs(g6[0]) * 100))
+sb = J("sft_battery.json")
+m6 = sb["MMLU-Pro math"]
+put("wSftMmluAcc", f1(m6["fix"]["acc"]))
+put("wSftRelMinusOwnMmlu", sg(m6["within_problem"]["diff"] * 100))
+put("wSftRelMinusOwnMmluCI", ci(m6["within_problem"]["lo"], m6["within_problem"]["hi"]))
+q6 = sb["MedQA"]["reference_minus"]
+put("wSftMedGain", sg(q6["base"][0] * 100)); put("wSftMedGainCI", ci(q6["base"][1], q6["base"][2]))
+put("wSftMinusEditMed", sg(q6["agent's edit"][0] * 100)); put("wSftMinusEditMedCI", ci(q6["agent's edit"][1], q6["agent's edit"][2]))
+h6 = J("headroom_reach_sft.json")
+c6 = h6["coverage"]["20"]["chance_corrected"]
+put("wSftMmluCorr", f1(c6[0])); put("wSftMmluCorrCI", ci(c6[1], c6[2]))
+put("wSftBeyondMmlu", str(h6["edit_solved_beyond_ruler"]))
+put("wSftEditBeyondMmlu", str(J("headroom_reach.json")["edit_solved_beyond_ruler"]))
+
 # ---- Table (tab:pair): released against own answers on the same problems, every fix and test set
 def rel_cell(w):
     return f"{sg(w['diff'] * 100)} {ci(w['lo'], w['hi'])}"

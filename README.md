@@ -1,20 +1,25 @@
-# Steering Out of the Loop: A Weight Edit Releases Answers, Not Knowledge
+# Steering Out of the Loop: A Weight Edit Releases Answers Within Reach
 
-Code, per-problem results and analysis scripts for the paper *Steering Out of the Loop: A Weight Edit Releases Answers,
-Not Knowledge* (preprint: link to follow). Repository: <https://github.com/Yangxinyee/steering-out-of-the-loop>.
+Code, per-problem results and analysis scripts for the paper *Steering Out of the Loop: A Weight Edit Releases Answers
+Within Reach* (preprint: link to follow). Repository: <https://github.com/Yangxinyee/steering-out-of-the-loop>.
 
 An AI agent edited two weight matrices of Qwen3.5-0.8B, a small reasoning model, and in our reproduction lifted its
-MATH-500 accuracy from 7.6% to 51.7%. The paper shows that the edit releases answers the model can already reach:
+MATH-500 accuracy from 7.6% to 51.7%. The paper shows that the edit releases answers within the model's reach, and
+that decoding recovers most of the gain:
 
 - Thinking off at the full token budget recovers 93% of the gain on MATH-500 and 82% on GSM8K. Majority voting over
   samples, at no more tokens than the edit uses, ties the edit on both.
 - On problems where the model always loops, the unedited model reaches 97.7% of the edit's correct answers on MATH-500
   under other decodings.
+- A distilled 0.8B model (fine-tuned on Qwen3.5-9B's solutions) solves 41 always-looping GSM8K problems beyond that
+  reach, against the edit's 13, and its correct answers are covered 2.2 points less often than the edit's. Where it
+  adds no more than the edit (MATH-500, MMLU-Pro math), the tests read both alike.
 - On MMLU-Pro math, where the model's own answers leave room, the edit leads every decoding fix, but its released
   answers are less accurate than the model's own on the same questions (84.6% against 90.1%). On the questions the
   model never finishes, five decoding fixes reach 87.3% of the edit's correct answers after correcting for guessing;
   on the same question and seed, the edit's answers are right 84.5% of the time and loop stop's 88.8%.
-- In medicine the released answers are no more accurate than the model's own (42.2% against 42.9% on MedQA).
+- In medicine the released answers are no more accurate than the model's own (42.2% against 42.9% on MedQA): the
+  edit adds no medical knowledge.
 - Two frontier agents redoing the task find edits with the same released-against-own profile.
 - Deferring looping medical questions to a 9B model beats random deferral by 5.3 points.
 
@@ -80,6 +85,7 @@ as computed (7.55 -> 7.6).
 | Table 10 | Other models (Qwen3.5-2B, R1-Distill-Qwen-1.5B) | `c2b.json`, `r1d.json` | `wsa.c2b`, `wsa.r1d` | `wsa.paper_numbers` |
 | Table 11 | Edits found by two frontier agents | `agent_eval.json` | `wsa.agent_eval_report` | `wsa.paper_numbers` |
 | Text | Every number, including MMLU-Pro math reach against guessing and released against loop stop (Section 4) and the frontier agents' runs (appendix) | `results/*.json`, among them `headroom_reach.json`, `agent_decontam.json`, `agent_audit.json`, `agent_usage.json` | the modules above, `wsa.headroom_reach`, `wsa.agent_decontam`, `wsa.agent_audit`, `wsa.agent_usage` | `wsa.paper_numbers` |
+| Text, Section 4 | What the tests detect: the distilled 0.8B on MATH-500, GSM8K, MMLU-Pro math and MedQA | `coverage_sft_906.json`, `sft_battery.json`, `headroom_reach_sft.json`, `runs/sft_ref3/` | `wsa.sft_data` and `wsa.sft` (the model), `wsa.coverage_sft`, `wsa.sft_battery`, `wsa.headroom_reach --target sft_ref3/eval/think35_mmlupro_math` | `wsa.paper_numbers` |
 
 Figure and table numbers follow the paper.
 
@@ -146,6 +152,7 @@ We ran generation on NVIDIA H200 GPUs.
 | `r1d/`, `lowtemp/`, `screen*/` | R1-Distill-Qwen-1.5B and the screens of other small models |
 | `grid/`, `csweep/`, `layers/`, `learned/`, `e2/`, `loopwrite/` | Searches around the edit on practice problems |
 | `agent_eval/` | The two frontier agents' edits on the test sets |
+| `sft_ref3/` | The distilled 0.8B: training summary and its runs on MATH-500, GSM8K's always-looping problems, MMLU-Pro math and MedQA |
 
 ## Models and data
 

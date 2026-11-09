@@ -79,7 +79,8 @@ def main(a):
 
     out = {"questions": len(qs), "never_finished": len(never), "ruler": list(FIXES), "ruler_samples": n_s,
            "options_mean": float(m.mean()), "edit_correct_answers": int(r.sum()), "edit_solved": int((r > 0).sum()),
-           "ruler_solved": int((c > 0).sum()), "ruler_finished_share": float(f.sum() / (n_s * len(never)))}
+           "ruler_solved": int((c > 0).sum()), "edit_solved_beyond_ruler": int(((r > 0) & (c == 0)).sum()),
+           "ruler_finished_share": float(f.sum() / (n_s * len(never)))}
     one = np.ones(len(never))
     res = {}
     for k in ks:

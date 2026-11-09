@@ -1,0 +1,792 @@
+{
+ "ckpt": "ckpt/qwen35_2b",
+ "n_dir": 64,
+ "n_eval": 32,
+ "alpha": 6.0,
+ "top": 64,
+ "base_logprob": {
+  "productive": -0.35234476742334664,
+  "looping": -0.013825118930583358
+ },
+ "full_attention_layers": [
+  3,
+  7,
+  11,
+  15,
+  19,
+  23
+ ],
+ "layers": [
+  {
+   "layer": 0,
+   "type": "linear",
+   "depth": 0.0,
+   "u_norm": 0.070504899861697,
+   "d_prime": 0.5346383049404141,
+   "probe_acc": 0.6845703125,
+   "top64_share": 0.47210922219554,
+   "edit_d_looping": -0.02981413024866697,
+   "edit_d_productive": -0.013051149435341358
+  },
+  {
+   "layer": 1,
+   "type": "linear",
+   "depth": 0.043,
+   "u_norm": 0.2095257342912194,
+   "d_prime": 0.8956925555159314,
+   "probe_acc": 0.7805989583333333,
+   "top64_share": 0.542027204345662,
+   "edit_d_looping": -0.00383797651710438,
+   "edit_d_productive": -0.00771843153052032
+  },
+  {
+   "layer": 2,
+   "type": "linear",
+   "depth": 0.087,
+   "u_norm": 0.34693375349816263,
+   "d_prime": 1.4839311774671702,
+   "probe_acc": 0.8603515625,
+   "top64_share": 0.5210789342042272,
+   "edit_d_looping": -0.0032257438037390784,
+   "edit_d_productive": -0.0016846787184476852
+  },
+  {
+   "layer": 3,
+   "type": "full",
+   "depth": 0.13,
+   "u_norm": 0.44285992595607765,
+   "d_prime": 1.4880335606096504,
+   "probe_acc": 0.8597005208333333,
+   "top64_share": 0.3453396041419844,
+   "copy_head": 6,
+   "copy_score_loop": 0.03257985512334774,
+   "copy_score_normal": 0.030825970446245604,
+   "copy_scores_loop": [
+    0.011,
+    0.0101,
+    0.0045,
+    0.0128,
+    0.0087,
+    0.0286,
+    0.0326,
+    0.0022
+   ],
+   "edit_d_looping": -0.001825759533346627,
+   "edit_d_productive": -0.0006266613490879536
+  },
+  {
+   "layer": 4,
+   "type": "linear",
+   "depth": 0.174,
+   "u_norm": 0.5382010786557188,
+   "d_prime": 1.76067331516439,
+   "probe_acc": 0.87109375,
+   "top64_share": 0.3360841403098357,
+   "edit_d_looping": -0.0003442873191943363,
+   "edit_d_productive": 0.0012655530590564013
+  },
+  {
+   "layer": 5,
+   "type": "linear",
+   "depth": 0.217,
+   "u_norm": 0.6538014423651907,
+   "d_prime": 1.8365185683552043,
+   "probe_acc": 0.8779296875,
+   "top64_share": 0.30513457843936564,
+   "edit_d_looping": -0.0003563568402000783,
+   "edit_d_productive": 0.0010254639200866222
+  },
+  {
+   "layer": 6,
+   "type": "linear",
+   "depth": 0.261,
+   "u_norm": 0.8452543144063934,
+   "d_prime": 2.038383013779884,
+   "probe_acc": 0.8860677083333333,
+   "top64_share": 0.42371129277287894,
+   "edit_d_looping": -0.0021080248847624716,
+   "edit_d_productive": 0.0010118703357875347
+  },
+  {
+   "layer": 7,
+   "type": "full",
+   "depth": 0.304,
+   "u_norm": 0.9423653370217872,
+   "d_prime": 2.0085243541974838,
+   "probe_acc": 0.8766276041666666,
+   "top64_share": 0.3124349920854988,
+   "copy_head": 5,
+   "copy_score_loop": 0.03341838966974735,
+   "copy_score_normal": 0.03639930209382844,
+   "copy_scores_loop": [
+    0.0134,
+    0.0049,
+    0.0037,
+    0.0025,
+    0.0241,
+    0.0334,
+    0.0042,
+    0.0004
+   ],
+   "edit_d_looping": -0.005463543560324524,
+   "edit_d_productive": 0.002124418504536152
+  },
+  {
+   "layer": 8,
+   "type": "linear",
+   "depth": 0.348,
+   "u_norm": 1.1334774870772968,
+   "d_prime": 2.134107468066398,
+   "probe_acc": 0.8818359375,
+   "top64_share": 0.3032758849763214,
+   "edit_d_looping": -0.00037380191213287617,
+   "edit_d_productive": 0.0005679943133145571
+  },
+  {
+   "layer": 9,
+   "type": "linear",
+   "depth": 0.391,
+   "u_norm": 1.374013680893791,
+   "d_prime": 2.19160848360451,
+   "probe_acc": 0.8883463541666666,
+   "top64_share": 0.3452724343596582,
+   "edit_d_looping": -0.028524212543231897,
+   "edit_d_productive": 0.00029190233908593655
+  },
+  {
+   "layer": 10,
+   "type": "linear",
+   "depth": 0.435,
+   "u_norm": 1.686792145976202,
+   "d_prime": 2.443390101547399,
+   "probe_acc": 0.8971354166666666,
+   "top64_share": 0.3503905219813451,
+   "edit_d_looping": -0.01612136092575156,
+   "edit_d_productive": -0.0033709234558045864
+  },
+  {
+   "layer": 11,
+   "type": "full",
+   "depth": 0.478,
+   "u_norm": 2.1440570721429966,
+   "d_prime": 2.4126102780686645,
+   "probe_acc": 0.8912760416666666,
+   "top64_share": 0.33800251969804374,
+   "copy_head": 1,
+   "copy_score_loop": 0.021771899380342997,
+   "copy_score_normal": 0.07062146851954328,
+   "copy_scores_loop": [
+    0.0036,
+    0.0218,
+    0.0042,
+    0.002,
+    0.0031,
+    0.0026,
+    0.0048,
+    0.0023
+   ],
+   "edit_d_looping": -0.04291366164801502,
+   "edit_d_productive": -0.001792469760403037
+  },
+  {
+   "layer": 12,
+   "type": "linear",
+   "depth": 0.522,
+   "u_norm": 2.330335064646199,
+   "d_prime": 2.496516604613855,
+   "probe_acc": 0.8990885416666667,
+   "top64_share": 0.28038219379248847,
+   "edit_d_looping": -0.006402148024278631,
+   "edit_d_productive": -0.003106021322309971
+  },
+  {
+   "layer": 13,
+   "type": "linear",
+   "depth": 0.565,
+   "u_norm": 2.8505039285176785,
+   "d_prime": 2.599582858927415,
+   "probe_acc": 0.9007161458333334,
+   "top64_share": 0.3687099363457804,
+   "edit_d_looping": -0.039359803024524354,
+   "edit_d_productive": -0.004655046155676246
+  },
+  {
+   "layer": 14,
+   "type": "linear",
+   "depth": 0.609,
+   "u_norm": 3.341616023924385,
+   "d_prime": 2.6997779592408886,
+   "probe_acc": 0.9049479166666666,
+   "top64_share": 0.24377079170177635,
+   "edit_d_looping": -0.005644598354081154,
+   "edit_d_productive": -0.004100270802155137
+  },
+  {
+   "layer": 15,
+   "type": "full",
+   "depth": 0.652,
+   "u_norm": 4.186762285069262,
+   "d_prime": 2.59045034102575,
+   "probe_acc": 0.9000651041666666,
+   "top64_share": 0.44431669243971167,
+   "copy_head": 7,
+   "copy_score_loop": 0.042990964076941016,
+   "copy_score_normal": 0.11702020190937594,
+   "copy_scores_loop": [
+    0.0079,
+    0.0135,
+    0.0053,
+    0.0165,
+    0.0216,
+    0.006,
+    0.0053,
+    0.043
+   ],
+   "edit_d_looping": -0.0713044268963472,
+   "edit_d_productive": -0.02296827407553792
+  },
+  {
+   "layer": 16,
+   "type": "linear",
+   "depth": 0.696,
+   "u_norm": 4.828503300569697,
+   "d_prime": 2.5650243740239653,
+   "probe_acc": 0.9026692708333333,
+   "top64_share": 0.3527910625220094,
+   "edit_d_looping": -0.005650864146844015,
+   "edit_d_productive": -0.007574296090751886
+  },
+  {
+   "layer": 17,
+   "type": "linear",
+   "depth": 0.739,
+   "u_norm": 5.337852992913719,
+   "d_prime": 2.5535915188449994,
+   "probe_acc": 0.8990885416666666,
+   "top64_share": 0.2892380315868428,
+   "edit_d_looping": -0.0027417785493639713,
+   "edit_d_productive": -0.006208456587046385
+  },
+  {
+   "layer": 18,
+   "type": "linear",
+   "depth": 0.783,
+   "u_norm": 5.8420011161616925,
+   "d_prime": 2.532299739483527,
+   "probe_acc": 0.9016927083333334,
+   "top64_share": 0.2517251955915617,
+   "edit_d_looping": -0.0008052993119918028,
+   "edit_d_productive": 0.004553997190669179
+  },
+  {
+   "layer": 19,
+   "type": "full",
+   "depth": 0.826,
+   "u_norm": 6.867202246669075,
+   "d_prime": 2.411576785193248,
+   "probe_acc": 0.8984375,
+   "top64_share": 0.5324670227447346,
+   "copy_head": 5,
+   "copy_score_loop": 0.08393078202952349,
+   "copy_score_normal": 0.10442772867029013,
+   "copy_scores_loop": [
+    0.0118,
+    0.0079,
+    0.0121,
+    0.011,
+    0.0426,
+    0.0839,
+    0.0159,
+    0.0361
+   ],
+   "edit_d_looping": -0.01644637203247612,
+   "edit_d_productive": -0.016978106694296002
+  },
+  {
+   "layer": 20,
+   "type": "linear",
+   "depth": 0.87,
+   "u_norm": 7.2881683793864065,
+   "d_prime": 2.4140432651286177,
+   "probe_acc": 0.8981119791666667,
+   "top64_share": 0.29045542392873736,
+   "edit_d_looping": -0.0005104616942048779,
+   "edit_d_productive": 0.0025928353425115347
+  },
+  {
+   "layer": 21,
+   "type": "linear",
+   "depth": 0.913,
+   "u_norm": 7.940229439217312,
+   "d_prime": 2.35457509068294,
+   "probe_acc": 0.8981119791666666,
+   "top64_share": 0.25951231921594603,
+   "edit_d_looping": -0.0005002299488410245,
+   "edit_d_productive": -0.001593664288520813
+  },
+  {
+   "layer": 22,
+   "type": "linear",
+   "depth": 0.957,
+   "u_norm": 8.661404883878134,
+   "d_prime": 2.357513425598846,
+   "probe_acc": 0.8981119791666666,
+   "top64_share": 0.34110573250688686,
+   "edit_d_looping": 0.0007433694839846794,
+   "edit_d_productive": 0.0115799808409065
+  },
+  {
+   "layer": 23,
+   "type": "full",
+   "depth": 1.0,
+   "u_norm": 7.833717568484578,
+   "d_prime": 2.3703307261139743,
+   "probe_acc": 0.8958333333333333,
+   "top64_share": 0.43536002028999465,
+   "copy_head": 5,
+   "copy_score_loop": 0.04853821555522955,
+   "copy_score_normal": 0.09362936774335838,
+   "copy_scores_loop": [
+    0.0428,
+    0.0265,
+    0.0022,
+    0.0188,
+    0.0366,
+    0.0485,
+    0.0001,
+    0.0361
+   ],
+   "edit_d_looping": -0.0061247815405636175,
+   "edit_d_productive": -0.060423690592870116
+  }
+ ],
+ "edits": [
+  {
+   "layers": [
+    0
+   ],
+   "d_logprob_productive": -0.013051149435341358,
+   "se_productive": 0.0019885689023083587,
+   "d_logprob_looping": -0.02981413024866697,
+   "se_looping": 0.0189252921181312
+  },
+  {
+   "layers": [
+    1
+   ],
+   "d_logprob_productive": -0.00771843153052032,
+   "se_productive": 0.0009527713178282762,
+   "d_logprob_looping": -0.00383797651710438,
+   "se_looping": 0.0013144222162926834
+  },
+  {
+   "layers": [
+    2
+   ],
+   "d_logprob_productive": -0.0016846787184476852,
+   "se_productive": 0.00045950210965281534,
+   "d_logprob_looping": -0.0032257438037390784,
+   "se_looping": 0.0006341015093166995
+  },
+  {
+   "layers": [
+    3
+   ],
+   "d_logprob_productive": -0.0006266613490879536,
+   "se_productive": 0.001035751062708881,
+   "d_logprob_looping": -0.001825759533346627,
+   "se_looping": 0.0006854451619263562
+  },
+  {
+   "layers": [
+    4
+   ],
+   "d_logprob_productive": 0.0012655530590564013,
+   "se_productive": 0.0003786104083196382,
+   "d_logprob_looping": -0.0003442873191943363,
+   "se_looping": 0.0002277682675006848
+  },
+  {
+   "layers": [
+    5
+   ],
+   "d_logprob_productive": 0.0010254639200866222,
+   "se_productive": 0.0006018895656520253,
+   "d_logprob_looping": -0.0003563568402000783,
+   "se_looping": 0.00019528736352302542
+  },
+  {
+   "layers": [
+    6
+   ],
+   "d_logprob_productive": 0.0010118703357875347,
+   "se_productive": 0.00025000060379092823,
+   "d_logprob_looping": -0.0021080248847624716,
+   "se_looping": 0.0008655483590670326
+  },
+  {
+   "layers": [
+    7
+   ],
+   "d_logprob_productive": 0.002124418504536152,
+   "se_productive": 0.000665697228902937,
+   "d_logprob_looping": -0.005463543560324524,
+   "se_looping": 0.0012701396127703538
+  },
+  {
+   "layers": [
+    8
+   ],
+   "d_logprob_productive": 0.0005679943133145571,
+   "se_productive": 0.000433940995386699,
+   "d_logprob_looping": -0.00037380191213287617,
+   "se_looping": 0.00025089606537733263
+  },
+  {
+   "layers": [
+    9
+   ],
+   "d_logprob_productive": 0.00029190233908593655,
+   "se_productive": 0.0004584468862145893,
+   "d_logprob_looping": -0.028524212543231897,
+   "se_looping": 0.00553482615124544
+  },
+  {
+   "layers": [
+    10
+   ],
+   "d_logprob_productive": -0.0033709234558045864,
+   "se_productive": 0.000925755079304638,
+   "d_logprob_looping": -0.01612136092575156,
+   "se_looping": 0.0029265195886821315
+  },
+  {
+   "layers": [
+    11
+   ],
+   "d_logprob_productive": -0.001792469760403037,
+   "se_productive": 0.0004781336317416169,
+   "d_logprob_looping": -0.04291366164801502,
+   "se_looping": 0.006047208836769073
+  },
+  {
+   "layers": [
+    12
+   ],
+   "d_logprob_productive": -0.003106021322309971,
+   "se_productive": 0.0004313278597540658,
+   "d_logprob_looping": -0.006402148024278631,
+   "se_looping": 0.0009322209416073051
+  },
+  {
+   "layers": [
+    13
+   ],
+   "d_logprob_productive": -0.004655046155676246,
+   "se_productive": 0.000505452410938262,
+   "d_logprob_looping": -0.039359803024524354,
+   "se_looping": 0.00389664652634073
+  },
+  {
+   "layers": [
+    14
+   ],
+   "d_logprob_productive": -0.004100270802155137,
+   "se_productive": 0.0006090355807251692,
+   "d_logprob_looping": -0.005644598354081154,
+   "se_looping": 0.0008624609691953045
+  },
+  {
+   "layers": [
+    15
+   ],
+   "d_logprob_productive": -0.02296827407553792,
+   "se_productive": 0.0014658177888385736,
+   "d_logprob_looping": -0.0713044268963472,
+   "se_looping": 0.006547320295548947
+  },
+  {
+   "layers": [
+    16
+   ],
+   "d_logprob_productive": -0.007574296090751886,
+   "se_productive": 0.0004515631614925519,
+   "d_logprob_looping": -0.005650864146844015,
+   "se_looping": 0.0006899092604070156
+  },
+  {
+   "layers": [
+    17
+   ],
+   "d_logprob_productive": -0.006208456587046385,
+   "se_productive": 0.00043053429185474105,
+   "d_logprob_looping": -0.0027417785493639713,
+   "se_looping": 0.00038493392183633156
+  },
+  {
+   "layers": [
+    18
+   ],
+   "d_logprob_productive": 0.004553997190669179,
+   "se_productive": 0.0004910700648908062,
+   "d_logprob_looping": -0.0008052993119918028,
+   "se_looping": 0.00015171835732789892
+  },
+  {
+   "layers": [
+    19
+   ],
+   "d_logprob_productive": -0.016978106694296002,
+   "se_productive": 0.0009015259593212696,
+   "d_logprob_looping": -0.01644637203247612,
+   "se_looping": 0.0015072711786717967
+  },
+  {
+   "layers": [
+    20
+   ],
+   "d_logprob_productive": 0.0025928353425115347,
+   "se_productive": 0.00040584382007037383,
+   "d_logprob_looping": -0.0005104616942048779,
+   "se_looping": 8.56023153380073e-05
+  },
+  {
+   "layers": [
+    21
+   ],
+   "d_logprob_productive": -0.001593664288520813,
+   "se_productive": 0.0002617578880134465,
+   "d_logprob_looping": -0.0005002299488410245,
+   "se_looping": 0.00011292691351602583
+  },
+  {
+   "layers": [
+    22
+   ],
+   "d_logprob_productive": 0.0115799808409065,
+   "se_productive": 0.0008416244060459229,
+   "d_logprob_looping": 0.0007433694839846794,
+   "se_looping": 0.0003603845703792051
+  },
+  {
+   "layers": [
+    23
+   ],
+   "d_logprob_productive": -0.060423690592870116,
+   "se_productive": 0.006947874001225698,
+   "d_logprob_looping": -0.0061247815405636175,
+   "se_looping": 0.0023041899405063034
+  },
+  {
+   "layers": [
+    3,
+    7
+   ],
+   "d_logprob_productive": -0.004433133406564593,
+   "se_productive": 0.0014018494689987044,
+   "d_logprob_looping": -0.004699052231387668,
+   "se_looping": 0.0010170106042400498
+  },
+  {
+   "layers": [
+    3,
+    11
+   ],
+   "d_logprob_productive": -0.00507219391874969,
+   "se_productive": 0.001256042839683678,
+   "d_logprob_looping": -0.01918684313244512,
+   "se_looping": 0.005538154480672844
+  },
+  {
+   "layers": [
+    3,
+    15
+   ],
+   "d_logprob_productive": -0.020481017185375094,
+   "se_productive": 0.0010729383602565217,
+   "d_logprob_looping": -0.026426970482532397,
+   "se_looping": 0.0023129061885119842
+  },
+  {
+   "layers": [
+    3,
+    19
+   ],
+   "d_logprob_productive": -0.015791221288964152,
+   "se_productive": 0.0010397511981564426,
+   "d_logprob_looping": -0.014207293298056811,
+   "se_looping": 0.0014758086689648847
+  },
+  {
+   "layers": [
+    3,
+    23
+   ],
+   "d_logprob_productive": -0.05995299434289336,
+   "se_productive": 0.007479894813831037,
+   "d_logprob_looping": -0.011056301125279333,
+   "se_looping": 0.005166929510556373
+  },
+  {
+   "layers": [
+    7,
+    11
+   ],
+   "d_logprob_productive": -0.0018746929708868265,
+   "se_productive": 0.0009795109835727725,
+   "d_logprob_looping": -0.014283872405883358,
+   "se_looping": 0.00221795276680035
+  },
+  {
+   "layers": [
+    7,
+    15
+   ],
+   "d_logprob_productive": -0.018869015388190746,
+   "se_productive": 0.0010705668077625307,
+   "d_logprob_looping": -0.023523078493269622,
+   "se_looping": 0.0024708932317065624
+  },
+  {
+   "layers": [
+    7,
+    19
+   ],
+   "d_logprob_productive": -0.01387781254015863,
+   "se_productive": 0.0008842148837399883,
+   "d_logprob_looping": -0.015696086473724336,
+   "se_looping": 0.0019108059576225102
+  },
+  {
+   "layers": [
+    7,
+    23
+   ],
+   "d_logprob_productive": -0.0577532856259495,
+   "se_productive": 0.007111748132016704,
+   "d_logprob_looping": -0.012762013541248507,
+   "se_looping": 0.002452502559071358
+  },
+  {
+   "layers": [
+    11,
+    15
+   ],
+   "d_logprob_productive": -0.023853082209825516,
+   "se_productive": 0.0013709261947676755,
+   "d_logprob_looping": -0.07839229378845403,
+   "se_looping": 0.0070732543009213965
+  },
+  {
+   "layers": [
+    11,
+    19
+   ],
+   "d_logprob_productive": -0.017974663991481066,
+   "se_productive": 0.0009727706438015356,
+   "d_logprob_looping": -0.07313965012548351,
+   "se_looping": 0.007393831892769025
+  },
+  {
+   "layers": [
+    11,
+    23
+   ],
+   "d_logprob_productive": -0.06264245929196477,
+   "se_productive": 0.0069955119648125175,
+   "d_logprob_looping": -0.10511071877084532,
+   "se_looping": 0.02515961153717857
+  },
+  {
+   "layers": [
+    15,
+    19
+   ],
+   "d_logprob_productive": -0.03488609637133777,
+   "se_productive": 0.0017127685044262685,
+   "d_logprob_looping": -0.09936804937427723,
+   "se_looping": 0.008501069416078751
+  },
+  {
+   "layers": [
+    15,
+    23
+   ],
+   "d_logprob_productive": -0.08509848616085947,
+   "se_productive": 0.006148832250832123,
+   "d_logprob_looping": -0.11283263577610114,
+   "se_looping": 0.01671134062854551
+  },
+  {
+   "layers": [
+    19,
+    23
+   ],
+   "d_logprob_productive": -0.06946511915884912,
+   "se_productive": 0.004619452785550096,
+   "d_logprob_looping": -0.02271233879258716,
+   "se_looping": 0.003039879259905536
+  },
+  {
+   "layers": [
+    14,
+    18
+   ],
+   "d_logprob_productive": 0.0011105502489954233,
+   "se_productive": 0.000678171667939607,
+   "d_logprob_looping": -0.00646155118323577,
+   "se_looping": 0.0008696709486661303
+  },
+  {
+   "layers": [
+    15,
+    16
+   ],
+   "d_logprob_productive": -0.026235720375552773,
+   "se_productive": 0.001496037236435944,
+   "d_logprob_looping": -0.08057289001993695,
+   "se_looping": 0.007645362735628344
+  },
+  {
+   "layers": [
+    14,
+    15
+   ],
+   "d_logprob_productive": -0.02513183932751417,
+   "se_productive": 0.0016547067715018207,
+   "d_logprob_looping": -0.049636578205934256,
+   "se_looping": 0.004453139544557238
+  },
+  {
+   "layers": [
+    18,
+    19
+   ],
+   "d_logprob_productive": -0.013027655193582177,
+   "se_productive": 0.0009085746153297741,
+   "d_logprob_looping": -0.01791892227305425,
+   "se_looping": 0.0016427042064258808
+  },
+  {
+   "layers": [
+    19,
+    20
+   ],
+   "d_logprob_productive": -0.010258173337206244,
+   "se_productive": 0.0008132199087298547,
+   "d_logprob_looping": -0.012573667805952482,
+   "se_looping": 0.0013017264377116727
+  },
+  {
+   "layers": [
+    16,
+    20
+   ],
+   "d_logprob_productive": -0.004311960656195879,
+   "se_productive": 0.0006538144081734075,
+   "d_logprob_looping": -0.0065693459641238405,
+   "se_looping": 0.000682413324694281
+  }
+ ],
+ "minutes": 12.3
+}

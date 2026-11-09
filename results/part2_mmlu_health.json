@@ -1,0 +1,283 @@
+{
+ "test": {
+  "mmlu_base/think35": {
+   "label": "base (think35)",
+   "official": 0.3389364303178484,
+   "strict": 0.3108190709046455,
+   "cut": 0.1549511002444988,
+   "mean_tokens": 9569.76803178484,
+   "n": 3272
+  },
+  "mmlu_base/card_think": {
+   "label": "T=1.0 (model card)",
+   "official": 0.3462713936430318,
+   "strict": 0.34474327628361856,
+   "cut": 0.006112469437652812,
+   "mean_tokens": 7159.578545232273,
+   "n": 3272,
+   "vs_base_official": {
+    "gain": 0.007334963325183374,
+    "ci95": [
+     -0.009168704156479218,
+     0.024144254278728607
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.0339242053789731,
+    "ci95": [
+     0.017114914425427872,
+     0.050733496332518335
+    ]
+   },
+   "rescue": {
+    "base_cut": 507,
+    "rescued": 497,
+    "rescued_correct": 146,
+    "rescued_acc": 0.2937625754527163,
+    "newly_cut": 10,
+    "base_right_now_wrong": 315
+   }
+  },
+  "mmlu_base/nothink35": {
+   "label": "thinking off",
+   "official": 0.30317848410757947,
+   "strict": 0.2988997555012225,
+   "cut": 0.02231051344743276,
+   "mean_tokens": 1407.6757334963324,
+   "n": 3272,
+   "vs_base_official": {
+    "gain": -0.03575794621026895,
+    "ci95": [
+     -0.055317848410757944,
+     -0.01619804400977995
+    ]
+   },
+   "vs_base_strict": {
+    "gain": -0.011919315403422982,
+    "ci95": [
+     -0.03117359413202934,
+     0.007334963325183374
+    ]
+   },
+   "rescue": {
+    "base_cut": 507,
+    "rescued": 486,
+    "rescued_correct": 127,
+    "rescued_acc": 0.2613168724279835,
+    "newly_cut": 52,
+    "base_right_now_wrong": 439
+   }
+  },
+  "mmlu_base/think35_bf8192": {
+   "label": "budget forcing 8k",
+   "official": 0.34963325183374083,
+   "strict": 0.33618581907090467,
+   "cut": 0.07885085574572127,
+   "mean_tokens": 6228.828239608802,
+   "n": 3272,
+   "vs_base_official": {
+    "gain": 0.010696821515892421,
+    "ci95": [
+     0.003667481662591687,
+     0.018031784841075794
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.025366748166259168,
+    "ci95": [
+     0.018948655256723717,
+     0.032090464547677264
+    ]
+   },
+   "rescue": {
+    "base_cut": 507,
+    "rescued": 290,
+    "rescued_correct": 95,
+    "rescued_acc": 0.3275862068965517,
+    "newly_cut": 41,
+    "base_right_now_wrong": 8
+   }
+  },
+  "mmlu_base/think35_loop": {
+   "label": "loop breaking",
+   "official": 0.34963325183374083,
+   "strict": 0.3383251833740831,
+   "cut": 0.07823960880195599,
+   "mean_tokens": 6118.992359413203,
+   "n": 3272,
+   "vs_base_official": {
+    "gain": 0.010696821515892421,
+    "ci95": [
+     0.004584352078239609,
+     0.016809290953545233
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.02750611246943765,
+    "ci95": [
+     0.021393643031784843,
+     0.034229828850855744
+    ]
+   },
+   "rescue": {
+    "base_cut": 507,
+    "rescued": 264,
+    "rescued_correct": 92,
+    "rescued_acc": 0.3484848484848485,
+    "newly_cut": 13,
+    "base_right_now_wrong": 2
+   }
+  },
+  "mmlu_edit/think35": {
+   "label": "authors' math edit, unchanged",
+   "official": 0.3545232273838631,
+   "strict": 0.3542176039119804,
+   "cut": 0.0006112469437652812,
+   "mean_tokens": 5048.103606356968,
+   "n": 3272,
+   "vs_base_official": {
+    "gain": 0.01558679706601467,
+    "ci95": [
+     -0.0012224938875305623,
+     0.03270171149144254
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.04339853300733496,
+    "ci95": [
+     0.02628361858190709,
+     0.06051344743276284
+    ]
+   },
+   "rescue": {
+    "base_cut": 507,
+    "rescued": 507,
+    "rescued_correct": 153,
+    "rescued_acc": 0.30177514792899407,
+    "newly_cut": 2,
+    "base_right_now_wrong": 282
+   }
+  },
+  "mmlu_md_a6/think35": {
+   "label": "mean-difference direction from MedQA train, coefficient 6",
+   "official": 0.35727383863080686,
+   "strict": 0.35055012224938875,
+   "cut": 0.043704156479217604,
+   "mean_tokens": 7095.445904645477,
+   "n": 3272,
+   "vs_base_official": {
+    "gain": 0.018337408312958436,
+    "ci95": [
+     0.002139364303178484,
+     0.034229828850855744
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.03973105134474328,
+    "ci95": [
+     0.023830990220048906,
+     0.055623471882640586
+    ]
+   },
+   "rescue": {
+    "base_cut": 507,
+    "rescued": 447,
+    "rescued_correct": 160,
+    "rescued_acc": 0.3579418344519016,
+    "newly_cut": 83,
+    "base_right_now_wrong": 293
+   }
+  }
+ },
+ "practice": {
+  "med_base/think35": {
+   "official": 0.418,
+   "strict": 0.374,
+   "cut": 0.238,
+   "mean_tokens": 12418.912,
+   "n": 500
+  },
+  "med_md_a3/think35": {
+   "official": 0.412,
+   "strict": 0.398,
+   "cut": 0.102,
+   "mean_tokens": 9060.51,
+   "n": 500
+  },
+  "med_md_a6/think35": {
+   "official": 0.454,
+   "strict": 0.44,
+   "cut": 0.058,
+   "mean_tokens": 8154.444,
+   "n": 500
+  },
+  "med_md_a9/think35": {
+   "official": 0.452,
+   "strict": 0.432,
+   "cut": 0.064,
+   "mean_tokens": 8495.744,
+   "n": 500
+  }
+ },
+ "picked": "med_md_a6/think35",
+ "base_finished_acc": 0.3678119349005425,
+ "chance": 0.1190844879108938,
+ "pairwise": {
+  "mmlu_edit/think35 - mmlu_base/card_think (official)": {
+   "gain": 0.008251833740831296,
+   "ci95": [
+    -0.008251833740831296,
+    0.024755501222493887
+   ]
+  },
+  "mmlu_edit/think35 - mmlu_base/card_think (strict)": {
+   "gain": 0.009474327628361858,
+   "ci95": [
+    -0.007029339853300734,
+    0.02628361858190709
+   ]
+  },
+  "mmlu_edit/think35 - mmlu_md_a6/think35 (official)": {
+   "gain": -0.0027506112469437654,
+   "ci95": [
+    -0.018948655256723717,
+    0.013447432762836185
+   ]
+  },
+  "mmlu_edit/think35 - mmlu_md_a6/think35 (strict)": {
+   "gain": 0.003667481662591687,
+   "ci95": [
+    -0.012530562347188265,
+    0.01986552567237164
+   ]
+  },
+  "mmlu_md_a6/think35 - mmlu_base/card_think (official)": {
+   "gain": 0.011002444987775062,
+   "ci95": [
+    -0.00519559902200489,
+    0.02750611246943765
+   ]
+  },
+  "mmlu_md_a6/think35 - mmlu_base/card_think (strict)": {
+   "gain": 0.005806845965770171,
+   "ci95": [
+    -0.01039119804400978,
+    0.022616136919315404
+   ]
+  },
+  "mmlu_edit/think35 - mmlu_base/think35_bf8192 (official)": {
+   "gain": 0.004889975550122249,
+   "ci95": [
+    -0.011613691931540342,
+    0.0210880195599022
+   ]
+  },
+  "mmlu_edit/think35 - mmlu_base/think35_bf8192 (strict)": {
+   "gain": 0.018031784841075794,
+   "ci95": [
+    0.001528117359413203,
+    0.034535452322738386
+   ]
+  }
+ }
+}

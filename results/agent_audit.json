@@ -1,0 +1,71 @@
+{
+ "task_prompt_sentences_naming_repetition": [
+  "Repairing a specific failure mechanism is in scope: for example, if the model often fails because it repeats itself and never finishes, finding and fixing what drives that repetition counts.",
+  "repairing a specific failure inside the thinking (such as repetition) is in scope.",
+  "Look at how the model fails on practice problems: a wrong final answer, finishing without an answer, or being cut off at the token limit (often while repeating itself in its thinking)."
+ ],
+ "agents": {
+  "Claude Opus 5.5": {
+   "pool_neardup_of_a_test_problem": 343,
+   "forward_requests": 57,
+   "practice_ids": 5246,
+   "ids_not_in_practice_pool": [],
+   "practice_ids_neardup_of_a_test_problem": 114,
+   "own_prompts": 0,
+   "teacher_forced_texts": 236,
+   "python_programs": 352,
+   "replies": 355,
+   "windows": {
+    "own prompts": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    },
+    "teacher-forced texts": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    },
+    "python programs": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    },
+    "replies": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    }
+   },
+   "mentions_of_test_sets": 25
+  },
+  "gpt-6.1-sol": {
+   "pool_neardup_of_a_test_problem": 343,
+   "forward_requests": 53,
+   "practice_ids": 3586,
+   "ids_not_in_practice_pool": [
+    "math_train_geometry_?"
+   ],
+   "practice_ids_neardup_of_a_test_problem": 70,
+   "own_prompts": 0,
+   "teacher_forced_texts": 34,
+   "python_programs": 119,
+   "replies": 124,
+   "windows": {
+    "own prompts": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    },
+    "teacher-forced texts": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    },
+    "python programs": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    },
+    "replies": {
+     "test_problems_leaked": [],
+     "via_practice_near_duplicates": []
+    }
+   },
+   "mentions_of_test_sets": 0
+  }
+ }
+}

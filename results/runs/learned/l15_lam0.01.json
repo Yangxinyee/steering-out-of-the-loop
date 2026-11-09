@@ -1,0 +1,108 @@
+{
+ "layers": [
+  15
+ ],
+ "lam": 0.01,
+ "kl": 1.0,
+ "floor_p": 0.05,
+ "n_train": 64,
+ "n_val": 32,
+ "epochs": 4,
+ "lr": 0.05,
+ "final": {
+  "15": {
+   "alpha": 16.776762008666992,
+   "n_open": 560,
+   "gate_sum": 546.2197265625,
+   "overlap_with_top64": 64,
+   "overlap_with_authors64": 50
+  }
+ },
+ "log": [
+  {
+   "epoch": 1,
+   "loss": -0.11935303165228106,
+   "loop_term": -0.1456775790429674,
+   "kl": 0.0152316116655129,
+   "sparsity": 1.1092937290668488,
+   "val": {
+    "d_logprob_looping": -0.30035366071388125,
+    "d_logprob_productive": -0.03225797135382891,
+    "kl_productive": 0.020981071138521656
+   },
+   "gates": {
+    "15": {
+     "alpha": 8.886054992675781,
+     "n_open": 64,
+     "gate_sum": 80.26161193847656,
+     "overlap_with_top64": 64
+    }
+   },
+   "minutes": 3.7
+  },
+  {
+   "epoch": 2,
+   "loss": -0.6990389389684424,
+   "loop_term": -0.8208283942658454,
+   "kl": 0.09095293647260405,
+   "sparsity": 3.0836523957550526,
+   "val": {
+    "d_logprob_looping": -2.9172111209481955,
+    "d_logprob_productive": -0.2128633870743215,
+    "kl_productive": 0.1877953978255391
+   },
+   "gates": {
+    "15": {
+     "alpha": 12.907958984375,
+     "n_open": 393,
+     "gate_sum": 372.1505126953125,
+     "overlap_with_top64": 64
+    }
+   },
+   "minutes": 7.1
+  },
+  {
+   "epoch": 3,
+   "loss": -1.3638782035559416,
+   "loop_term": -1.740771328099072,
+   "kl": 0.30874423985369503,
+   "sparsity": 6.814887523651123,
+   "val": {
+    "d_logprob_looping": -4.4864776991307735,
+    "d_logprob_productive": -0.3037243685685098,
+    "kl_productive": 0.277519001159817
+   },
+   "gates": {
+    "15": {
+     "alpha": 15.107856750488281,
+     "n_open": 521,
+     "gate_sum": 495.2738952636719,
+     "overlap_with_top64": 64
+    }
+   },
+   "minutes": 10.5
+  },
+  {
+   "epoch": 4,
+   "loss": -1.5855080396868289,
+   "loop_term": -2.065168430097401,
+   "kl": 0.3978902702219784,
+   "sparsity": 8.177013039588928,
+   "val": {
+    "d_logprob_looping": -5.307993575930595,
+    "d_logprob_productive": -0.31762538896873593,
+    "kl_productive": 0.29304531624075025
+   },
+   "gates": {
+    "15": {
+     "alpha": 16.776762008666992,
+     "n_open": 560,
+     "gate_sum": 546.2197265625,
+     "overlap_with_top64": 64
+    }
+   },
+   "minutes": 14.0
+  }
+ ],
+ "minutes": 14.0
+}

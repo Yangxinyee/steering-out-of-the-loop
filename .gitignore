@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+# raw generations (released separately) and model folders
+results/runs/**/*.jsonl
+/ckpt/
+/data/
+/agent_runs/
+# outputs of the figure and table scripts
+paper/figures/*.pdf
+paper/figures/*.png
+paper/figures/*.svg
+paper/figures/*.drawio
+paper/figures/alignment.json
+paper/tables/*.tex

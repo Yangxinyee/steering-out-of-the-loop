@@ -1,0 +1,15 @@
+{
+ "acc": 0.295,
+ "cut_share": 0.685,
+ "mean_tokens": 25659.51,
+ "n_problems": 200,
+ "samples": 1,
+ "total": 200,
+ "ok": 59,
+ "cut": 137,
+ "no_answer_finished": 1,
+ "missing": 0,
+ "acc_cap4096": 0.05,
+ "acc_cap8192": 0.125,
+ "acc_cap16384": 0.25
+}

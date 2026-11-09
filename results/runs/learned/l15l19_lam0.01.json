@@ -1,0 +1,140 @@
+{
+ "layers": [
+  15,
+  19
+ ],
+ "lam": 0.01,
+ "kl": 1.0,
+ "floor_p": 0.05,
+ "n_train": 64,
+ "n_val": 32,
+ "epochs": 4,
+ "lr": 0.05,
+ "final": {
+  "15": {
+   "alpha": 15.78467845916748,
+   "n_open": 604,
+   "gate_sum": 594.9305419921875,
+   "overlap_with_top64": 64,
+   "overlap_with_authors64": 49
+  },
+  "19": {
+   "alpha": 10.390278816223145,
+   "n_open": 197,
+   "gate_sum": 219.45863342285156,
+   "overlap_with_top64": 32,
+   "overlap_with_authors64": 13
+  }
+ },
+ "log": [
+  {
+   "epoch": 1,
+   "loss": -0.11250423861201853,
+   "loop_term": -0.14129378442885354,
+   "kl": 0.017868395138066262,
+   "sparsity": 1.092115145176649,
+   "val": {
+    "d_logprob_looping": -0.2905973703600466,
+    "d_logprob_productive": -0.03835158050060272,
+    "kl_productive": 0.024266831736895256
+   },
+   "gates": {
+    "15": {
+     "alpha": 8.836844444274902,
+     "n_open": 64,
+     "gate_sum": 84.14422607421875,
+     "overlap_with_top64": 64
+    },
+    "19": {
+     "alpha": 5.152805805206299,
+     "n_open": 64,
+     "gate_sum": 68.25604248046875,
+     "overlap_with_top64": 64
+    }
+   },
+   "minutes": 3.7
+  },
+  {
+   "epoch": 2,
+   "loss": -0.7889415179379284,
+   "loop_term": -0.9529481476638466,
+   "kl": 0.13606546285154764,
+   "sparsity": 2.7941166274249554,
+   "val": {
+    "d_logprob_looping": -3.6861675046384335,
+    "d_logprob_productive": -0.3445325503125787,
+    "kl_productive": 0.3047542485874146
+   },
+   "gates": {
+    "15": {
+     "alpha": 12.727291107177734,
+     "n_open": 434,
+     "gate_sum": 408.8648681640625,
+     "overlap_with_top64": 64
+    },
+    "19": {
+     "alpha": 7.493429660797119,
+     "n_open": 207,
+     "gate_sum": 213.64871215820312,
+     "overlap_with_top64": 34
+    }
+   },
+   "minutes": 7.1
+  },
+  {
+   "epoch": 3,
+   "loss": -1.4823118802160025,
+   "loop_term": -1.9354267669841647,
+   "kl": 0.4012240623123944,
+   "sparsity": 5.189083658158779,
+   "val": {
+    "d_logprob_looping": -5.452418863773346,
+    "d_logprob_productive": -0.3802153575234115,
+    "kl_productive": 0.34478651848621666
+   },
+   "gates": {
+    "15": {
+     "alpha": 14.686051368713379,
+     "n_open": 550,
+     "gate_sum": 531.4295043945312,
+     "overlap_with_top64": 64
+    },
+    "19": {
+     "alpha": 8.8055419921875,
+     "n_open": 183,
+     "gate_sum": 197.03961181640625,
+     "overlap_with_top64": 33
+    }
+   },
+   "minutes": 10.5
+  },
+  {
+   "epoch": 4,
+   "loss": -1.7790368907153606,
+   "loop_term": -2.256029477342963,
+   "kl": 0.4173607901320793,
+   "sparsity": 5.963180020451546,
+   "val": {
+    "d_logprob_looping": -5.872185222804546,
+    "d_logprob_productive": -0.2908605891279876,
+    "kl_productive": 0.2670524374116212
+   },
+   "gates": {
+    "15": {
+     "alpha": 15.78467845916748,
+     "n_open": 604,
+     "gate_sum": 594.9305419921875,
+     "overlap_with_top64": 64
+    },
+    "19": {
+     "alpha": 10.390278816223145,
+     "n_open": 197,
+     "gate_sum": 219.45863342285156,
+     "overlap_with_top64": 32
+    }
+   },
+   "minutes": 13.9
+  }
+ ],
+ "minutes": 14.0
+}

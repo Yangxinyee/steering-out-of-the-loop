@@ -1,0 +1,80 @@
+{
+ "qwen35_08b/medqa": {
+  "acc": 0.4,
+  "cut": 0.25,
+  "n_cut": 50,
+  "mean_tok": 12758.745,
+  "median_tok": 6773.0,
+  "p95_tok": 32768,
+  "max_tok": 32768,
+  "finished_no_think_end": 0,
+  "finished_no_letter": 0,
+  "acc_finished": 0.46,
+  "n": 200
+ },
+ "qwen35_08b/pubmedqa": {
+  "acc": 0.665,
+  "cut": 0.045,
+  "n_cut": 9,
+  "mean_tok": 4536.265,
+  "median_tok": 3281.5,
+  "p95_tok": 9850,
+  "max_tok": 32768,
+  "finished_no_think_end": 0,
+  "finished_no_letter": 0,
+  "acc_finished": 0.6858638743455497,
+  "n": 200
+ },
+ "qwen35_2b/medqa": {
+  "acc": 0.66,
+  "cut": 0.05,
+  "n_cut": 10,
+  "mean_tok": 7920.735,
+  "median_tok": 6495.0,
+  "p95_tok": 32768,
+  "max_tok": 32768,
+  "finished_no_think_end": 0,
+  "finished_no_letter": 0,
+  "acc_finished": 0.6842105263157895,
+  "n": 200
+ },
+ "qwen35_2b/pubmedqa": {
+  "acc": 0.745,
+  "cut": 0.0,
+  "n_cut": 0,
+  "mean_tok": 3582.955,
+  "median_tok": 3232.5,
+  "p95_tok": 7997,
+  "max_tok": 11219,
+  "finished_no_think_end": 0,
+  "finished_no_letter": 0,
+  "acc_finished": 0.745,
+  "n": 200
+ },
+ "qwen3_06b/medqa": {
+  "acc": 0.365,
+  "cut": 0.0,
+  "n_cut": 0,
+  "mean_tok": 1022.3,
+  "median_tok": 880.5,
+  "p95_tok": 2248,
+  "max_tok": 4573,
+  "finished_no_think_end": 0,
+  "finished_no_letter": 0,
+  "acc_finished": 0.365,
+  "n": 200
+ },
+ "qwen3_06b/pubmedqa": {
+  "acc": 0.645,
+  "cut": 0.0,
+  "n_cut": 0,
+  "mean_tok": 446.505,
+  "median_tok": 392.0,
+  "p95_tok": 870,
+  "max_tok": 1166,
+  "finished_no_think_end": 0,
+  "finished_no_letter": 0,
+  "acc_finished": 0.645,
+  "n": 200
+ }
+}

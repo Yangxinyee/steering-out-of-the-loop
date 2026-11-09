@@ -1,0 +1,77 @@
+{
+ "n_problems": 500,
+ "arms": {
+  "base": {
+   "acc_81920": 0.096,
+   "acc_cut_at_32768": 0.094,
+   "cut_81920": 0.906,
+   "reached_32768": 0.908,
+   "mean_tokens": 74911.392,
+   "finished_no_answer": 0,
+   "of_those_reaching_32768": {
+    "n": 454,
+    "finished_by_81920": 1,
+    "right_at_81920": 3,
+    "right_when_cut_at_32768": 2
+   }
+  },
+  "edit": {
+   "acc_81920": 0.562,
+   "acc_cut_at_32768": 0.512,
+   "cut_81920": 0.152,
+   "reached_32768": 0.29,
+   "mean_tokens": 29874.36,
+   "finished_no_answer": 55,
+   "of_those_reaching_32768": {
+    "n": 145,
+    "finished_by_81920": 69,
+    "right_at_81920": 25,
+    "right_when_cut_at_32768": 0
+   }
+  }
+ },
+ "paired": {
+  "base: 81,920 - cut at 32,768": {
+   "d": 0.002,
+   "ci95": [
+    0.0,
+    0.006
+   ]
+  },
+  "edit: 81,920 - cut at 32,768": {
+   "d": 0.05,
+   "ci95": [
+    0.032,
+    0.07
+   ]
+  },
+  "at 81,920: edit - base": {
+   "d": 0.466,
+   "ci95": [
+    0.42,
+    0.51
+   ]
+  },
+  "cut at 32,768: edit - base": {
+   "d": 0.418,
+   "ci95": [
+    0.374,
+    0.462
+   ]
+  },
+  "base at 81,920 - edit cut at 32,768": {
+   "d": -0.416,
+   "ci95": [
+    -0.46,
+    -0.372
+   ]
+  }
+ },
+ "edit_4_samples": {
+  "acc": 0.5635,
+  "cut_share": 0.1475,
+  "mean_tokens": 29869.4955,
+  "no_answer_finished": 248,
+  "total": 2000
+ }
+}

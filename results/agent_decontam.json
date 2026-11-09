@@ -1,0 +1,142 @@
+{
+ "all": {
+  "gpt-6.1-sol": {
+   "problems": 500,
+   "acc": 0.4265,
+   "minus base": {
+    "gain": 0.351,
+    "ci95": [
+     0.318,
+     0.384
+    ],
+    "rescues": 712,
+    "regressions": 10,
+    "n": 500
+   },
+   "minus thinking off, full budget": {
+    "gain": -0.059,
+    "ci95": [
+     -0.0845,
+     -0.0335
+    ],
+    "rescues": 197,
+    "regressions": 315,
+    "n": 500
+   },
+   "minus published edit": {
+    "gain": -0.09,
+    "ci95": [
+     -0.1105,
+     -0.0695
+    ],
+    "rescues": 119,
+    "regressions": 299,
+    "n": 500
+   }
+  },
+  "Claude Opus 5.5": {
+   "problems": 500,
+   "acc": 0.332,
+   "minus base": {
+    "gain": 0.2565,
+    "ci95": [
+     0.2285,
+     0.285
+    ],
+    "rescues": 531,
+    "regressions": 18,
+    "n": 500
+   },
+   "minus thinking off, full budget": {
+    "gain": -0.1535,
+    "ci95": [
+     -0.18,
+     -0.127
+    ],
+    "rescues": 132,
+    "regressions": 439,
+    "n": 500
+   },
+   "minus published edit": {
+    "gain": -0.1845,
+    "ci95": [
+     -0.209,
+     -0.1605
+    ],
+    "rescues": 62,
+    "regressions": 431,
+    "n": 500
+   }
+  }
+ },
+ "clean": {
+  "gpt-6.1-sol": {
+   "problems": 389,
+   "acc": 0.39267352185089976,
+   "minus base": {
+    "gain": 0.3277634961439589,
+    "ci95": [
+     0.2892030848329049,
+     0.36503856041131105
+    ],
+    "rescues": 517,
+    "regressions": 7,
+    "n": 389
+   },
+   "minus thinking off, full budget": {
+    "gain": -0.060411311053984576,
+    "ci95": [
+     -0.08997429305912596,
+     -0.032133676092544985
+    ],
+    "rescues": 155,
+    "regressions": 249,
+    "n": 389
+   },
+   "minus published edit": {
+    "gain": -0.08933161953727506,
+    "ci95": [
+     -0.11246786632390746,
+     -0.06748071979434447
+    ],
+    "rescues": 95,
+    "regressions": 234,
+    "n": 389
+   }
+  },
+  "Claude Opus 5.5": {
+   "problems": 389,
+   "acc": 0.29884318766066836,
+   "minus base": {
+    "gain": 0.23393316195372751,
+    "ci95": [
+     0.20308483290488433,
+     0.26479755784061676
+    ],
+    "rescues": 377,
+    "regressions": 13,
+    "n": 389
+   },
+   "minus thinking off, full budget": {
+    "gain": -0.15424164524421594,
+    "ci95": [
+     -0.18508997429305912,
+     -0.12467866323907455
+    ],
+    "rescues": 109,
+    "regressions": 349,
+    "n": 389
+   },
+   "minus published edit": {
+    "gain": -0.18316195372750643,
+    "ci95": [
+     -0.2101542416452442,
+     -0.15681233933161953
+    ],
+    "rescues": 56,
+    "regressions": 341,
+    "n": 389
+   }
+  }
+ }
+}

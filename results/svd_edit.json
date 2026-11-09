@@ -1,0 +1,813 @@
+{
+ "layers": {
+  "15": {
+   "facts": {
+    "tensor": "model.language_model.layers.15.mlp.down_proj.weight",
+    "shape": [
+     1024,
+     3584
+    ],
+    "n_cols": 64,
+    "cols_first_last": [
+     0,
+     3003
+    ],
+    "contiguous_runs": 57,
+    "sha256_matches_evaluated": true,
+    "c_fitted": 6.0003,
+    "rank1_residual_rel": 0.0023473920246709235,
+    "sv2_over_sv1": 0.0005645956967960081,
+    "rel_change_fro": 0.106361810515083,
+    "J_in_top64_abs_write": 31,
+    "J_rank_abs_write_median": 69.0,
+    "J_rank_abs_write_max": 1113,
+    "J_sign_of_write": {
+     "positive": 30,
+     "negative": 34
+    },
+    "J_overlap_meandiff_top64": 36,
+    "random_overlap_expected": 1.1428571428571428
+   },
+   "alignment": {
+    "W_J": {
+     "cos2_top8": [
+      0.1684,
+      0.0019,
+      0.0208,
+      0.0051,
+      0.0146,
+      0.0067,
+      0.0026,
+      0.0
+     ],
+     "cum": {
+      "1": 0.16836542773472857,
+      "4": 0.19616460885683812,
+      "16": 0.27956797023733515,
+      "64": 0.42795661219506953
+     },
+     "alpha2": 0.42795661219506953,
+     "argmax_sv": 0,
+     "write_strength_b_over_s1": 0.4684697981385863
+    },
+    "W": {
+     "cos2_top8": [
+      0.0101,
+      0.0677,
+      0.0027,
+      0.0032,
+      0.0003,
+      0.0023,
+      0.0065,
+      0.0
+     ],
+     "cum": {
+      "1": 0.010123954585321046,
+      "4": 0.08364902667931116,
+      "16": 0.10453946472669415,
+      "64": 0.13286762136286473,
+      "256": 0.25028481507566513
+     },
+     "weighted_mean_index": 562.477003843234,
+     "argmax_sv": 1,
+     "write_strength_Wtu_over_s1": 0.3955257135142855
+    },
+    "baselines": {
+     "random_u_alpha2_mean": 0.06241358450411685,
+     "random_u_alpha2_p99": 0.08932746116501529,
+     "expected_random_u_alpha2": 0.0625,
+     "random_64_neurons_alpha2_mean": 0.07343253355221097,
+     "random_64_neurons_alpha2_p99": 0.14920834042877923,
+     "J_alpha2_percentile_among_random_subsets": 100.0,
+     "random_64_neurons_write_mean": 0.0753864804918725,
+     "J_write": 0.2914648685049094,
+     "J_write_percentile_among_random_subsets": 100.0,
+     "top64_writers_alpha2": 0.4401921706127049,
+     "top64_writers_write": 0.3509034742825108
+    }
+   },
+   "spectrum": {
+    "W_J_s_top5_before": [
+     0.622,
+     0.447,
+     0.395,
+     0.37,
+     0.359
+    ],
+    "W_J_s_top5_after": [
+     1.538,
+     0.449,
+     0.419,
+     0.376,
+     0.366
+    ],
+    "W_s_top5_before": [
+     1.467,
+     1.3,
+     1.084,
+     1.077,
+     1.017
+    ],
+    "W_s_top5_after": [
+     1.602,
+     1.459,
+     1.252,
+     1.075,
+     1.074
+    ],
+    "closed_form_max_rel_err_vs_formula": 4.331230728258614e-16,
+    "closed_form_max_rel_err_vs_bf16_edit": 6.413955994294886e-05,
+    "fro2_gain_W_J": 2.0390141366517565,
+    "fro2_gain_expected": 2.0388424697420184,
+    "spectral_shift_W_J": 0.44526108165641404,
+    "spectral_shift_W": 0.016883564338177295,
+    "dW_spectral_norm": 1.7487892110294563,
+    "dW_spectral_over_W_s1": 1.1923815492117371,
+    "cos2_u_top_left_sv_after_W_J": 0.8950564138979331,
+    "cos2_u_top_left_sv_after_W": 0.8823049467466336,
+    "principal_angles_deg_first_last": {
+     "1": {
+      "W_left": [
+       77.5946,
+       77.5946
+      ],
+      "W_right": [
+       82.9936,
+       82.9936
+      ]
+     },
+     "4": {
+      "W_left": [
+       0.2287,
+       85.836
+      ],
+      "W_right": [
+       0.5512,
+       77.8558
+      ]
+     },
+     "16": {
+      "W_left": [
+       0.0057,
+       88.7866
+      ],
+      "W_right": [
+       0.0078,
+       89.4542
+      ]
+     },
+     "64": {
+      "W_left": [
+       0.0023,
+       87.0852
+      ],
+      "W_right": [
+       0.0032,
+       88.5572
+      ]
+     }
+    },
+    "intruders_top16_W": {
+     "0.3": 1,
+     "0.5": 1,
+     "0.7": 1,
+     "0.9": 2
+    },
+    "intruders_top16_W_maxcos_first8": [
+     0.215,
+     0.974,
+     0.979,
+     0.988,
+     0.972,
+     0.985,
+     0.99,
+     0.866
+    ],
+    "intruders_top16_W_J": {
+     "0.3": 1,
+     "0.5": 2,
+     "0.7": 5,
+     "0.9": 9
+    },
+    "intruders_top16_W_J_maxcos_first8": [
+     0.16,
+     0.963,
+     0.724,
+     0.671,
+     0.683,
+     0.882,
+     0.937,
+     0.998
+    ],
+    "c_sweep": {
+     "0": {
+      "W_J_s_top3": [
+       0.622,
+       0.447,
+       0.395
+      ],
+      "W_J_fro2": 4.235566217419295,
+      "cos2_u_top_left_sv": 0.16836542773472898,
+      "W_s1": 1.4666355850487216,
+      "W_spectral_shift": 9.342032017915052e-16,
+      "W_J_spectral_shift": 0.0
+     },
+     "1": {
+      "W_J_s_top3": [
+       0.572,
+       0.446,
+       0.391
+      ],
+      "W_J_fro2": 4.150614447846712,
+      "cos2_u_top_left_sv": 5.24334427359425e-32,
+      "W_s1": 1.4651118938587735,
+      "W_spectral_shift": 0.0010935976772523768,
+      "W_J_spectral_shift": 0.02492082711866915
+     },
+     "2": {
+      "W_J_s_top3": [
+       0.622,
+       0.447,
+       0.395
+      ],
+      "W_J_fro2": 4.235566217419296,
+      "cos2_u_top_left_sv": 0.16836542773472907,
+      "W_s1": 1.4643200208957277,
+      "W_spectral_shift": 0.0017931092291680996,
+      "W_J_spectral_shift": 6.788874899509005e-16
+     },
+     "4": {
+      "W_J_s_top3": [
+       1.008,
+       0.448,
+       0.413
+      ],
+      "W_J_fro2": 4.915180373999969,
+      "cos2_u_top_left_sv": 0.7364766689451658,
+      "W_s1": 1.4640625071701383,
+      "W_spectral_shift": 0.004986321321886153,
+      "W_J_spectral_shift": 0.18803804245953626
+     },
+     "6": {
+      "W_J_s_top3": [
+       1.538,
+       0.449,
+       0.419
+      ],
+      "W_J_fro2": 6.274408687161315,
+      "cos2_u_top_left_sv": 0.895047060750358,
+      "W_s1": 1.6023204648705238,
+      "W_spectral_shift": 0.01688140582630455,
+      "W_J_spectral_shift": 0.4452172528162549
+     },
+     "8": {
+      "W_J_s_top3": [
+       2.098,
+       0.45,
+       0.421
+      ],
+      "W_J_fro2": 8.313251156903334,
+      "cos2_u_top_left_sv": 0.9450572098228154,
+      "W_s1": 2.1439736296314567,
+      "W_spectral_shift": 0.043732887768329363,
+      "W_J_spectral_shift": 0.7171809972132289
+     }
+    }
+   },
+   "input_side": {
+    "b_norm": 0.2914648685049094,
+    "b_participation_ratio_of_64": 24.260535455184048,
+    "b_in_right_sv_basis_cos2_top8": [
+     0.7672,
+     0.0045,
+     0.0382,
+     0.0083,
+     0.0222,
+     0.0098,
+     0.0035,
+     0.0
+    ],
+    "b_right_sv_argmax": 0,
+    "cos_r_up_u": 0.007647676215465211,
+    "cos_r_gate_u": 0.12449345769258677,
+    "cos_r_up_meandiff": 0.06974574101958361,
+    "logit_lens_plus_u": {
+     "top": [
+      "...*",
+      "...**",
+      "urada",
+      "essin",
+      "ologe",
+      "kede",
+      "tant",
+      "而是因为",
+      "gangen",
+      "iscos",
+      "zada",
+      "cante"
+     ],
+     "bottom": [
+      "呗",
+      " first",
+      " series",
+      " or",
+      " thereby",
+      " f",
+      "지요",
+      "即可",
+      " easily",
+      "而不",
+      " thus",
+      " suit"
+     ]
+    },
+    "logit_lens_r_up": {
+     "top": [
+      "此",
+      " cha",
+      " a",
+      " y",
+      "金",
+      "先在",
+      " ca",
+      "cha",
+      " t",
+      " Py",
+      "就应该",
+      "-"
+     ],
+     "bottom": [
+      " belast",
+      "нету",
+      "eteg",
+      " proble",
+      " :\"",
+      "فع",
+      "سلام",
+      " نشست",
+      "estim",
+      "ěk",
+      "standen",
+      "nius"
+     ]
+    },
+    "embedding_receptor_r_up": {
+     "top": [
+      " a",
+      " cha",
+      "此",
+      "-",
+      " ca",
+      "先在",
+      " y",
+      "金",
+      " `",
+      "cha",
+      " t",
+      "赖"
+     ],
+     "bottom": [
+      ",’”",
+      "нету",
+      " proble",
+      " :\"",
+      " belast",
+      "standen",
+      "eteg",
+      "']}'",
+      "ěk",
+      " />}",
+      "ITÉ",
+      ",'\""
+     ]
+    }
+   },
+   "notes": {
+    "u_sign": "chosen so that u · meandiff u > 0; the edit itself is the same for -u"
+   }
+  },
+  "19": {
+   "facts": {
+    "tensor": "model.language_model.layers.19.mlp.down_proj.weight",
+    "shape": [
+     1024,
+     3584
+    ],
+    "n_cols": 64,
+    "cols_first_last": [
+     1,
+     3343
+    ],
+    "contiguous_runs": 62,
+    "sha256_matches_evaluated": true,
+    "c_fitted": 6.0002,
+    "rank1_residual_rel": 0.0029437585467372465,
+    "sv2_over_sv1": 0.0006443273514984313,
+    "rel_change_fro": 0.08106276525634824,
+    "J_in_top64_abs_write": 18,
+    "J_rank_abs_write_median": 128.5,
+    "J_rank_abs_write_max": 2419,
+    "J_sign_of_write": {
+     "positive": 40,
+     "negative": 24
+    },
+    "J_overlap_meandiff_top64": 28,
+    "random_overlap_expected": 1.1428571428571428
+   },
+   "alignment": {
+    "W_J": {
+     "cos2_top8": [
+      0.1647,
+      0.0001,
+      0.0027,
+      0.0001,
+      0.0001,
+      0.0008,
+      0.0043,
+      0.0004
+     ],
+     "cum": {
+      "1": 0.16469098859545894,
+      "4": 0.16760740250971723,
+      "16": 0.18983948441557083,
+      "64": 0.3193989220417761
+     },
+     "alpha2": 0.3193989220417761,
+     "argmax_sv": 0,
+     "write_strength_b_over_s1": 0.4555093985744908
+    },
+    "W": {
+     "cos2_top8": [
+      0.0946,
+      0.0009,
+      0.004,
+      0.0015,
+      0.001,
+      0.0009,
+      0.0003,
+      0.0
+     ],
+     "cum": {
+      "1": 0.09457487474879579,
+      "4": 0.1009528199053443,
+      "16": 0.10957258011208547,
+      "64": 0.1266002534698358,
+      "256": 0.23208970247453226
+     },
+     "weighted_mean_index": 628.5184051160269,
+     "argmax_sv": 0,
+     "write_strength_Wtu_over_s1": 0.4399312898454423
+    },
+    "baselines": {
+     "random_u_alpha2_mean": 0.062368711726470294,
+     "random_u_alpha2_p99": 0.08978498986712687,
+     "expected_random_u_alpha2": 0.0625,
+     "random_64_neurons_alpha2_mean": 0.06783550772743822,
+     "random_64_neurons_alpha2_p99": 0.19472270371603193,
+     "J_alpha2_percentile_among_random_subsets": 100.0,
+     "random_64_neurons_write_mean": 0.07705043680594628,
+     "J_write": 0.23311945718559696,
+     "J_write_percentile_among_random_subsets": 100.0,
+     "top64_writers_alpha2": 0.33175341112610846,
+     "top64_writers_write": 0.2917878420358663
+    }
+   },
+   "spectrum": {
+    "W_J_s_top5_before": [
+     0.512,
+     0.42,
+     0.397,
+     0.374,
+     0.367
+    ],
+    "W_J_s_top5_after": [
+     1.238,
+     0.42,
+     0.399,
+     0.374,
+     0.367
+    ],
+    "W_s_top5_before": [
+     1.324,
+     1.164,
+     1.065,
+     1.007,
+     0.971
+    ],
+    "W_s_top5_after": [
+     1.325,
+     1.268,
+     1.164,
+     1.063,
+     1.006
+    ],
+    "closed_form_max_rel_err_vs_formula": 2.241661120987278e-16,
+    "closed_form_max_rel_err_vs_bf16_edit": 4.254672567789502e-05,
+    "fro2_gain_W_J": 1.3044113277921898,
+    "fro2_gain_expected": 1.304272351644177,
+    "spectral_shift_W_J": 0.3232702398573904,
+    "spectral_shift_W": 0.009288746340011577,
+    "dW_spectral_norm": 1.3987167431135816,
+    "dW_spectral_over_W_s1": 1.0562728442671816,
+    "cos2_u_top_left_sv_after_W_J": 0.8838388983247052,
+    "cos2_u_top_left_sv_after_W": 0.893949905608832,
+    "principal_angles_deg_first_last": {
+     "1": {
+      "W_left": [
+       64.0703,
+       64.0703
+      ],
+      "W_right": [
+       80.636,
+       80.636
+      ]
+     },
+     "4": {
+      "W_left": [
+       0.052,
+       88.3019
+      ],
+      "W_right": [
+       0.0303,
+       88.7612
+      ]
+     },
+     "16": {
+      "W_left": [
+       0.0062,
+       84.1497
+      ],
+      "W_right": [
+       0.008,
+       84.5056
+      ]
+     },
+     "64": {
+      "W_left": [
+       0.0024,
+       88.7108
+      ],
+      "W_right": [
+       0.0035,
+       88.1174
+      ]
+     }
+    },
+    "intruders_top16_W": {
+     "0.3": 0,
+     "0.5": 1,
+     "0.7": 1,
+     "0.9": 3
+    },
+    "intruders_top16_W_maxcos_first8": [
+     0.437,
+     0.893,
+     0.998,
+     0.997,
+     0.999,
+     0.964,
+     0.956,
+     0.999
+    ],
+    "intruders_top16_W_J": {
+     "0.3": 1,
+     "0.5": 2,
+     "0.7": 3,
+     "0.9": 9
+    },
+    "intruders_top16_W_J_maxcos_first8": [
+     0.151,
+     1.0,
+     0.978,
+     0.996,
+     0.988,
+     0.676,
+     0.714,
+     0.967
+    ],
+    "c_sweep": {
+     "0": {
+      "W_J_s_top3": [
+       0.512,
+       0.42,
+       0.397
+      ],
+      "W_J_fro2": 5.050956855635738,
+      "cos2_u_top_left_sv": 0.16469098859545875,
+      "W_s1": 1.3242002298032953,
+      "W_spectral_shift": 8.805616749654747e-16,
+      "W_J_spectral_shift": 0.0
+     },
+     "1": {
+      "W_J_s_top3": [
+       0.471,
+       0.42,
+       0.396
+      ],
+      "W_J_fro2": 4.99661217431723,
+      "cos2_u_top_left_sv": 3.774822690998982e-32,
+      "W_s1": 1.3078766154802293,
+      "W_spectral_shift": 0.0010049224765514852,
+      "W_J_spectral_shift": 0.018180651713829824
+     },
+     "2": {
+      "W_J_s_top3": [
+       0.512,
+       0.42,
+       0.397
+      ],
+      "W_J_fro2": 5.050956855635738,
+      "cos2_u_top_left_sv": 0.16469098859545858,
+      "W_s1": 1.2964574598080059,
+      "W_spectral_shift": 0.0017625331668423608,
+      "W_J_spectral_shift": 4.3506014454234687e-16
+     },
+     "4": {
+      "W_J_s_top3": [
+       0.818,
+       0.42,
+       0.398
+      ],
+      "W_J_fro2": 5.485714306183797,
+      "cos2_u_top_left_sv": 0.7180580352349326,
+      "W_s1": 1.2819837729235368,
+      "W_spectral_shift": 0.003096593150561191,
+      "W_J_spectral_shift": 0.13641052789707417
+     },
+     "6": {
+      "W_J_s_top3": [
+       1.238,
+       0.42,
+       0.399
+      ],
+      "W_J_fro2": 6.3552292072799155,
+      "cos2_u_top_left_sv": 0.8838399336158944,
+      "W_s1": 1.3254461538586177,
+      "W_spectral_shift": 0.009288262081501132,
+      "W_J_spectral_shift": 0.3232502627519341
+     },
+     "8": {
+      "W_J_s_top3": [
+       1.684,
+       0.42,
+       0.399
+      ],
+      "W_J_fro2": 7.6595015589240925,
+      "cos2_u_top_left_sv": 0.9384349073899843,
+      "W_s1": 1.745895630662514,
+      "W_spectral_shift": 0.026115551831722192,
+      "W_J_spectral_shift": 0.521565498948577
+     }
+    }
+   },
+   "input_side": {
+    "b_norm": 0.23311945718559696,
+    "b_participation_ratio_of_64": 13.726662695896144,
+    "b_in_right_sv_basis_cos2_top8": [
+     0.7937,
+     0.0002,
+     0.0079,
+     0.0004,
+     0.0001,
+     0.002,
+     0.0101,
+     0.0009
+    ],
+    "b_right_sv_argmax": 0,
+    "cos_r_up_u": 0.05377816855185119,
+    "cos_r_gate_u": 0.07981613345730341,
+    "cos_r_up_meandiff": 0.10362576853756368,
+    "logit_lens_plus_u": {
+     "top": [
+      "...*",
+      "她还是",
+      "而是因为",
+      "他还是",
+      " Assinar",
+      "...**",
+      "emies",
+      "urada",
+      "ossid",
+      "istou",
+      "ург",
+      "威夷"
+     ],
+     "bottom": [
+      " first",
+      "对",
+      " count",
+      "即可",
+      " yields",
+      " basic",
+      " appropriately",
+      " suit",
+      " result",
+      " exact",
+      " value",
+      "R"
+     ]
+    },
+    "logit_lens_r_up": {
+     "top": [
+      ">>)",
+      "\n\n    \n",
+      "ινή",
+      "athe",
+      "消散",
+      "ardash",
+      "}`}",
+      "liness",
+      " vrijeme",
+      "=add",
+      "ORTE",
+      " време"
+     ],
+     "bottom": [
+      "\"",
+      " ",
+      "$",
+      "h",
+      "备",
+      "\\",
+      "omy",
+      " \"",
+      "r",
+      "通",
+      "厅",
+      "ų"
+     ]
+    },
+    "embedding_receptor_r_up": {
+     "top": [
+      ">>)",
+      "ινή",
+      "\n\n    \n",
+      "liness",
+      "ardash",
+      "athe",
+      "alizadas",
+      "=add",
+      "消散",
+      "}`}",
+      "вершенство",
+      "ORTE"
+     ],
+     "bottom": [
+      " ",
+      "\"",
+      "$",
+      "h",
+      " \"",
+      "\\",
+      "r",
+      "通",
+      "厅",
+      "备",
+      " H",
+      "/"
+     ]
+    }
+   },
+   "notes": {
+    "u_sign": "chosen so that u · meandiff u > 0; the edit itself is the same for -u"
+   }
+  }
+ },
+ "notes": {
+  "subspace_overlap": "mean cos² of the 64 principal angles between the two write subspaces",
+  "spectral_shift": "|s(edited) - s(base)|_2 / |s(base)|_2, as defined here",
+  "intruders": "top-16 left singular vectors of the edited matrix whose largest |cos| with any base left singular vector is below eps"
+ },
+ "two_edits": {
+  "abs_cos_u15_u19": 0.8490049043825749,
+  "random_abs_cos_mean": 0.02402106545610815,
+  "random_abs_cos_p99": 0.07831007122553979,
+  "subspace_overlap_J15_J19": 0.10498543142673668,
+  "subspace_overlap_random_64d_expected": 0.0625,
+  "subspace_overlap_J15_vs_random_64_neurons_of_19_mean": 0.06656254376022279,
+  "subspace_overlap_percentile": 100.0,
+  "known_directions": {
+   "meandiff_u15": {
+    "cos_same_layer": 0.6936910690303982,
+    "cos_other_layer": 0.615768129257176,
+    "random_abs_cos_p99": 0.0822621391214035
+   },
+   "meandiff_u19": {
+    "cos_same_layer": 0.7228172937144421,
+    "cos_other_layer": 0.5931045440942047,
+    "random_abs_cos_p99": 0.08053150755143071
+   },
+   "med_md_u15": {
+    "cos_same_layer": 0.6098171094863716,
+    "cos_other_layer": 0.5313256636627086,
+    "random_abs_cos_p99": 0.08002165543720671
+   },
+   "med_md_u19": {
+    "cos_same_layer": 0.6511894554523364,
+    "cos_other_layer": 0.54515085196763,
+    "random_abs_cos_p99": 0.08429871495614684
+   }
+  },
+  "interference": "not computed: the two edits sit in different layers whose neuron indices are unrelated; their shared space is the residual stream, covered by the u cosine and the subspace overlap"
+ }
+}

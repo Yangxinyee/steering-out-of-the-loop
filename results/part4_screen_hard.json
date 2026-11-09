@@ -1,0 +1,378 @@
+{
+ "Gemma 3 270M IT": {
+  "aime2425/gemma3_card": {
+   "protocol": "gemma3_card",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.0,
+   "cut": 0.13333333333333333,
+   "n_cut": 8,
+   "cut_looping": 8,
+   "finished_acc": 0.0,
+   "mean_tokens": 2396.633333333333
+  },
+  "math_l5_200/gemma3_card": {
+   "protocol": "gemma3_card",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.0,
+   "cut": 0.12,
+   "n_cut": 24,
+   "cut_looping": 23,
+   "finished_acc": 0.0,
+   "mean_tokens": 2066.915
+  }
+ },
+ "DeepSeek-R1-Distill-Qwen-1.5B": {
+  "aime2425/r1d_card": {
+   "protocol": "r1d_card",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.3,
+   "cut": 0.18333333333333332,
+   "n_cut": 11,
+   "cut_looping": 3,
+   "finished_acc": 0.3673469387755102,
+   "mean_tokens": 17918.3
+  },
+  "math_l5_200/r1d_card": {
+   "protocol": "r1d_card",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.765,
+   "cut": 0.025,
+   "n_cut": 5,
+   "cut_looping": 1,
+   "finished_acc": 0.7846153846153846,
+   "mean_tokens": 7245.495
+  },
+  "aime2425/think35": {
+   "protocol": "think35",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.2833333333333333,
+   "cut": 0.0,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.2833333333333333,
+   "mean_tokens": 13126.45
+  },
+  "math_l5_200/think35": {
+   "protocol": "think35",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.79,
+   "cut": 0.01,
+   "n_cut": 2,
+   "cut_looping": 2,
+   "finished_acc": 0.797979797979798,
+   "mean_tokens": 6347.655
+  }
+ },
+ "Qwen3-1.7B": {
+  "aime2425/qwen3_card": {
+   "protocol": "qwen3_card",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.3333333333333333,
+   "cut": 0.08333333333333333,
+   "n_cut": 5,
+   "cut_looping": 1,
+   "finished_acc": 0.36363636363636365,
+   "mean_tokens": 18752.083333333332
+  },
+  "math_l5_200/qwen3_card": {
+   "protocol": "qwen3_card",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.825,
+   "cut": 0.005,
+   "n_cut": 1,
+   "cut_looping": 0,
+   "finished_acc": 0.8291457286432161,
+   "mean_tokens": 8492.295
+  },
+  "aime2425/think35": {
+   "protocol": "think35",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.38333333333333336,
+   "cut": 0.016666666666666666,
+   "n_cut": 1,
+   "cut_looping": 0,
+   "finished_acc": 0.3898305084745763,
+   "mean_tokens": 16724.733333333334
+  },
+  "math_l5_200/think35": {
+   "protocol": "think35",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.82,
+   "cut": 0.0,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.82,
+   "mean_tokens": 8330.785
+  }
+ },
+ "Gemma 4 E2B-it": {
+  "aime2425/gemma4_card": {
+   "protocol": "gemma4_card",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.4,
+   "cut": 0.0,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.4,
+   "mean_tokens": 7250.983333333334
+  },
+  "math_l5_200/gemma4_card": {
+   "protocol": "gemma4_card",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.73,
+   "cut": 0.0,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.73,
+   "mean_tokens": 4283.92
+  },
+  "aime2425/think35": {
+   "protocol": "think35",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.3,
+   "cut": 0.0,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.3,
+   "mean_tokens": 6798.866666666667
+  },
+  "math_l5_200/think35": {
+   "protocol": "think35",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.705,
+   "cut": 0.0,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.705,
+   "mean_tokens": 4047.66
+  }
+ },
+ "Qwen3.5-4B": {
+  "aime2425/card_think": {
+   "protocol": "card_think",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.6,
+   "cut": 0.4,
+   "n_cut": 24,
+   "cut_looping": 0,
+   "finished_acc": 1.0,
+   "mean_tokens": 25284.766666666666
+  },
+  "math_l5_200/card_think": {
+   "protocol": "card_think",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.86,
+   "cut": 0.105,
+   "n_cut": 21,
+   "cut_looping": 0,
+   "finished_acc": 0.9608938547486033,
+   "mean_tokens": 15320.16
+  },
+  "aime2425/think35": {
+   "protocol": "think35",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.6166666666666667,
+   "cut": 0.36666666666666664,
+   "n_cut": 22,
+   "cut_looping": 1,
+   "finished_acc": 0.9736842105263158,
+   "mean_tokens": 23962.183333333334
+  },
+  "math_l5_200/think35": {
+   "protocol": "think35",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.87,
+   "cut": 0.08,
+   "n_cut": 16,
+   "cut_looping": 2,
+   "finished_acc": 0.9456521739130435,
+   "mean_tokens": 13288.57
+  }
+ },
+ "Qwen3.5-9B": {
+  "aime2425/card_think": {
+   "protocol": "card_think",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.6166666666666667,
+   "cut": 0.38333333333333336,
+   "n_cut": 23,
+   "cut_looping": 0,
+   "finished_acc": 1.0,
+   "mean_tokens": 24311.466666666667
+  },
+  "math_l5_200/card_think": {
+   "protocol": "card_think",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.925,
+   "cut": 0.04,
+   "n_cut": 8,
+   "cut_looping": 0,
+   "finished_acc": 0.9635416666666666,
+   "mean_tokens": 13183.735
+  },
+  "aime2425/think35": {
+   "protocol": "think35",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.7,
+   "cut": 0.26666666666666666,
+   "n_cut": 16,
+   "cut_looping": 1,
+   "finished_acc": 0.9545454545454546,
+   "mean_tokens": 21866.516666666666
+  },
+  "math_l5_200/think35": {
+   "protocol": "think35",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.9,
+   "cut": 0.065,
+   "n_cut": 13,
+   "cut_looping": 0,
+   "finished_acc": 0.9625668449197861,
+   "mean_tokens": 12179.85
+  }
+ },
+ "Qwen3.5-0.8B (reference)": {
+  "aime2425/card_think": {
+   "protocol": "card_think",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.0,
+   "cut": 1.0,
+   "n_cut": 60,
+   "cut_looping": 26,
+   "finished_acc": null,
+   "mean_tokens": 32768.0
+  },
+  "math_l5_200/card_think": {
+   "protocol": "card_think",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.045,
+   "cut": 0.935,
+   "n_cut": 187,
+   "cut_looping": 83,
+   "finished_acc": 0.6923076923076923,
+   "mean_tokens": 32060.23
+  },
+  "aime2425/think35": {
+   "protocol": "think35",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.0,
+   "cut": 1.0,
+   "n_cut": 60,
+   "cut_looping": 59,
+   "finished_acc": null,
+   "mean_tokens": 32768.0
+  },
+  "math_l5_200/think35": {
+   "protocol": "think35",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.015,
+   "cut": 0.985,
+   "n_cut": 197,
+   "cut_looping": 189,
+   "finished_acc": 1.0,
+   "mean_tokens": 32380.26
+  }
+ },
+ "Qwen3.5-2B (reference)": {
+  "aime2425/card_think": {
+   "protocol": "card_think",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.1,
+   "cut": 0.9166666666666666,
+   "n_cut": 55,
+   "cut_looping": 6,
+   "finished_acc": 1.0,
+   "mean_tokens": 31875.483333333334
+  },
+  "math_l5_200/card_think": {
+   "protocol": "card_think",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.42,
+   "cut": 0.585,
+   "n_cut": 117,
+   "cut_looping": 10,
+   "finished_acc": 0.9759036144578314,
+   "mean_tokens": 26652.425
+  },
+  "aime2425/think35": {
+   "protocol": "think35",
+   "set": "aime2425",
+   "n": 60,
+   "missing": 0,
+   "acc": 0.13333333333333333,
+   "cut": 0.8666666666666667,
+   "n_cut": 52,
+   "cut_looping": 32,
+   "finished_acc": 1.0,
+   "mean_tokens": 31342.783333333333
+  },
+  "math_l5_200/think35": {
+   "protocol": "think35",
+   "set": "math_l5_200",
+   "n": 200,
+   "missing": 0,
+   "acc": 0.455,
+   "cut": 0.53,
+   "n_cut": 106,
+   "cut_looping": 63,
+   "finished_acc": 0.9574468085106383,
+   "mean_tokens": 24398.15
+  }
+ }
+}

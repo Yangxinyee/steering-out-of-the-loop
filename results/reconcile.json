@@ -1,0 +1,63 @@
+{
+ "base/math500": {
+  "n_problems": 500,
+  "ours_acc": 0.0755,
+  "authors_acc_same_problems": 0.079,
+  "diff": -0.0035,
+  "diff_ci95": [
+   -0.0165,
+   0.0095
+  ],
+  "per_problem_corr": 0.7440081617709238,
+  "ours_cut": 0.9295,
+  "authors_cut_all_problems": 0.93,
+  "acc_mismatch": false,
+  "cut_mismatch": false
+ },
+ "base/gsm8k": {
+  "n_problems": 1319,
+  "ours_acc": 0.1372251705837756,
+  "authors_acc_same_problems": 0.13836239575435935,
+  "diff": -0.0011372251705837756,
+  "diff_ci95": [
+   -0.017058377558756634,
+   0.014025777103866566
+  ],
+  "per_problem_corr": 0.48379120075891335,
+  "ours_cut": 0.8771796815769523,
+  "authors_cut_all_problems": 0.8749052312357847,
+  "acc_mismatch": false,
+  "cut_mismatch": false
+ },
+ "edit_authors/math500": {
+  "n_problems": 500,
+  "ours_acc": 0.5165,
+  "authors_acc_same_problems": 0.481,
+  "diff": 0.0355,
+  "diff_ci95": [
+   0.0165,
+   0.0545
+  ],
+  "per_problem_corr": 0.8686676367000998,
+  "ours_cut": 0.3095,
+  "authors_cut_all_problems": 0.3305,
+  "acc_mismatch": true,
+  "cut_mismatch": false
+ },
+ "edit_authors/gsm8k": {
+  "n_problems": 1319,
+  "ours_acc": 0.6736163760424564,
+  "authors_acc_same_problems": 0.6709628506444276,
+  "diff": 0.00265352539802881,
+  "diff_ci95": [
+   -0.014404852160727824,
+   0.019711902956785442
+  ],
+  "per_problem_corr": 0.722873000727912,
+  "ours_cut": 0.06557998483699773,
+  "authors_cut_all_problems": 0.07240333586050038,
+  "acc_mismatch": false,
+  "cut_mismatch": false
+ },
+ "MISMATCH": true
+}

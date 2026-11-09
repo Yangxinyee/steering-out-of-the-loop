@@ -1,0 +1,110 @@
+{
+ "math500": {
+  "all": {
+   "problems": 500,
+   "edit_acc": 0.5165,
+   "thinking_off_32k_acc": 0.4855,
+   "edit_minus_thinking_off_32k": {
+    "gain": 0.031,
+    "ci95": [
+     0.006,
+     0.056
+    ],
+    "rescues": 286,
+    "regressions": 224,
+    "n": 500
+   },
+   "thinking_off_8k_acc": 0.4325,
+   "edit_minus_thinking_off_8k": {
+    "gain": 0.084,
+    "ci95": [
+     0.061,
+     0.107
+    ],
+    "rescues": 329,
+    "regressions": 161,
+    "n": 500
+   }
+  },
+  "clean": {
+   "problems": 389,
+   "edit_acc": 0.4820051413881748,
+   "thinking_off_32k_acc": 0.4530848329048843,
+   "edit_minus_thinking_off_32k": {
+    "gain": 0.02892030848329049,
+    "ci95": [
+     0.0006426735218508997,
+     0.055912596401028275
+    ],
+    "rescues": 223,
+    "regressions": 178,
+    "n": 389
+   },
+   "thinking_off_8k_acc": 0.40681233933161953,
+   "edit_minus_thinking_off_8k": {
+    "gain": 0.07519280205655526,
+    "ci95": [
+     0.04948586118251928,
+     0.10025706940874037
+    ],
+    "rescues": 247,
+    "regressions": 130,
+    "n": 389
+   }
+  }
+ },
+ "gsm8k": {
+  "all": {
+   "problems": 1319,
+   "edit_acc": 0.6757012888551933,
+   "thinking_off_32k_acc": 0.5805534495830175,
+   "edit_minus_thinking_off_32k": {
+    "gain": 0.09514783927217589,
+    "ci95": [
+     0.07884761182714177,
+     0.11125852918877938
+    ],
+    "rescues": 962,
+    "regressions": 460,
+    "n": 1319
+   },
+   "thinking_off_8k_acc": 0.5669067475360121,
+   "edit_minus_thinking_off_8k": {
+    "gain": 0.1087945413191812,
+    "ci95": [
+     0.0926838514025777,
+     0.12471569370735405
+    ],
+    "rescues": 1019,
+    "regressions": 445,
+    "n": 1319
+   }
+  },
+  "clean": {
+   "problems": 1317,
+   "edit_acc": 0.6757782839787395,
+   "thinking_off_32k_acc": 0.5802961275626424,
+   "edit_minus_thinking_off_32k": {
+    "gain": 0.0954821564160972,
+    "ci95": [
+     0.07915717539863326,
+     0.11181188306757775
+    ],
+    "rescues": 962,
+    "regressions": 459,
+    "n": 1317
+   },
+   "thinking_off_8k_acc": 0.566628701594533,
+   "edit_minus_thinking_off_8k": {
+    "gain": 0.10914958238420654,
+    "ci95": [
+     0.09300968109339408,
+     0.12566438876233865
+    ],
+    "rescues": 1018,
+    "regressions": 443,
+    "n": 1317
+   }
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "MATH-500|nothink": {
+  "coverage": 0.677,
+  "baseline_risk": 0.3626292466765141,
+  "edit_risk_at_baseline_coverage": 0.2399120989349691
+ },
+ "MATH-500|nothink32k": {
+  "coverage": 0.6905,
+  "edit_risk": 0.25343953656770457,
+  "baseline_risk_at_edit_coverage": 0.29337254440977273,
+  "diff_risk_baseline_minus_edit": 0.03993300784206816,
+  "ci95": [
+   0.005160789472257554,
+   0.07193491130996857
+  ],
+  "n_boot": 2000
+ },
+ "GSM8K|nothink": {
+  "coverage": 0.9311978771796816,
+  "edit_risk": 0.27437410950539387,
+  "baseline_risk_at_edit_coverage": 0.39039489476466893
+ },
+ "GSM8K|nothink32k": {
+  "coverage": 0.9311978771796816,
+  "edit_risk": 0.27437410950539387,
+  "baseline_risk_at_edit_coverage": 0.3719135762662943,
+  "diff_risk_baseline_minus_edit": 0.09753946676090042,
+  "ci95": [
+   0.0797331446944674,
+   0.1155501430015405
+  ],
+  "n_boot": 2000
+ }
+}

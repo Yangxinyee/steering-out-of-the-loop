@@ -1,0 +1,283 @@
+{
+ "test": {
+  "med_base/think35": {
+   "label": "base (think35)",
+   "official": 0.4253731343283582,
+   "strict": 0.3739198743126473,
+   "cut": 0.23291437549096622,
+   "mean_tokens": 12327.560879811468,
+   "n": 5092
+  },
+  "med_base/card_think": {
+   "label": "T=1.0 (model card)",
+   "official": 0.44520816967792615,
+   "strict": 0.4436370777690495,
+   "cut": 0.006873527101335428,
+   "mean_tokens": 8475.934014139828,
+   "n": 5092,
+   "vs_base_official": {
+    "gain": 0.01983503534956795,
+    "ci95": [
+     0.00432050274941084,
+     0.03535447761194023
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.0697172034564022,
+    "ci95": [
+     0.05400628436763551,
+     0.08523173605655932
+    ]
+   },
+   "rescue": {
+    "base_cut": 1186,
+    "rescued": 1161,
+    "rescued_correct": 450,
+    "rescued_acc": 0.3875968992248062,
+    "newly_cut": 10,
+    "base_right_now_wrong": 558
+   }
+  },
+  "med_base/nothink35": {
+   "label": "thinking off",
+   "official": 0.39964650432050275,
+   "strict": 0.39473684210526316,
+   "cut": 0.030636292223095052,
+   "mean_tokens": 1747.2376276512175,
+   "n": 5092,
+   "vs_base_official": {
+    "gain": -0.02572663000785546,
+    "ci95": [
+     -0.043794186959937156,
+     -0.00805184603299293
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.020816967792615867,
+    "ci95": [
+     0.0027494108405341712,
+     0.038295365278868815
+    ]
+   },
+   "rescue": {
+    "base_cut": 1186,
+    "rescued": 1126,
+    "rescued_correct": 381,
+    "rescued_acc": 0.3383658969804618,
+    "newly_cut": 96,
+    "base_right_now_wrong": 777
+   }
+  },
+  "med_base/think35_bf8192": {
+   "label": "budget forcing 8k",
+   "official": 0.44520816967792615,
+   "strict": 0.4220345640219953,
+   "cut": 0.12450903377847604,
+   "mean_tokens": 7372.544383346426,
+   "n": 5092,
+   "vs_base_official": {
+    "gain": 0.01983503534956795,
+    "ci95": [
+     0.013157894736842105,
+     0.02670856245090338
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.048114689709348,
+    "ci95": [
+     0.041633935585231735,
+     0.05498821681068342
+    ]
+   },
+   "rescue": {
+    "base_cut": 1186,
+    "rescued": 600,
+    "rescued_correct": 256,
+    "rescued_acc": 0.4266666666666667,
+    "newly_cut": 48,
+    "base_right_now_wrong": 13
+   }
+  },
+  "med_base/think35_loop": {
+   "label": "loop breaking",
+   "official": 0.44422623723487825,
+   "strict": 0.41987431264728986,
+   "cut": 0.12843676355066772,
+   "mean_tokens": 7131.829929300864,
+   "n": 5092,
+   "vs_base_official": {
+    "gain": 0.018853102906520033,
+    "ci95": [
+     0.012765121759622938,
+     0.024941084053417124
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.04595443833464258,
+    "ci95": [
+     0.0396700706991359,
+     0.05223880597014925
+    ]
+   },
+   "rescue": {
+    "base_cut": 1186,
+    "rescued": 558,
+    "rescued_correct": 243,
+    "rescued_acc": 0.43548387096774194,
+    "newly_cut": 26,
+    "base_right_now_wrong": 8
+   }
+  },
+  "med_edit/think35": {
+   "label": "authors' math edit, unchanged",
+   "official": 0.4605263157894737,
+   "strict": 0.4603299293008641,
+   "cut": 0.000589159465828751,
+   "mean_tokens": 6188.971916732129,
+   "n": 5092,
+   "vs_base_official": {
+    "gain": 0.03515318146111548,
+    "ci95": [
+     0.01904457973291438,
+     0.05145326001571092
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.08641005498821681,
+    "ci95": [
+     0.0697172034564022,
+     0.103299293008641
+    ]
+   },
+   "rescue": {
+    "base_cut": 1186,
+    "rescued": 1184,
+    "rescued_correct": 486,
+    "rescued_acc": 0.41047297297297297,
+    "newly_cut": 1,
+    "base_right_now_wrong": 559
+   }
+  },
+  "med_md_a6/think35": {
+   "label": "mean-difference direction from MedQA train, coefficient 6",
+   "official": 0.44874312647289866,
+   "strict": 0.43637077769049487,
+   "cut": 0.05538098978790259,
+   "mean_tokens": 8246.090730557738,
+   "n": 5092,
+   "vs_base_official": {
+    "gain": 0.023369992144540455,
+    "ci95": [
+     0.007462686567164179,
+     0.03908091123330715
+    ]
+   },
+   "vs_base_strict": {
+    "gain": 0.0624509033778476,
+    "ci95": [
+     0.04712784760408484,
+     0.07757266300078555
+    ]
+   },
+   "rescue": {
+    "base_cut": 1186,
+    "rescued": 1055,
+    "rescued_correct": 415,
+    "rescued_acc": 0.3933649289099526,
+    "newly_cut": 151,
+    "base_right_now_wrong": 556
+   }
+  }
+ },
+ "practice": {
+  "med_base/think35": {
+   "official": 0.418,
+   "strict": 0.374,
+   "cut": 0.238,
+   "mean_tokens": 12418.912,
+   "n": 500
+  },
+  "med_md_a3/think35": {
+   "official": 0.412,
+   "strict": 0.398,
+   "cut": 0.102,
+   "mean_tokens": 9060.51,
+   "n": 500
+  },
+  "med_md_a6/think35": {
+   "official": 0.454,
+   "strict": 0.44,
+   "cut": 0.058,
+   "mean_tokens": 8154.444,
+   "n": 500
+  },
+  "med_md_a9/think35": {
+   "official": 0.452,
+   "strict": 0.432,
+   "cut": 0.064,
+   "mean_tokens": 8495.744,
+   "n": 500
+  }
+ },
+ "picked": "med_md_a6/think35",
+ "base_finished_acc": 0.4874551971326165,
+ "chance": 0.25,
+ "pairwise": {
+  "med_edit/think35 - med_base/card_think (official)": {
+   "gain": 0.015318146111547526,
+   "ci95": [
+    -0.00039277297721916735,
+    0.03161822466614297
+   ]
+  },
+  "med_edit/think35 - med_base/card_think (strict)": {
+   "gain": 0.01669285153181461,
+   "ci95": [
+    0.0009819324430479183,
+    0.032992930086410056
+   ]
+  },
+  "med_edit/think35 - med_md_a6/think35 (official)": {
+   "gain": 0.01178318931657502,
+   "ci95": [
+    -0.0037313432835820895,
+    0.02749410840534171
+   ]
+  },
+  "med_edit/think35 - med_md_a6/think35 (strict)": {
+   "gain": 0.023959151610369208,
+   "ci95": [
+    0.008248232521602514,
+    0.04006284367635507
+   ]
+  },
+  "med_md_a6/think35 - med_base/card_think (official)": {
+   "gain": 0.003534956794972506,
+   "ci95": [
+    -0.01237234878240377,
+    0.019250785545954368
+   ]
+  },
+  "med_md_a6/think35 - med_base/card_think (strict)": {
+   "gain": -0.007266300078554596,
+   "ci95": [
+    -0.023369992144540455,
+    0.00864100549882168
+   ]
+  },
+  "med_edit/think35 - med_base/think35_bf8192 (official)": {
+   "gain": 0.015318146111547526,
+   "ci95": [
+    -0.0007855459544383347,
+    0.03161822466614297
+   ]
+  },
+  "med_edit/think35 - med_base/think35_bf8192 (strict)": {
+   "gain": 0.038295365278868815,
+   "ci95": [
+    0.022191673212882953,
+    0.054595443833464256
+   ]
+  }
+ }
+}

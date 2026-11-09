@@ -1,0 +1,5 @@
+# Generation, edits that read activations, and the learned-edit baseline (Python 3.12, CUDA 12.9 wheels).
+-r requirements.txt
+torch==2.13.0
+vllm==0.32.0
+aiohttp==3.14.5

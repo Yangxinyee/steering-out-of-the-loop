@@ -1,0 +1,1636 @@
+{
+ "definition": "rescued = a sample (problem, index) the base model cut at the token limit and the fix finished",
+ "sets": {
+  "MATH-500": {
+   "kind": "math",
+   "samples": 2000,
+   "problems": 500,
+   "base": {
+    "cut_share": 0.9295,
+    "finished_accuracy": 0.9858156028368794,
+    "finished": 141,
+    "selective": [
+     {
+      "min_votes": 4,
+      "coverage": 0.012,
+      "accuracy": 1.0,
+      "answered": 6,
+      "right": 6
+     },
+     {
+      "min_votes": 3,
+      "coverage": 0.036,
+      "accuracy": 1.0,
+      "answered": 18,
+      "right": 18
+     },
+     {
+      "min_votes": 2,
+      "coverage": 0.082,
+      "accuracy": 1.0,
+      "answered": 41,
+      "right": 41
+     },
+     {
+      "min_votes": 1,
+      "coverage": 0.148,
+      "accuracy": 0.972972972972973,
+      "answered": 74,
+      "right": 72
+     }
+    ]
+   },
+   "chance": null,
+   "arms": {
+    "authors_edit": {
+     "rescued": 1242,
+     "rescued_accuracy": 0.7190016103059581,
+     "newly_cut": 2,
+     "within_problem": {
+      "problems": 68,
+      "rescued_acc": 0.9779411764705882,
+      "base_finished_acc": 0.9852941176470589,
+      "diff": -0.007352941176470588,
+      "lo": -0.051470588235294115,
+      "hi": 0.029411764705882353
+     },
+     "confidence": {
+      "rescued_right": 0.8451847704367301,
+      "rescued_wrong": 0.36174785100286533,
+      "base_finished_right": 0.591726618705036,
+      "base_finished_wrong": 0.25
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.352,
+       "accuracy": 0.9886363636363636,
+       "answered": 176,
+       "right": 174
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.488,
+       "accuracy": 0.9467213114754098,
+       "answered": 244,
+       "right": 231
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.644,
+       "accuracy": 0.8664596273291926,
+       "answered": 322,
+       "right": 279
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.902,
+       "accuracy": 0.7006651884700665,
+       "answered": 451,
+       "right": 316
+      }
+     ]
+    },
+    "t1": {
+     "rescued": 259,
+     "rescued_accuracy": 0.9613899613899614,
+     "newly_cut": 40,
+     "within_problem": {
+      "problems": 53,
+      "rescued_acc": 1.0,
+      "base_finished_acc": 0.9811320754716981,
+      "diff": 0.018867924528301886,
+      "lo": 0.0,
+      "hi": 0.04716981132075472
+     },
+     "confidence": {
+      "rescued_right": 0.7228915662650602,
+      "rescued_wrong": 0.25,
+      "base_finished_right": 0.591726618705036,
+      "base_finished_wrong": 0.25
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.082,
+       "accuracy": 1.0,
+       "answered": 41,
+       "right": 41
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.14,
+       "accuracy": 1.0,
+       "answered": 70,
+       "right": 70
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.202,
+       "accuracy": 1.0,
+       "answered": 101,
+       "right": 101
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.286,
+       "accuracy": 0.958041958041958,
+       "answered": 143,
+       "right": 137
+      }
+     ]
+    },
+    "bf8k": {
+     "rescued": 544,
+     "rescued_accuracy": 0.9705882352941176,
+     "newly_cut": 2,
+     "within_problem": {
+      "problems": 65,
+      "rescued_acc": 0.9923076923076923,
+      "base_finished_acc": 0.9846153846153847,
+      "diff": 0.007692307692307693,
+      "lo": -0.015384615384615385,
+      "hi": 0.038461538461538464
+     },
+     "confidence": {
+      "rescued_right": 0.7878787878787878,
+      "rescued_wrong": 0.28125,
+      "base_finished_right": 0.591726618705036,
+      "base_finished_wrong": 0.25
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.178,
+       "accuracy": 1.0,
+       "answered": 89,
+       "right": 89
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.3,
+       "accuracy": 1.0,
+       "answered": 150,
+       "right": 150
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.38,
+       "accuracy": 0.9947368421052631,
+       "answered": 190,
+       "right": 189
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.492,
+       "accuracy": 0.9634146341463414,
+       "answered": 246,
+       "right": 237
+      }
+     ]
+    },
+    "loop": {
+     "rescued": 541,
+     "rescued_accuracy": 0.9759704251386322,
+     "newly_cut": 1,
+     "within_problem": {
+      "problems": 67,
+      "rescued_acc": 0.9726368159203979,
+      "base_finished_acc": 0.9850746268656716,
+      "diff": -0.012437810945273632,
+      "lo": -0.05721393034825871,
+      "hi": 0.022388059701492536
+     },
+     "confidence": {
+      "rescued_right": 0.8020833333333334,
+      "rescued_wrong": 0.25,
+      "base_finished_right": 0.591726618705036,
+      "base_finished_wrong": 0.25
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.188,
+       "accuracy": 1.0,
+       "answered": 94,
+       "right": 94
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.308,
+       "accuracy": 1.0,
+       "answered": 154,
+       "right": 154
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.372,
+       "accuracy": 1.0,
+       "answered": 186,
+       "right": 186
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.478,
+       "accuracy": 0.9581589958158996,
+       "answered": 239,
+       "right": 229
+      }
+     ]
+    },
+    "meandiff": {
+     "rescued": 471,
+     "rescued_accuracy": 0.921443736730361,
+     "newly_cut": 38,
+     "within_problem": {
+      "problems": 64,
+      "rescued_acc": 0.9791666666666666,
+      "base_finished_acc": 0.984375,
+      "diff": -0.005208333333333334,
+      "lo": -0.04687500000000001,
+      "hi": 0.03125
+     },
+     "confidence": {
+      "rescued_right": 0.6797235023041475,
+      "rescued_wrong": 0.31756756756756754,
+      "base_finished_right": 0.591726618705036,
+      "base_finished_wrong": 0.25
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.084,
+       "accuracy": 1.0,
+       "answered": 42,
+       "right": 42
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.21,
+       "accuracy": 0.9904761904761905,
+       "answered": 105,
+       "right": 104
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.324,
+       "accuracy": 0.9814814814814815,
+       "answered": 162,
+       "right": 159
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.498,
+       "accuracy": 0.9156626506024096,
+       "answered": 249,
+       "right": 228
+      }
+     ]
+    },
+    "nothink": {
+     "rescued": 1213,
+     "rescued_accuracy": 0.6042868920032977,
+     "newly_cut": 0,
+     "within_problem": {
+      "problems": 68,
+      "rescued_acc": 0.8946078431372548,
+      "base_finished_acc": 0.9852941176470589,
+      "diff": -0.09068627450980393,
+      "lo": -0.1519607843137255,
+      "hi": -0.03676470588235295
+     },
+     "confidence": {
+      "rescued_right": 0.7605729877216917,
+      "rescued_wrong": 0.3140625,
+      "base_finished_right": 0.591726618705036,
+      "base_finished_wrong": 0.25
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.224,
+       "accuracy": 0.9821428571428571,
+       "answered": 112,
+       "right": 110
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.364,
+       "accuracy": 0.9615384615384616,
+       "answered": 182,
+       "right": 175
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.57,
+       "accuracy": 0.8631578947368421,
+       "answered": 285,
+       "right": 246
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.886,
+       "accuracy": 0.636568848758465,
+       "answered": 443,
+       "right": 282
+      }
+     ]
+    }
+   }
+  },
+  "GSM8K": {
+   "kind": "math",
+   "samples": 5276,
+   "problems": 1319,
+   "base": {
+    "cut_share": 0.8766110689916603,
+    "finished_accuracy": 0.9708141321044547,
+    "finished": 651,
+    "selective": [
+     {
+      "min_votes": 4,
+      "coverage": 0.014404852160727824,
+      "accuracy": 1.0,
+      "answered": 19,
+      "right": 19
+     },
+     {
+      "min_votes": 3,
+      "coverage": 0.05458680818802123,
+      "accuracy": 1.0,
+      "answered": 72,
+      "right": 72
+     },
+     {
+      "min_votes": 2,
+      "coverage": 0.13115996967399546,
+      "accuracy": 0.9884393063583815,
+      "answered": 173,
+      "right": 171
+     },
+     {
+      "min_votes": 1,
+      "coverage": 0.2918877937831691,
+      "accuracy": 0.9584415584415584,
+      "answered": 385,
+      "right": 369
+     }
+    ]
+   },
+   "chance": null,
+   "arms": {
+    "authors_edit": {
+     "rescued": 4275,
+     "rescued_accuracy": 0.6909941520467836,
+     "newly_cut": 13,
+     "within_problem": {
+      "problems": 365,
+      "rescued_acc": 0.941552511415525,
+      "base_finished_acc": 0.958904109589041,
+      "diff": -0.017351598173515986,
+      "lo": -0.03287671232876712,
+      "hi": -0.0018264840182648423
+     },
+     "confidence": {
+      "rescued_right": 0.8786391333784699,
+      "rescued_wrong": 0.4172975018925057,
+      "base_finished_right": 0.5443037974683544,
+      "base_finished_wrong": 0.3026315789473684
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.5087187263078089,
+       "accuracy": 0.9597615499254843,
+       "answered": 671,
+       "right": 644
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.6967399545109931,
+       "accuracy": 0.9205658324265505,
+       "answered": 919,
+       "right": 846
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8893100833965125,
+       "accuracy": 0.8252344416027281,
+       "answered": 1173,
+       "right": 968
+      },
+      {
+       "min_votes": 1,
+       "coverage": 1.0,
+       "accuracy": 0.7513267626990144,
+       "answered": 1319,
+       "right": 991
+      }
+     ]
+    },
+    "t1": {
+     "rescued": 1387,
+     "rescued_accuracy": 0.9105984138428262,
+     "newly_cut": 172,
+     "within_problem": {
+      "problems": 300,
+      "rescued_acc": 0.98,
+      "base_finished_acc": 0.9816666666666667,
+      "diff": -0.0016666666666666668,
+      "lo": -0.016666666666666666,
+      "hi": 0.015
+     },
+     "confidence": {
+      "rescued_right": 0.7278305621536025,
+      "rescued_wrong": 0.4032258064516129,
+      "base_finished_right": 0.5443037974683544,
+      "base_finished_wrong": 0.3026315789473684
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.14859742228961334,
+       "accuracy": 0.9846938775510204,
+       "answered": 196,
+       "right": 193
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.2721758908263836,
+       "accuracy": 0.9832869080779945,
+       "answered": 359,
+       "right": 353
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.3858984078847612,
+       "accuracy": 0.9666011787819253,
+       "answered": 509,
+       "right": 492
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.576194086429113,
+       "accuracy": 0.9026315789473685,
+       "answered": 760,
+       "right": 686
+      }
+     ]
+    },
+    "bf8k": {
+     "rescued": 2462,
+     "rescued_accuracy": 0.8915515840779854,
+     "newly_cut": 2,
+     "within_problem": {
+      "problems": 359,
+      "rescued_acc": 0.9619312906220985,
+      "base_finished_acc": 0.958217270194986,
+      "diff": 0.0037140204271123483,
+      "lo": -0.011606313834726092,
+      "hi": 0.019962859795728875
+     },
+     "confidence": {
+      "rescued_right": 0.826879271070615,
+      "rescued_wrong": 0.4344569288389513,
+      "base_finished_right": 0.5443037974683544,
+      "base_finished_wrong": 0.3026315789473684
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.3457164518574678,
+       "accuracy": 0.9780701754385965,
+       "answered": 456,
+       "right": 446
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.49962092494313876,
+       "accuracy": 0.9726858877086495,
+       "answered": 659,
+       "right": 641
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.6360879454131918,
+       "accuracy": 0.9463647199046484,
+       "answered": 839,
+       "right": 794
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.7884761182714177,
+       "accuracy": 0.8788461538461538,
+       "answered": 1040,
+       "right": 914
+      }
+     ]
+    },
+    "loop": {
+     "rescued": 2422,
+     "rescued_accuracy": 0.8914120561519405,
+     "newly_cut": 2,
+     "within_problem": {
+      "problems": 358,
+      "rescued_acc": 0.9529795158286777,
+      "base_finished_acc": 0.9553072625698324,
+      "diff": -0.002327746741154563,
+      "lo": -0.016771415270018616,
+      "hi": 0.013035381750465548
+     },
+     "confidence": {
+      "rescued_right": 0.8259610930986568,
+      "rescued_wrong": 0.4068441064638783,
+      "base_finished_right": 0.5443037974683544,
+      "base_finished_wrong": 0.3026315789473684
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.3411675511751327,
+       "accuracy": 0.9866666666666667,
+       "answered": 450,
+       "right": 444
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.48673237300985595,
+       "accuracy": 0.9750778816199377,
+       "answered": 642,
+       "right": 626
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.6224412433661866,
+       "accuracy": 0.9488428745432399,
+       "answered": 821,
+       "right": 779
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.7899924184988628,
+       "accuracy": 0.8809980806142035,
+       "answered": 1042,
+       "right": 918
+      }
+     ]
+    },
+    "meandiff": {
+     "rescued": 2278,
+     "rescued_accuracy": 0.8261633011413521,
+     "newly_cut": 122,
+     "within_problem": {
+      "problems": 336,
+      "rescued_acc": 0.9439484126984126,
+      "base_finished_acc": 0.9583333333333334,
+      "diff": -0.014384920634920636,
+      "lo": -0.03422619047619048,
+      "hi": 0.00496031746031746
+     },
+     "confidence": {
+      "rescued_right": 0.730605738575983,
+      "rescued_wrong": 0.3813131313131313,
+      "base_finished_right": 0.5443037974683544,
+      "base_finished_wrong": 0.3026315789473684
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.17816527672479152,
+       "accuracy": 0.9702127659574468,
+       "answered": 235,
+       "right": 228
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.3995451099317665,
+       "accuracy": 0.9620493358633776,
+       "answered": 527,
+       "right": 507
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.5898407884761183,
+       "accuracy": 0.9344473007712082,
+       "answered": 778,
+       "right": 727
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.8362395754359363,
+       "accuracy": 0.8177697189483227,
+       "answered": 1103,
+       "right": 902
+      }
+     ]
+    },
+    "nothink": {
+     "rescued": 4402,
+     "rescued_accuracy": 0.5520218082689686,
+     "newly_cut": 9,
+     "within_problem": {
+      "problems": 366,
+      "rescued_acc": 0.8051001821493624,
+      "base_finished_acc": 0.9562841530054644,
+      "diff": -0.15118397085610202,
+      "lo": -0.18351548269581058,
+      "hi": -0.11976320582877963
+     },
+     "confidence": {
+      "rescued_right": 0.8001028806584363,
+      "rescued_wrong": 0.35344827586206895,
+      "base_finished_right": 0.5443037974683544,
+      "base_finished_wrong": 0.3026315789473684
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.3161485974222896,
+       "accuracy": 0.9688249400479616,
+       "answered": 417,
+       "right": 404
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.5579984836997726,
+       "accuracy": 0.90625,
+       "answered": 736,
+       "right": 667
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8150113722517058,
+       "accuracy": 0.7813953488372093,
+       "answered": 1075,
+       "right": 840
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.9984836997725549,
+       "accuracy": 0.6643887623386484,
+       "answered": 1317,
+       "right": 875
+      }
+     ]
+    }
+   }
+  },
+  "practice": {
+   "kind": "math",
+   "samples": 500,
+   "problems": 500,
+   "base": {
+    "cut_share": 0.894,
+    "finished_accuracy": 0.9811320754716981,
+    "finished": 53,
+    "selective": [
+     {
+      "min_votes": 1,
+      "coverage": 0.106,
+      "accuracy": 0.9811320754716981,
+      "answered": 53,
+      "right": 52
+     }
+    ]
+   },
+   "chance": null,
+   "arms": {
+    "t1": {
+     "rescued": 114,
+     "rescued_accuracy": 0.8596491228070176,
+     "newly_cut": 12,
+     "within_problem": {
+      "problems": 0,
+      "rescued_acc": null,
+      "base_finished_acc": null,
+      "diff": null,
+      "lo": null,
+      "hi": null
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 1.0,
+       "n_rescued": 36,
+       "base_finished_acc": 1.0,
+       "n_base_finished": 19
+      },
+      "2B wrong": {
+       "rescued_acc": 0.3333333333333333,
+       "n_rescued": 3,
+       "base_finished_acc": null,
+       "n_base_finished": 0
+      }
+     },
+     "confidence": {
+      "rescued_right": 1.0,
+      "rescued_wrong": 1.0,
+      "base_finished_right": 1.0,
+      "base_finished_wrong": 1.0
+     }
+    },
+    "bf8k": {
+     "rescued": 203,
+     "rescued_accuracy": 0.9556650246305419,
+     "newly_cut": 0,
+     "within_problem": {
+      "problems": 0,
+      "rescued_acc": null,
+      "base_finished_acc": null,
+      "diff": null,
+      "lo": null,
+      "hi": null
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 1.0,
+       "n_rescued": 72,
+       "base_finished_acc": 1.0,
+       "n_base_finished": 19
+      },
+      "2B wrong": {
+       "rescued_acc": 0.75,
+       "n_rescued": 4,
+       "base_finished_acc": null,
+       "n_base_finished": 0
+      }
+     },
+     "confidence": {
+      "rescued_right": 1.0,
+      "rescued_wrong": 1.0,
+      "base_finished_right": 1.0,
+      "base_finished_wrong": 1.0
+     }
+    },
+    "loop": {
+     "rescued": 190,
+     "rescued_accuracy": 0.9473684210526315,
+     "newly_cut": 1,
+     "within_problem": {
+      "problems": 0,
+      "rescued_acc": null,
+      "base_finished_acc": null,
+      "diff": null,
+      "lo": null,
+      "hi": null
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 1.0,
+       "n_rescued": 71,
+       "base_finished_acc": 1.0,
+       "n_base_finished": 19
+      },
+      "2B wrong": {
+       "rescued_acc": 0.5714285714285714,
+       "n_rescued": 7,
+       "base_finished_acc": null,
+       "n_base_finished": 0
+      }
+     },
+     "confidence": {
+      "rescued_right": 1.0,
+      "rescued_wrong": 1.0,
+      "base_finished_right": 1.0,
+      "base_finished_wrong": 1.0
+     }
+    },
+    "meandiff": {
+     "rescued": 187,
+     "rescued_accuracy": 0.8770053475935828,
+     "newly_cut": 5,
+     "within_problem": {
+      "problems": 0,
+      "rescued_acc": null,
+      "base_finished_acc": null,
+      "diff": null,
+      "lo": null,
+      "hi": null
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.9104477611940298,
+       "n_rescued": 67,
+       "base_finished_acc": 1.0,
+       "n_base_finished": 19
+      },
+      "2B wrong": {
+       "rescued_acc": 0.16666666666666666,
+       "n_rescued": 6,
+       "base_finished_acc": null,
+       "n_base_finished": 0
+      }
+     },
+     "confidence": {
+      "rescued_right": 1.0,
+      "rescued_wrong": 1.0,
+      "base_finished_right": 1.0,
+      "base_finished_wrong": 1.0
+     }
+    },
+    "nothink": {
+     "rescued": 380,
+     "rescued_accuracy": 0.6236842105263158,
+     "newly_cut": 0,
+     "within_problem": {
+      "problems": 0,
+      "rescued_acc": null,
+      "base_finished_acc": null,
+      "diff": null,
+      "lo": null,
+      "hi": null
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.68,
+       "n_rescued": 125,
+       "base_finished_acc": 1.0,
+       "n_base_finished": 19
+      },
+      "2B wrong": {
+       "rescued_acc": 0.21428571428571427,
+       "n_rescued": 28,
+       "base_finished_acc": null,
+       "n_base_finished": 0
+      }
+     },
+     "confidence": {
+      "rescued_right": 1.0,
+      "rescued_wrong": 1.0,
+      "base_finished_right": 1.0,
+      "base_finished_wrong": 1.0
+     }
+    }
+   },
+   "2b_accuracy_on_stuck_vs_other": {
+    "stuck": 0.7734806629834254,
+    "n_stuck": 181,
+    "other": 1.0,
+    "n_other": 19
+   }
+  },
+  "MedQA": {
+   "kind": "mc",
+   "samples": 5092,
+   "problems": 1273,
+   "base": {
+    "cut_share": 0.23291437549096622,
+    "finished_accuracy": 0.4874551971326165,
+    "finished": 3906,
+    "selective": [
+     {
+      "min_votes": 4,
+      "coverage": 0.197172034564022,
+      "accuracy": 0.7211155378486056,
+      "answered": 251,
+      "right": 181
+     },
+     {
+      "min_votes": 3,
+      "coverage": 0.44776119402985076,
+      "accuracy": 0.624561403508772,
+      "answered": 570,
+      "right": 356
+     },
+     {
+      "min_votes": 2,
+      "coverage": 0.7902592301649647,
+      "accuracy": 0.5208747514910537,
+      "answered": 1006,
+      "right": 524
+     },
+     {
+      "min_votes": 1,
+      "coverage": 0.9638648860958366,
+      "accuracy": 0.49877750611246946,
+      "answered": 1227,
+      "right": 612
+     }
+    ]
+   },
+   "chance": 0.25,
+   "arms": {
+    "authors_edit": {
+     "rescued": 1184,
+     "rescued_accuracy": 0.41047297297297297,
+     "newly_cut": 1,
+     "within_problem": {
+      "problems": 630,
+      "rescued_acc": 0.42195767195767203,
+      "base_finished_acc": 0.42910052910052915,
+      "diff": -0.007142857142857131,
+      "lo": -0.040211640211640205,
+      "hi": 0.0261904761904762
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.4426229508196721,
+       "n_rescued": 122,
+       "base_finished_acc": 0.5935960591133005,
+       "n_base_finished": 406
+      },
+      "2B wrong": {
+       "rescued_acc": 0.3125,
+       "n_rescued": 80,
+       "base_finished_acc": 0.1875,
+       "n_base_finished": 192
+      }
+     },
+     "confidence": {
+      "rescued_right": 0.7268518518518519,
+      "rescued_wrong": 0.6038681948424068,
+      "base_finished_right": 0.7229516806722689,
+      "base_finished_wrong": 0.541958041958042
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.3401413982717989,
+       "accuracy": 0.648960739030023,
+       "answered": 433,
+       "right": 281
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.6645718774548312,
+       "accuracy": 0.5543735224586288,
+       "answered": 846,
+       "right": 469
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.99057344854674,
+       "accuracy": 0.49008723235527357,
+       "answered": 1261,
+       "right": 618
+      },
+      {
+       "min_votes": 1,
+       "coverage": 1.0,
+       "accuracy": 0.48860958366064416,
+       "answered": 1273,
+       "right": 622
+      }
+     ]
+    },
+    "t1": {
+     "rescued": 1161,
+     "rescued_accuracy": 0.3875968992248062,
+     "newly_cut": 10,
+     "within_problem": {
+      "problems": 626,
+      "rescued_acc": 0.406283280085197,
+      "base_finished_acc": 0.42971246006389774,
+      "diff": -0.023429179978700736,
+      "lo": -0.058306709265175706,
+      "hi": 0.011448349307774237
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.44537815126050423,
+       "n_rescued": 119,
+       "base_finished_acc": 0.5935960591133005,
+       "n_base_finished": 406
+      },
+      "2B wrong": {
+       "rescued_acc": 0.22077922077922077,
+       "n_rescued": 77,
+       "base_finished_acc": 0.1875,
+       "n_base_finished": 192
+      }
+     },
+     "confidence": {
+      "rescued_right": 0.7116666666666667,
+      "rescued_wrong": 0.5720815752461322,
+      "base_finished_right": 0.7229516806722689,
+      "base_finished_wrong": 0.541958041958042
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.3197172034564022,
+       "accuracy": 0.6314496314496314,
+       "answered": 407,
+       "right": 257
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.6488609583660644,
+       "accuracy": 0.549636803874092,
+       "answered": 826,
+       "right": 454
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.9803613511390417,
+       "accuracy": 0.4879807692307692,
+       "answered": 1248,
+       "right": 609
+      },
+      {
+       "min_votes": 1,
+       "coverage": 1.0,
+       "accuracy": 0.48939512961508247,
+       "answered": 1273,
+       "right": 623
+      }
+     ]
+    },
+    "bf8k": {
+     "rescued": 600,
+     "rescued_accuracy": 0.4266666666666667,
+     "newly_cut": 48,
+     "within_problem": {
+      "problems": 434,
+      "rescued_acc": 0.43855606758832566,
+      "base_finished_acc": 0.4519969278033794,
+      "diff": -0.013440860215053753,
+      "lo": -0.05606758832565283,
+      "hi": 0.02918586789554533
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.5671641791044776,
+       "n_rescued": 67,
+       "base_finished_acc": 0.5935960591133005,
+       "n_base_finished": 406
+      },
+      "2B wrong": {
+       "rescued_acc": 0.27906976744186046,
+       "n_rescued": 43,
+       "base_finished_acc": 0.1875,
+       "n_base_finished": 192
+      }
+     },
+     "confidence": {
+      "rescued_right": 0.669921875,
+      "rescued_wrong": 0.5094476744186046,
+      "base_finished_right": 0.7229516806722689,
+      "base_finished_wrong": 0.541958041958042
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.2608012568735271,
+       "accuracy": 0.7018072289156626,
+       "answered": 332,
+       "right": 233
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.5577376276512176,
+       "accuracy": 0.6112676056338028,
+       "answered": 710,
+       "right": 434
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8782403770620582,
+       "accuracy": 0.5134168157423972,
+       "answered": 1118,
+       "right": 574
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.9897879025923016,
+       "accuracy": 0.49682539682539684,
+       "answered": 1260,
+       "right": 626
+      }
+     ]
+    },
+    "loop": {
+     "rescued": 558,
+     "rescued_accuracy": 0.43548387096774194,
+     "newly_cut": 26,
+     "within_problem": {
+      "problems": 411,
+      "rescued_acc": 0.4537712895377129,
+      "base_finished_acc": 0.46025952960259536,
+      "diff": -0.006488240064882393,
+      "lo": -0.050689375506893744,
+      "hi": 0.03852392538523926
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.5573770491803278,
+       "n_rescued": 61,
+       "base_finished_acc": 0.5935960591133005,
+       "n_base_finished": 406
+      },
+      "2B wrong": {
+       "rescued_acc": 0.2682926829268293,
+       "n_rescued": 41,
+       "base_finished_acc": 0.1875,
+       "n_base_finished": 192
+      }
+     },
+     "confidence": {
+      "rescued_right": 0.676954732510288,
+      "rescued_wrong": 0.5087301587301587,
+      "base_finished_right": 0.7229516806722689,
+      "base_finished_wrong": 0.541958041958042
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.25530243519245877,
+       "accuracy": 0.7169230769230769,
+       "answered": 325,
+       "right": 233
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.5561665357423409,
+       "accuracy": 0.6045197740112994,
+       "answered": 708,
+       "right": 428
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8821681068342498,
+       "accuracy": 0.5138023152270703,
+       "answered": 1123,
+       "right": 577
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.9866457187745483,
+       "accuracy": 0.49044585987261147,
+       "answered": 1256,
+       "right": 616
+      }
+     ]
+    },
+    "meandiff": {
+     "rescued": 1055,
+     "rescued_accuracy": 0.3933649289099526,
+     "newly_cut": 151,
+     "within_problem": {
+      "problems": 613,
+      "rescued_acc": 0.40674279499728117,
+      "base_finished_acc": 0.4268624252311038,
+      "diff": -0.020119630233822725,
+      "lo": -0.05682436106579662,
+      "hi": 0.01604812398042406
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.4909090909090909,
+       "n_rescued": 110,
+       "base_finished_acc": 0.5935960591133005,
+       "n_base_finished": 406
+      },
+      "2B wrong": {
+       "rescued_acc": 0.24324324324324326,
+       "n_rescued": 74,
+       "base_finished_acc": 0.1875,
+       "n_base_finished": 192
+      }
+     },
+     "confidence": {
+      "rescued_right": 0.6662650602409639,
+      "rescued_wrong": 0.54765625,
+      "base_finished_right": 0.7229516806722689,
+      "base_finished_wrong": 0.541958041958042
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.28515318146111546,
+       "accuracy": 0.6584022038567493,
+       "answered": 363,
+       "right": 239
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.612725844461901,
+       "accuracy": 0.573076923076923,
+       "answered": 780,
+       "right": 447
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.9520816967792616,
+       "accuracy": 0.49257425742574257,
+       "answered": 1212,
+       "right": 597
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.9992144540455616,
+       "accuracy": 0.48663522012578614,
+       "answered": 1272,
+       "right": 619
+      }
+     ]
+    },
+    "nothink": {
+     "rescued": 1126,
+     "rescued_accuracy": 0.3383658969804618,
+     "newly_cut": 96,
+     "within_problem": {
+      "problems": 615,
+      "rescued_acc": 0.35121951219512193,
+      "base_finished_acc": 0.4300813008130081,
+      "diff": -0.07886178861788616,
+      "lo": -0.11788617886178862,
+      "hi": -0.040650406504065026
+     },
+     "by_2b": {
+      "2B right": {
+       "rescued_acc": 0.36134453781512604,
+       "n_rescued": 119,
+       "base_finished_acc": 0.5935960591133005,
+       "n_base_finished": 406
+      },
+      "2B wrong": {
+       "rescued_acc": 0.25675675675675674,
+       "n_rescued": 74,
+       "base_finished_acc": 0.1875,
+       "n_base_finished": 192
+      }
+     },
+     "confidence": {
+      "rescued_right": 0.5879265091863517,
+      "rescued_wrong": 0.5030201342281879,
+      "base_finished_right": 0.7229516806722689,
+      "base_finished_wrong": 0.541958041958042
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.16653574234092694,
+       "accuracy": 0.6179245283018868,
+       "answered": 212,
+       "right": 131
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.48860958366064416,
+       "accuracy": 0.5594855305466238,
+       "answered": 622,
+       "right": 348
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.9355852317360566,
+       "accuracy": 0.46011754827875734,
+       "answered": 1191,
+       "right": 548
+      },
+      {
+       "min_votes": 1,
+       "coverage": 1.0,
+       "accuracy": 0.44854673998428907,
+       "answered": 1273,
+       "right": 571
+      }
+     ]
+    }
+   },
+   "2b_accuracy_on_stuck_vs_other": {
+    "stuck": 0.591304347826087,
+    "n_stuck": 115,
+    "other": 0.7529411764705882,
+    "n_other": 85
+   }
+  },
+  "MMLU-Pro health": {
+   "kind": "mc",
+   "samples": 3272,
+   "problems": 818,
+   "base": {
+    "cut_share": 0.1549511002444988,
+    "finished_accuracy": 0.3678119349005425,
+    "finished": 2765,
+    "selective": [
+     {
+      "min_votes": 4,
+      "coverage": 0.21271393643031786,
+      "accuracy": 0.5919540229885057,
+      "answered": 174,
+      "right": 103
+     },
+     {
+      "min_votes": 3,
+      "coverage": 0.46577017114914426,
+      "accuracy": 0.5039370078740157,
+      "answered": 381,
+      "right": 192
+     },
+     {
+      "min_votes": 2,
+      "coverage": 0.8068459657701712,
+      "accuracy": 0.4196969696969697,
+      "answered": 660,
+      "right": 277
+     },
+     {
+      "min_votes": 1,
+      "coverage": 0.9865525672371638,
+      "accuracy": 0.3903345724907063,
+      "answered": 807,
+      "right": 315
+     }
+    ]
+   },
+   "chance": null,
+   "arms": {
+    "authors_edit": {
+     "rescued": 507,
+     "rescued_accuracy": 0.30177514792899407,
+     "newly_cut": 2,
+     "within_problem": {
+      "problems": 299,
+      "rescued_acc": 0.33389074693422516,
+      "base_finished_acc": 0.34448160535117056,
+      "diff": -0.010590858416945362,
+      "lo": -0.05295429208472687,
+      "hi": 0.032329988851727984
+     },
+     "confidence": {
+      "rescued_right": 0.7516339869281046,
+      "rescued_wrong": 0.5028248587570622,
+      "base_finished_right": 0.7323008849557522,
+      "base_finished_wrong": 0.5429061784897025
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.31295843520782396,
+       "accuracy": 0.58984375,
+       "answered": 256,
+       "right": 151
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.597799511002445,
+       "accuracy": 0.4703476482617587,
+       "answered": 489,
+       "right": 230
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.9621026894865525,
+       "accuracy": 0.386277001270648,
+       "answered": 787,
+       "right": 304
+      },
+      {
+       "min_votes": 1,
+       "coverage": 1.0,
+       "accuracy": 0.37897310513447435,
+       "answered": 818,
+       "right": 310
+      }
+     ]
+    },
+    "t1": {
+     "rescued": 497,
+     "rescued_accuracy": 0.2937625754527163,
+     "newly_cut": 10,
+     "within_problem": {
+      "problems": 298,
+      "rescued_acc": 0.3087248322147651,
+      "base_finished_acc": 0.3422818791946309,
+      "diff": -0.03355704697986576,
+      "lo": -0.07606263982102908,
+      "hi": 0.009507829977628645
+     },
+     "confidence": {
+      "rescued_right": 0.7191780821917808,
+      "rescued_wrong": 0.5021367521367521,
+      "base_finished_right": 0.7323008849557522,
+      "base_finished_wrong": 0.5429061784897025
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.27506112469437655,
+       "accuracy": 0.5733333333333334,
+       "answered": 225,
+       "right": 129
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.5476772616136919,
+       "accuracy": 0.47767857142857145,
+       "answered": 448,
+       "right": 214
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.9229828850855746,
+       "accuracy": 0.3933774834437086,
+       "answered": 755,
+       "right": 297
+      },
+      {
+       "min_votes": 1,
+       "coverage": 1.0,
+       "accuracy": 0.37775061124694376,
+       "answered": 818,
+       "right": 309
+      }
+     ]
+    },
+    "bf8k": {
+     "rescued": 290,
+     "rescued_accuracy": 0.3275862068965517,
+     "newly_cut": 41,
+     "within_problem": {
+      "problems": 208,
+      "rescued_acc": 0.34294871794871795,
+      "base_finished_acc": 0.37339743589743585,
+      "diff": -0.030448717948717945,
+      "lo": -0.08733974358974358,
+      "hi": 0.025641025641025654
+     },
+     "confidence": {
+      "rescued_right": 0.7052631578947368,
+      "rescued_wrong": 0.49615384615384617,
+      "base_finished_right": 0.7323008849557522,
+      "base_finished_wrong": 0.5429061784897025
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.265281173594132,
+       "accuracy": 0.6036866359447005,
+       "answered": 217,
+       "right": 131
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.530562347188264,
+       "accuracy": 0.5,
+       "answered": 434,
+       "right": 217
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8777506112469438,
+       "accuracy": 0.3969359331476323,
+       "answered": 718,
+       "right": 285
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.9926650366748166,
+       "accuracy": 0.3768472906403941,
+       "answered": 812,
+       "right": 306
+      }
+     ]
+    },
+    "loop": {
+     "rescued": 264,
+     "rescued_accuracy": 0.3484848484848485,
+     "newly_cut": 13,
+     "within_problem": {
+      "problems": 198,
+      "rescued_acc": 0.35353535353535354,
+      "base_finished_acc": 0.38299663299663306,
+      "diff": -0.029461279461279445,
+      "lo": -0.09175084175084174,
+      "hi": 0.031986531986531994
+     },
+     "confidence": {
+      "rescued_right": 0.717391304347826,
+      "rescued_wrong": 0.4811046511627907,
+      "base_finished_right": 0.7323008849557522,
+      "base_finished_wrong": 0.5429061784897025
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.2665036674816626,
+       "accuracy": 0.6055045871559633,
+       "answered": 218,
+       "right": 132
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.530562347188264,
+       "accuracy": 0.5,
+       "answered": 434,
+       "right": 217
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8643031784841075,
+       "accuracy": 0.4087694483734088,
+       "answered": 707,
+       "right": 289
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.9938875305623472,
+       "accuracy": 0.3837638376383764,
+       "answered": 813,
+       "right": 312
+      }
+     ]
+    },
+    "meandiff": {
+     "rescued": 447,
+     "rescued_accuracy": 0.3579418344519016,
+     "newly_cut": 83,
+     "within_problem": {
+      "problems": 291,
+      "rescued_acc": 0.3848797250859107,
+      "base_finished_acc": 0.34822451317296677,
+      "diff": 0.03665521191294388,
+      "lo": -0.007445589919816719,
+      "hi": 0.08190148911798398
+     },
+     "confidence": {
+      "rescued_right": 0.725,
+      "rescued_wrong": 0.4886759581881533,
+      "base_finished_right": 0.7323008849557522,
+      "base_finished_wrong": 0.5429061784897025
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.2885085574572127,
+       "accuracy": 0.5889830508474576,
+       "answered": 236,
+       "right": 139
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.5574572127139364,
+       "accuracy": 0.5021929824561403,
+       "answered": 456,
+       "right": 229
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8997555012224939,
+       "accuracy": 0.41983695652173914,
+       "answered": 736,
+       "right": 309
+      },
+      {
+       "min_votes": 1,
+       "coverage": 0.9963325183374083,
+       "accuracy": 0.3987730061349693,
+       "answered": 815,
+       "right": 325
+      }
+     ]
+    },
+    "nothink": {
+     "rescued": 486,
+     "rescued_accuracy": 0.2613168724279835,
+     "newly_cut": 52,
+     "within_problem": {
+      "problems": 296,
+      "rescued_acc": 0.27927927927927926,
+      "base_finished_acc": 0.34572072072072074,
+      "diff": -0.06644144144144143,
+      "lo": -0.1137387387387387,
+      "hi": -0.018018018018018018
+     },
+     "confidence": {
+      "rescued_right": 0.6338582677165354,
+      "rescued_wrong": 0.4115598885793872,
+      "base_finished_right": 0.7323008849557522,
+      "base_finished_wrong": 0.5429061784897025
+     },
+     "selective": [
+      {
+       "min_votes": 4,
+       "coverage": 0.14425427872860636,
+       "accuracy": 0.6101694915254238,
+       "answered": 118,
+       "right": 72
+      },
+      {
+       "min_votes": 3,
+       "coverage": 0.4070904645476773,
+       "accuracy": 0.4924924924924925,
+       "answered": 333,
+       "right": 164
+      },
+      {
+       "min_votes": 2,
+       "coverage": 0.8606356968215159,
+       "accuracy": 0.3778409090909091,
+       "answered": 704,
+       "right": 266
+      },
+      {
+       "min_votes": 1,
+       "coverage": 1.0,
+       "accuracy": 0.3484107579462103,
+       "answered": 818,
+       "right": 285
+      }
+     ]
+    }
+   }
+  }
+ }
+}

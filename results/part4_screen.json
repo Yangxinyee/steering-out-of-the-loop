@@ -1,0 +1,236 @@
+{
+ "Gemma 3 270M IT": {
+  "sel200": {
+   "n": 200,
+   "acc": 0.02,
+   "strict": 0.02,
+   "cut": 0.05,
+   "mean_tokens": 1049.81,
+   "finished_acc": 0.021052631578947368,
+   "cut_looping": 9,
+   "n_cut": 10,
+   "think_closed_share": 0.0
+  },
+  "medqa_s200": {
+   "n": 200,
+   "acc": 0.2,
+   "strict": 0.2,
+   "cut": 0.0,
+   "mean_tokens": 160.87,
+   "finished_acc": 0.2,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 0.0
+  }
+ },
+ "DeepSeek-R1-Distill-Qwen-1.5B": {
+  "sel200": {
+   "n": 200,
+   "acc": 0.885,
+   "strict": 0.885,
+   "cut": 0.005,
+   "mean_tokens": 2834.215,
+   "finished_acc": 0.8894472361809045,
+   "cut_looping": 0,
+   "n_cut": 1,
+   "think_closed_share": 1.0
+  },
+  "medqa_s200": {
+   "n": 200,
+   "acc": 0.285,
+   "strict": 0.285,
+   "cut": 0.0,
+   "mean_tokens": 1435.565,
+   "finished_acc": 0.285,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 1.0
+  },
+  "sel200_card": {
+   "protocol": "r1d_card",
+   "acc": 0.895,
+   "cut": 0.015,
+   "mean_tokens": 3624.775,
+   "n_cut": 3,
+   "cut_looping": 1,
+   "finished_acc": 0.9086294416243654
+  },
+  "medqa_s200_card": {
+   "protocol": "r1d_card",
+   "acc": 0.305,
+   "cut": 0.025,
+   "mean_tokens": 2558.165,
+   "n_cut": 5,
+   "cut_looping": 5,
+   "finished_acc": 0.30256410256410254
+  }
+ },
+ "Qwen3-1.7B": {
+  "sel200": {
+   "n": 200,
+   "acc": 0.945,
+   "strict": 0.945,
+   "cut": 0.0,
+   "mean_tokens": 3280.085,
+   "finished_acc": 0.945,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 1.0
+  },
+  "medqa_s200": {
+   "n": 200,
+   "acc": 0.505,
+   "strict": 0.505,
+   "cut": 0.0,
+   "mean_tokens": 1991.365,
+   "finished_acc": 0.505,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 1.0
+  },
+  "sel200_card": {
+   "protocol": "qwen3_card",
+   "acc": 0.915,
+   "cut": 0.005,
+   "mean_tokens": 3552.565,
+   "n_cut": 1,
+   "cut_looping": 1,
+   "finished_acc": 0.9195979899497487
+  },
+  "medqa_s200_card": {
+   "protocol": "qwen3_card",
+   "acc": 0.485,
+   "cut": 0.01,
+   "mean_tokens": 2325.35,
+   "n_cut": 2,
+   "cut_looping": 2,
+   "finished_acc": 0.4898989898989899
+  }
+ },
+ "Gemma 4 E2B-it": {
+  "sel200": {
+   "n": 200,
+   "acc": 0.88,
+   "strict": 0.88,
+   "cut": 0.0,
+   "mean_tokens": 1727.24,
+   "finished_acc": 0.88,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 0.0
+  },
+  "medqa_s200": {
+   "n": 200,
+   "acc": 0.635,
+   "strict": 0.635,
+   "cut": 0.0,
+   "mean_tokens": 1216.305,
+   "finished_acc": 0.635,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 0.0
+  },
+  "sel200_card": {
+   "protocol": "gemma4_card",
+   "acc": 0.88,
+   "cut": 0.0,
+   "mean_tokens": 1784.52,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.88
+  },
+  "medqa_s200_card": {
+   "protocol": "gemma4_card",
+   "acc": 0.59,
+   "cut": 0.0,
+   "mean_tokens": 1278.745,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.59
+  }
+ },
+ "Qwen3.5-4B": {
+  "sel200": {
+   "n": 200,
+   "acc": 0.955,
+   "strict": 0.955,
+   "cut": 0.02,
+   "mean_tokens": 5540.33,
+   "finished_acc": 0.9744897959183674,
+   "cut_looping": 1,
+   "n_cut": 4,
+   "think_closed_share": 1.0
+  },
+  "medqa_s200": {
+   "n": 200,
+   "acc": 0.865,
+   "strict": 0.865,
+   "cut": 0.0,
+   "mean_tokens": 4034.215,
+   "finished_acc": 0.865,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 1.0
+  },
+  "sel200_card": {
+   "protocol": "card_think",
+   "acc": 0.945,
+   "cut": 0.03,
+   "mean_tokens": 6582.54,
+   "n_cut": 6,
+   "cut_looping": 0,
+   "finished_acc": 0.9742268041237113
+  },
+  "medqa_s200_card": {
+   "protocol": "card_think",
+   "acc": 0.88,
+   "cut": 0.0,
+   "mean_tokens": 4783.975,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.88
+  }
+ },
+ "Qwen3.5-9B": {
+  "sel200": {
+   "n": 200,
+   "acc": 0.965,
+   "strict": 0.96,
+   "cut": 0.025,
+   "mean_tokens": 5125.125,
+   "finished_acc": 0.9846153846153847,
+   "cut_looping": 1,
+   "n_cut": 5,
+   "think_closed_share": 1.0
+  },
+  "medqa_s200": {
+   "n": 200,
+   "acc": 0.89,
+   "strict": 0.89,
+   "cut": 0.0,
+   "mean_tokens": 3803.055,
+   "finished_acc": 0.89,
+   "cut_looping": 0,
+   "n_cut": 0,
+   "think_closed_share": 1.0
+  },
+  "sel200_card": {
+   "protocol": "card_think",
+   "acc": 0.97,
+   "cut": 0.015,
+   "mean_tokens": 5299.295,
+   "n_cut": 3,
+   "cut_looping": 0,
+   "finished_acc": 0.9847715736040609
+  },
+  "medqa_s200_card": {
+   "protocol": "card_think",
+   "acc": 0.905,
+   "cut": 0.0,
+   "mean_tokens": 4098.16,
+   "n_cut": 0,
+   "cut_looping": 0,
+   "finished_acc": 0.905
+  }
+ }
+}

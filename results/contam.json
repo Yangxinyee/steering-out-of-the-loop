@@ -1,0 +1,1097 @@
+{
+ "math500": {
+  "n": 500,
+  "flagged": [
+   {
+    "id": "test/precalculus/807.json",
+    "nearest": "math_train_precalculus_15",
+    "cos": 0.8772300689282497,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2584.json",
+    "nearest": "math_train_algebra_315",
+    "cos": 0.9179145006091833,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2036.json",
+    "nearest": "math_train_algebra_1209",
+    "cos": 0.9959438516088377,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1197.json",
+    "nearest": "math_train_intermediate_algebra_107",
+    "cos": 0.9732309019349743,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/134.json",
+    "nearest": "math_train_intermediate_algebra_862",
+    "cos": 0.8397039602281949,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/1199.json",
+    "nearest": "math_train_precalculus_515",
+    "cos": 0.9861191956887765,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/number_theory/864.json",
+    "nearest": "math_train_number_theory_558",
+    "cos": 0.8363442042290969,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/number_theory/627.json",
+    "nearest": "math_train_number_theory_415",
+    "cos": 0.8565661708988948,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/428.json",
+    "nearest": "math_train_intermediate_algebra_788",
+    "cos": 0.8333765682752419,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/geometry/178.json",
+    "nearest": "math_train_geometry_397",
+    "cos": 0.9509303073391503,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/305.json",
+    "nearest": "math_train_intermediate_algebra_138",
+    "cos": 0.9533557456235017,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1217.json",
+    "nearest": "math_train_intermediate_algebra_1083",
+    "cos": 0.9889752509400314,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/951.json",
+    "nearest": "math_train_algebra_280",
+    "cos": 0.8972396487259605,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/1105.json",
+    "nearest": "math_train_precalculus_167",
+    "cos": 0.9675871342173219,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/572.json",
+    "nearest": "math_train_prealgebra_221",
+    "cos": 0.9701754391510873,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/24313.json",
+    "nearest": "math_train_precalculus_51",
+    "cos": 0.9079993637377907,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/1004.json",
+    "nearest": "math_train_algebra_941",
+    "cos": 0.8813577046282208,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/2046.json",
+    "nearest": "math_train_algebra_336",
+    "cos": 0.8012028725365954,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/307.json",
+    "nearest": "math_train_prealgebra_697",
+    "cos": 0.9263780382725546,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/567.json",
+    "nearest": "math_train_algebra_567",
+    "cos": 0.9540124751755643,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/873.json",
+    "nearest": "math_train_algebra_1433",
+    "cos": 0.839755579470817,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/34.json",
+    "nearest": "math_train_precalculus_348",
+    "cos": 0.9861441487797629,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/1924.json",
+    "nearest": "math_train_algebra_197",
+    "cos": 0.8208717923340596,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/1300.json",
+    "nearest": "math_train_precalculus_647",
+    "cos": 0.9632486545913665,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/515.json",
+    "nearest": "math_train_algebra_1123",
+    "cos": 0.8530386678115691,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/44.json",
+    "nearest": "math_train_precalculus_425",
+    "cos": 0.8498504564087543,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/counting_and_probability/1060.json",
+    "nearest": "math_train_counting_and_probability_207",
+    "cos": 0.8073182095225545,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/128.json",
+    "nearest": "math_train_intermediate_algebra_151",
+    "cos": 0.9661137202722375,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/505.json",
+    "nearest": "math_train_algebra_260",
+    "cos": 0.9720252548203216,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2232.json",
+    "nearest": "math_train_algebra_897",
+    "cos": 0.9735554649880135,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/246.json",
+    "nearest": "math_train_algebra_1456",
+    "cos": 0.9192038848373716,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1151.json",
+    "nearest": "math_train_intermediate_algebra_222",
+    "cos": 0.8386117807824582,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/counting_and_probability/159.json",
+    "nearest": "math_train_counting_and_probability_308",
+    "cos": 0.852540963222783,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/966.json",
+    "nearest": "math_train_intermediate_algebra_6",
+    "cos": 0.9261182418318568,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/697.json",
+    "nearest": "math_train_precalculus_315",
+    "cos": 0.837438853301673,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/351.json",
+    "nearest": "math_train_algebra_1379",
+    "cos": 0.9386526147230243,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/183.json",
+    "nearest": "math_train_intermediate_algebra_850",
+    "cos": 0.9332076824780672,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1422.json",
+    "nearest": "math_train_intermediate_algebra_1255",
+    "cos": 0.9768168470200833,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/2196.json",
+    "nearest": "math_train_intermediate_algebra_836",
+    "cos": 0.8956201832268952,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/591.json",
+    "nearest": "math_train_intermediate_algebra_1058",
+    "cos": 0.8493097672744889,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/1907.json",
+    "nearest": "math_train_prealgebra_585",
+    "cos": 0.8444657836872376,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/263.json",
+    "nearest": "math_train_precalculus_687",
+    "cos": 0.9719107010595152,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/541.json",
+    "nearest": "math_train_precalculus_400",
+    "cos": 0.9143180406569801,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/907.json",
+    "nearest": "math_train_algebra_1719",
+    "cos": 0.9356378659287968,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/counting_and_probability/71.json",
+    "nearest": "math_train_counting_and_probability_157",
+    "cos": 0.9989030532598799,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/441.json",
+    "nearest": "math_train_precalculus_539",
+    "cos": 0.8701922500319674,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/153.json",
+    "nearest": "math_train_prealgebra_8",
+    "cos": 0.8955475244182216,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/989.json",
+    "nearest": "math_train_precalculus_271",
+    "cos": 0.8519697592491086,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1123.json",
+    "nearest": "math_train_intermediate_algebra_98",
+    "cos": 0.8076654849033477,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/920.json",
+    "nearest": "math_train_precalculus_17",
+    "cos": 0.9079575415350126,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2064.json",
+    "nearest": "math_train_intermediate_algebra_772",
+    "cos": 0.9003616416667329,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/1995.json",
+    "nearest": "math_train_prealgebra_518",
+    "cos": 0.8470003698929994,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/149.json",
+    "nearest": "math_train_intermediate_algebra_1072",
+    "cos": 0.8927043826597576,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/580.json",
+    "nearest": "math_train_precalculus_595",
+    "cos": 0.9535042932420479,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/geometry/483.json",
+    "nearest": "math_train_geometry_87",
+    "cos": 0.8661533775125011,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/number_theory/466.json",
+    "nearest": "math_train_number_theory_45",
+    "cos": 0.91772527404888,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/346.json",
+    "nearest": "math_train_algebra_1566",
+    "cos": 0.8956760331498109,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/1787.json",
+    "nearest": "math_train_prealgebra_760",
+    "cos": 0.8398036453477848,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/768.json",
+    "nearest": "math_train_intermediate_algebra_1088",
+    "cos": 0.863648285941962,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/1172.json",
+    "nearest": "math_train_precalculus_467",
+    "cos": 0.8332279281729752,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1300.json",
+    "nearest": "math_train_intermediate_algebra_1096",
+    "cos": 0.8511924863479974,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/881.json",
+    "nearest": "math_train_precalculus_301",
+    "cos": 0.9173502894944334,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/446.json",
+    "nearest": "math_train_intermediate_algebra_961",
+    "cos": 0.9687270342844609,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/695.json",
+    "nearest": "math_train_precalculus_705",
+    "cos": 0.8397009400393987,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1714.json",
+    "nearest": "math_train_intermediate_algebra_729",
+    "cos": 0.9915570219981882,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2735.json",
+    "nearest": "math_train_prealgebra_1162",
+    "cos": 0.8376589102896594,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/425.json",
+    "nearest": "math_train_algebra_520",
+    "cos": 0.982964112598762,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/190.json",
+    "nearest": "math_train_intermediate_algebra_406",
+    "cos": 0.9752368706133938,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/1730.json",
+    "nearest": "math_train_number_theory_849",
+    "cos": 0.8153312954638744,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/801.json",
+    "nearest": "math_train_precalculus_638",
+    "cos": 0.9095435924367118,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/1238.json",
+    "nearest": "math_train_algebra_227",
+    "cos": 0.8309119896831489,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1572.json",
+    "nearest": "math_train_intermediate_algebra_110",
+    "cos": 0.8429550047714863,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/counting_and_probability/116.json",
+    "nearest": "math_train_counting_and_probability_626",
+    "cos": 0.8920728189363263,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/number_theory/686.json",
+    "nearest": "math_train_number_theory_598",
+    "cos": 0.9024424629411195,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/826.json",
+    "nearest": "math_train_precalculus_510",
+    "cos": 0.8421698776724249,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/529.json",
+    "nearest": "math_train_algebra_1248",
+    "cos": 0.885453957321094,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1166.json",
+    "nearest": "math_train_intermediate_algebra_1096",
+    "cos": 0.8903697229853411,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/1289.json",
+    "nearest": "math_train_precalculus_255",
+    "cos": 0.9963474887750136,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/101.json",
+    "nearest": "math_train_algebra_1394",
+    "cos": 0.8444826510297242,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/1298.json",
+    "nearest": "math_train_prealgebra_994",
+    "cos": 0.8044160542486721,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/849.json",
+    "nearest": "math_train_algebra_791",
+    "cos": 0.8634184057640437,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/1031.json",
+    "nearest": "math_train_algebra_1597",
+    "cos": 0.8388303015639735,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2277.json",
+    "nearest": "math_train_algebra_386",
+    "cos": 0.9877443042040417,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1806.json",
+    "nearest": "math_train_intermediate_algebra_255",
+    "cos": 0.8860054285750095,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/1960.json",
+    "nearest": "math_train_algebra_1474",
+    "cos": 0.802232501364228,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/398.json",
+    "nearest": "math_train_precalculus_583",
+    "cos": 0.9976550171684367,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1797.json",
+    "nearest": "math_train_intermediate_algebra_715",
+    "cos": 0.9689431398830342,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2391.json",
+    "nearest": "math_train_algebra_75",
+    "cos": 0.8392005334339625,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/681.json",
+    "nearest": "math_train_geometry_737",
+    "cos": 0.883285274734815,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/776.json",
+    "nearest": "math_train_algebra_1741",
+    "cos": 0.8285316475911183,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/625.json",
+    "nearest": "math_train_precalculus_383",
+    "cos": 0.8574447711148057,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/number_theory/1002.json",
+    "nearest": "math_train_number_theory_246",
+    "cos": 0.856675654021055,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/1339.json",
+    "nearest": "math_train_algebra_1174",
+    "cos": 0.9689975337296675,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/121.json",
+    "nearest": "math_train_intermediate_algebra_1145",
+    "cos": 0.9331087174474064,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1014.json",
+    "nearest": "math_train_intermediate_algebra_1096",
+    "cos": 0.8928246847154669,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/2019.json",
+    "nearest": "math_train_prealgebra_134",
+    "cos": 0.8167579763857502,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/499.json",
+    "nearest": "math_train_precalculus_265",
+    "cos": 0.9955046914281737,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2043.json",
+    "nearest": "math_train_algebra_719",
+    "cos": 0.8167553180266489,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/199.json",
+    "nearest": "math_train_intermediate_algebra_1083",
+    "cos": 0.9877992923914206,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2080.json",
+    "nearest": "math_train_algebra_197",
+    "cos": 0.8130991921054093,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/668.json",
+    "nearest": "math_train_algebra_396",
+    "cos": 0.9753357993050954,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/323.json",
+    "nearest": "math_train_precalculus_253",
+    "cos": 0.8631264209641325,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1102.json",
+    "nearest": "math_train_intermediate_algebra_1121",
+    "cos": 0.8816647217374718,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/1425.json",
+    "nearest": "math_train_algebra_1732",
+    "cos": 0.8005505715959743,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/834.json",
+    "nearest": "math_train_algebra_956",
+    "cos": 0.8167080747521118,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/224.json",
+    "nearest": "math_train_prealgebra_102",
+    "cos": 0.9803924696529537,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/435.json",
+    "nearest": "math_train_algebra_897",
+    "cos": 0.9513085051687995,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/158.json",
+    "nearest": "math_train_intermediate_algebra_759",
+    "cos": 0.8878445482958899,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/101.json",
+    "nearest": "math_train_intermediate_algebra_1036",
+    "cos": 0.8986979233168434,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/356.json",
+    "nearest": "math_train_precalculus_499",
+    "cos": 0.8164396786787794,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/geometry/615.json",
+    "nearest": "math_train_geometry_40",
+    "cos": 0.8071321595637017,
+    "same_answer": false,
+    "window13": null
+   }
+  ],
+  "top20": [
+   {
+    "id": "test/counting_and_probability/71.json",
+    "nearest": "math_train_counting_and_probability_157",
+    "cos": 0.9989030532598799,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/398.json",
+    "nearest": "math_train_precalculus_583",
+    "cos": 0.9976550171684367,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/1289.json",
+    "nearest": "math_train_precalculus_255",
+    "cos": 0.9963474887750136,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2036.json",
+    "nearest": "math_train_algebra_1209",
+    "cos": 0.9959438516088377,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/499.json",
+    "nearest": "math_train_precalculus_265",
+    "cos": 0.9955046914281737,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1714.json",
+    "nearest": "math_train_intermediate_algebra_729",
+    "cos": 0.9915570219981882,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1217.json",
+    "nearest": "math_train_intermediate_algebra_1083",
+    "cos": 0.9889752509400314,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/199.json",
+    "nearest": "math_train_intermediate_algebra_1083",
+    "cos": 0.9877992923914206,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2277.json",
+    "nearest": "math_train_algebra_386",
+    "cos": 0.9877443042040417,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/34.json",
+    "nearest": "math_train_precalculus_348",
+    "cos": 0.9861441487797629,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/1199.json",
+    "nearest": "math_train_precalculus_515",
+    "cos": 0.9861191956887765,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/425.json",
+    "nearest": "math_train_algebra_520",
+    "cos": 0.982964112598762,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/224.json",
+    "nearest": "math_train_prealgebra_102",
+    "cos": 0.9803924696529537,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1422.json",
+    "nearest": "math_train_intermediate_algebra_1255",
+    "cos": 0.9768168470200833,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/668.json",
+    "nearest": "math_train_algebra_396",
+    "cos": 0.9753357993050954,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/190.json",
+    "nearest": "math_train_intermediate_algebra_406",
+    "cos": 0.9752368706133938,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/algebra/2232.json",
+    "nearest": "math_train_algebra_897",
+    "cos": 0.9735554649880135,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/intermediate_algebra/1197.json",
+    "nearest": "math_train_intermediate_algebra_107",
+    "cos": 0.9732309019349743,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "test/prealgebra/505.json",
+    "nearest": "math_train_algebra_260",
+    "cos": 0.9720252548203216,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "test/precalculus/263.json",
+    "nearest": "math_train_precalculus_687",
+    "cos": 0.9719107010595152,
+    "same_answer": false,
+    "window13": null
+   }
+  ],
+  "cos_quantiles": {
+   "0.5": 0.6397684400018797,
+   "0.9": 0.8958323947074259,
+   "0.99": 0.991596498692488
+  }
+ },
+ "gsm8k": {
+  "n": 1319,
+  "flagged": [
+   {
+    "id": "gsm8k_test_320",
+    "nearest": "gsm8k_train_3174",
+    "cos": 0.8233599910622335,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_624",
+    "nearest": "gsm8k_train_1703",
+    "cos": 0.8234616243305592,
+    "same_answer": false,
+    "window13": null
+   }
+  ],
+  "top20": [
+   {
+    "id": "gsm8k_test_624",
+    "nearest": "gsm8k_train_1703",
+    "cos": 0.8234616243305592,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_320",
+    "nearest": "gsm8k_train_3174",
+    "cos": 0.8233599910622335,
+    "same_answer": true,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_387",
+    "nearest": "gsm8k_train_6162",
+    "cos": 0.7728604541327134,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_1142",
+    "nearest": "gsm8k_train_3891",
+    "cos": 0.7680253280294715,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_487",
+    "nearest": "gsm8k_train_2228",
+    "cos": 0.766299425042958,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_139",
+    "nearest": "gsm8k_train_5008",
+    "cos": 0.7635731434657547,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_597",
+    "nearest": "gsm8k_train_6655",
+    "cos": 0.7458436665916948,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_318",
+    "nearest": "gsm8k_train_6719",
+    "cos": 0.7425572939569464,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_824",
+    "nearest": "gsm8k_train_3726",
+    "cos": 0.7359933715933616,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_717",
+    "nearest": "gsm8k_train_6162",
+    "cos": 0.72850063954875,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_531",
+    "nearest": "gsm8k_train_3257",
+    "cos": 0.7236879506485423,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_326",
+    "nearest": "gsm8k_train_7445",
+    "cos": 0.7190445069562124,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_355",
+    "nearest": "gsm8k_train_6290",
+    "cos": 0.7184098481498741,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_839",
+    "nearest": "gsm8k_train_5761",
+    "cos": 0.7151998343483912,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_974",
+    "nearest": "gsm8k_train_2600",
+    "cos": 0.7138118357582232,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_1224",
+    "nearest": "gsm8k_train_5444",
+    "cos": 0.7120974492175599,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_1175",
+    "nearest": "gsm8k_train_5604",
+    "cos": 0.7081837360129809,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_250",
+    "nearest": "gsm8k_train_5456",
+    "cos": 0.7024958131784216,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_796",
+    "nearest": "gsm8k_train_5850",
+    "cos": 0.6997647384422137,
+    "same_answer": false,
+    "window13": null
+   },
+   {
+    "id": "gsm8k_test_1185",
+    "nearest": "gsm8k_train_5255",
+    "cos": 0.6962350170408629,
+    "same_answer": true,
+    "window13": null
+   }
+  ],
+  "cos_quantiles": {
+   "0.5": 0.41182798509135726,
+   "0.9": 0.571084204002094,
+   "0.99": 0.7149499946021608
+  }
+ }
+}

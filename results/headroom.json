@@ -1,0 +1,177 @@
+{
+ "MMLU-Pro math, agent's edit": {
+  "questions": 1351,
+  "samples": 4,
+  "base": {
+   "acc": 0.4071058475203553,
+   "strict": 0.22187268689859363,
+   "finished": 0.24241302738712064
+  },
+  "fix": {
+   "acc": 0.6236121391561806,
+   "strict": 0.601221317542561,
+   "finished": 0.8638045891931903
+  },
+  "own_finished_accuracy": 0.9152671755725191,
+  "released": 3364,
+  "released_accuracy": 0.6135552913198573,
+  "within_problem": {
+   "problems": 342,
+   "released_acc": 0.8464912280701754,
+   "own_acc": 0.9010721247563351,
+   "diff": -0.054580896686159834,
+   "lo": -0.07846003898635479,
+   "hi": -0.03265107212475634
+  }
+ },
+ "MMLU-Pro health, medical-direction edit, 8 samples": {
+  "questions": 818,
+  "samples": 8,
+  "base": {
+   "acc": 0.33725550122249387,
+   "strict": 0.3092909535452323,
+   "finished": 0.8485635696821516
+  },
+  "fix": {
+   "acc": 0.3581907090464548,
+   "strict": 0.35024449877750613,
+   "finished": 0.9535452322738386
+  },
+  "own_finished_accuracy": 0.36448766432558977,
+  "released": 870,
+  "released_accuracy": 0.3505747126436782,
+  "within_problem": {
+   "problems": 413,
+   "released_acc": 0.36377262769514584,
+   "own_acc": 0.3428974979822438,
+   "diff": 0.020875129712902115,
+   "lo": -0.010452698028363879,
+   "hi": 0.0528941830969676
+  }
+ },
+ "MMLU-Pro math, loop stop": {
+  "questions": 1351,
+  "samples": 4,
+  "base": {
+   "acc": 0.4071058475203553,
+   "strict": 0.22187268689859363,
+   "finished": 0.24241302738712064
+  },
+  "fix": {
+   "acc": 0.5081421169504071,
+   "strict": 0.4156180606957809,
+   "finished": 0.4552183567727609
+  },
+  "own_finished_accuracy": 0.9152671755725191,
+  "released": 1155,
+  "released_accuracy": 0.9090909090909091,
+  "within_problem": {
+   "problems": 299,
+   "released_acc": 0.9241917502787067,
+   "own_acc": 0.9370122630992195,
+   "diff": -0.012820512820512822,
+   "lo": -0.031215161649944256,
+   "hi": 0.0039018952062430333
+  }
+ },
+ "MMLU-Pro math, budget forcing": {
+  "questions": 1351,
+  "samples": 4,
+  "base": {
+   "acc": 0.4071058475203553,
+   "strict": 0.22187268689859363,
+   "finished": 0.24241302738712064
+  },
+  "fix": {
+   "acc": 0.5077720207253886,
+   "strict": 0.4071058475203553,
+   "finished": 0.44578090303478907
+  },
+  "own_finished_accuracy": 0.9152671755725191,
+  "released": 1137,
+  "released_accuracy": 0.9032541776605101,
+  "within_problem": {
+   "problems": 294,
+   "released_acc": 0.9172335600907028,
+   "own_acc": 0.9359410430839001,
+   "diff": -0.01870748299319728,
+   "lo": -0.03741496598639456,
+   "hi": -0.0017006802721088435
+  }
+ },
+ "MMLU-Pro math, thinking off, 8k": {
+  "questions": 1351,
+  "samples": 4,
+  "base": {
+   "acc": 0.4071058475203553,
+   "strict": 0.22187268689859363,
+   "finished": 0.24241302738712064
+  },
+  "fix": {
+   "acc": 0.49925980754996296,
+   "strict": 0.4665062916358253,
+   "finished": 0.7466691339748335
+  },
+  "own_finished_accuracy": 0.9152671755725191,
+  "released": 2751,
+  "released_accuracy": 0.534714649218466,
+  "within_problem": {
+   "problems": 337,
+   "released_acc": 0.7111770524233431,
+   "own_acc": 0.900593471810089,
+   "diff": -0.1894164193867458,
+   "lo": -0.22750989119683482,
+   "hi": -0.1513353115727003
+  }
+ },
+ "MMLU-Pro math, thinking off, full budget": {
+  "questions": 1351,
+  "samples": 4,
+  "base": {
+   "acc": 0.4071058475203553,
+   "strict": 0.22187268689859363,
+   "finished": 0.24241302738712064
+  },
+  "fix": {
+   "acc": 0.5288675055514434,
+   "strict": 0.5151739452257587,
+   "finished": 0.8971132494448557
+  },
+  "own_finished_accuracy": 0.9152671755725191,
+  "released": 3546,
+  "released_accuracy": 0.4780033840947547,
+  "within_problem": {
+   "problems": 341,
+   "released_acc": 0.7233626588465298,
+   "own_acc": 0.9007820136852394,
+   "diff": -0.1774193548387097,
+   "lo": -0.21603128054740958,
+   "hi": -0.14027370478983384
+  }
+ },
+ "MMLU-Pro math, T = 1.0": {
+  "questions": 1351,
+  "samples": 4,
+  "base": {
+   "acc": 0.4071058475203553,
+   "strict": 0.22187268689859363,
+   "finished": 0.24241302738712064
+  },
+  "fix": {
+   "acc": 0.5118430792005921,
+   "strict": 0.39748334566987414,
+   "finished": 0.4798297557364915
+  },
+  "own_finished_accuracy": 0.9152671755725191,
+  "released": 1366,
+  "released_accuracy": 0.7554904831625183,
+  "within_problem": {
+   "problems": 325,
+   "released_acc": 0.8584615384615385,
+   "own_acc": 0.9,
+   "diff": -0.04153846153846154,
+   "lo": -0.06820512820512821,
+   "hi": -0.016410256410256414
+  }
+ }
+}

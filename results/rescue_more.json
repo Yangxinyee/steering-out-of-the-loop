@@ -1,0 +1,127 @@
+{
+ "nothink32k": {
+  "MATH-500": {
+   "samples_paired": 2000,
+   "rescued": 1577,
+   "rescued_accuracy": 0.5307545973367153,
+   "within_problem": {
+    "problems": 68,
+    "rescued_acc": 0.892156862745098,
+    "base_finished_acc": 0.9852941176470589,
+    "diff": -0.09313725490196079,
+    "lo": -0.15686274509803924,
+    "hi": -0.03676470588235295
+   }
+  },
+  "GSM8K": {
+   "samples_paired": 5276,
+   "rescued": 4559,
+   "rescued_accuracy": 0.5492432550998025,
+   "within_problem": {
+    "problems": 366,
+    "rescued_acc": 0.8169398907103825,
+    "base_finished_acc": 0.9562841530054644,
+    "diff": -0.13934426229508196,
+    "lo": -0.17122040072859745,
+    "hi": -0.1092896174863388
+   }
+  }
+ },
+ "eot_bias": {
+  "MATH-500": {
+   "samples_paired": 2000,
+   "rescued": 815,
+   "rescued_accuracy": 0.811042944785276,
+   "within_problem": {
+    "problems": 68,
+    "rescued_acc": 0.9632352941176471,
+    "base_finished_acc": 0.9852941176470589,
+    "diff": -0.022058823529411766,
+    "lo": -0.05392156862745098,
+    "hi": 0.007352941176470586
+   }
+  },
+  "GSM8K": {
+   "samples_paired": 5276,
+   "rescued": 3468,
+   "rescued_accuracy": 0.7214532871972318,
+   "within_problem": {
+    "problems": 364,
+    "rescued_acc": 0.8988095238095237,
+    "base_finished_acc": 0.9560439560439561,
+    "diff": -0.05723443223443224,
+    "lo": -0.08104395604395606,
+    "hi": -0.03342490842490843
+   }
+  }
+ },
+ "rep_penalty": {
+  "MATH-500": {
+   "samples_paired": 2000,
+   "rescued": 381,
+   "rescued_accuracy": 0.889763779527559,
+   "within_problem": {
+    "problems": 66,
+    "rescued_acc": 0.9318181818181818,
+    "base_finished_acc": 0.9848484848484849,
+    "diff": -0.05303030303030304,
+    "lo": -0.10858585858585859,
+    "hi": -0.007575757575757576
+   }
+  },
+  "GSM8K": {
+   "samples_paired": 5276,
+   "rescued": 2033,
+   "rescued_accuracy": 0.8588293162813576,
+   "within_problem": {
+    "problems": 339,
+    "rescued_acc": 0.9375614552605702,
+    "base_finished_acc": 0.9646017699115044,
+    "diff": -0.027040314650934122,
+    "lo": -0.04768928220255654,
+    "hi": -0.006391347099311703
+   }
+  }
+ },
+ "prompt": {
+  "MATH-500": {
+   "samples_paired": 2000,
+   "rescued": 79,
+   "rescued_accuracy": 1.0,
+   "within_problem": {
+    "problems": 34,
+    "rescued_acc": 1.0,
+    "base_finished_acc": 0.9705882352941176,
+    "diff": 0.029411764705882353,
+    "lo": 0.0,
+    "hi": 0.07352941176470588
+   }
+  },
+  "GSM8K": {
+   "samples_paired": 5276,
+   "rescued": 428,
+   "rescued_accuracy": 0.9485981308411215,
+   "within_problem": {
+    "problems": 175,
+    "rescued_acc": 0.9685714285714285,
+    "base_finished_acc": 0.96,
+    "diff": 0.008571428571428572,
+    "lo": 0.0,
+    "hi": 0.022857142857142857
+   }
+  },
+  "MedQA": {
+   "samples_paired": 5092,
+   "rescued": 395,
+   "rescued_accuracy": 0.46835443037974683,
+   "within_problem": {
+    "problems": 324,
+    "rescued_acc": 0.45884773662551437,
+    "base_finished_acc": 0.4480452674897119,
+    "diff": 0.010802469135802479,
+    "lo": -0.039094650205761305,
+    "hi": 0.06019804526748955
+   }
+  }
+ }
+}

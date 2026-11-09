@@ -1,0 +1,54 @@
+{
+ "MATH-500": {
+  "base": {
+   "finished": 0.0705,
+   "strict": 0.0695,
+   "samples": 2000
+  },
+  "t1": {
+   "finished": 0.18,
+   "strict": 0.175,
+   "samples": 2000
+  },
+  "bf8k": {
+   "finished": 0.3415,
+   "strict": 0.3325,
+   "samples": 2000
+  },
+  "loop": {
+   "finished": 0.3405,
+   "strict": 0.333,
+   "samples": 2000
+  },
+  "eot_bias": {
+   "finished": 0.475,
+   "strict": 0.3955,
+   "samples": 2000
+  },
+  "rep_penalty": {
+   "finished": 0.2495,
+   "strict": 0.226,
+   "samples": 2000
+  },
+  "prompt": {
+   "finished": 0.071,
+   "strict": 0.071,
+   "samples": 2000
+  },
+  "nothink8k": {
+   "finished": 0.677,
+   "strict": 0.4315,
+   "samples": 2000
+  },
+  "nothink32k": {
+   "finished": 0.859,
+   "strict": 0.4845,
+   "samples": 2000
+  },
+  "authors_edit": {
+   "finished": 0.6905,
+   "strict": 0.5155,
+   "samples": 2000
+  }
+ }
+}

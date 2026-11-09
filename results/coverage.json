@@ -711,6 +711,15 @@
     "base_solves_always_looping": 30,
     "base_solves_but_edit_never": 9
    }
+  },
+  "chance_corrected_all_decodings": {
+   "coverage": 0.9672131147540983,
+   "guessing": 0.9292707023073415,
+   "chance_corrected": [
+    0.5364454855981854,
+    -0.6653550039282515,
+    1.0
+   ]
   }
  }
 }

@@ -16,16 +16,21 @@ from pathlib import Path
 
 import numpy as np
 
-from wsa.grade import extract
+from wsa.grade import extract, mc_extract
 
 RUNS = Path("results/runs")
 ARMS = {"MATH-500": {"agent's edit": "edit_authors/think35_math500", "thinking off, full": "e3/test/nothink35_32k_math500",
                      "thinking off, 8k": "base/nothink35_math500", "base": "base/think35_math500"},
         "GSM8K": {"agent's edit": "edit_authors/think35_gsm8k", "thinking off, full": "e3/test/nothink35_32k_gsm8k",
-                  "thinking off, 8k": "base/nothink35_gsm8k", "base": "base/think35_gsm8k"}}
+                  "thinking off, 8k": "base/nothink35_gsm8k", "base": "base/think35_gsm8k"},
+        # multiple choice: a wrong sample votes for its extracted option (wsa.grade.mc_extract)
+        "MMLU-Pro math": {"agent's edit": "headroom/edit/think35_mmlupro_math",
+                          "thinking off, full": "headroom/fix/nothink35_32k_mmlupro_math",
+                          "thinking off, 8k": "headroom/fix/nothink35_mmlupro_math", "base": "headroom/base/think35_mmlupro_math"}}
+MC = {"MMLU-Pro math"}
 
 
-def votes(stem):
+def votes(stem, mc=False):
     corr = {r["id"]: r["correct"] for r in json.load(open(RUNS / f"{stem}.per_problem.json"))}
     v, tok = {}, {}
     for line in open(RUNS / f"{stem}.jsonl"):
@@ -35,7 +40,7 @@ def votes(stem):
         if corr[r["id"]][r["k"]]:
             a = "<correct>"
         else:
-            a = extract(r["text"])[0]
+            a = mc_extract(r["text"]) if mc else extract(r["text"])[0]
             a = None if a is None else str(a).replace(" ", "")
         v.setdefault(r["id"], {})[r["k"]] = a
         tok.setdefault(r["id"], {})[r["k"]] = r["n_tok"]
@@ -54,7 +59,7 @@ def maj(answers):
 def main():
     out = {}
     for ds, arms in ARMS.items():
-        V = {name: votes(stem) for name, stem in arms.items()}
+        V = {name: votes(stem, ds in MC) for name, stem in arms.items()}
         probs = sorted(set.intersection(*(set(v) for v, _ in V.values())))
         R = {"problems": len(probs), "arms": {}}
         acc = {}

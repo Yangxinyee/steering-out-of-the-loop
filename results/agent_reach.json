@@ -1,0 +1,96 @@
+{
+ "MATH-500": {
+  "gpt-6.1-sol": {
+   "correct_answers_always_looping": 574,
+   "coverage": [
+    0.9965156794425087,
+    0.9887850467289719,
+    1.0
+   ],
+   "completion": 0.5765,
+   "common_completion": 0.5765,
+   "thinking_off_minus_edit_error": [
+    -0.04783953998162305,
+    -0.08549978980305749,
+    -0.0065561167627284775
+   ]
+  },
+  "Claude Opus 5.5": {
+   "correct_answers_always_looping": 403,
+   "coverage": [
+    0.9925558312655087,
+    0.9830508474576272,
+    1.0
+   ],
+   "completion": 0.392,
+   "common_completion": 0.392,
+   "thinking_off_minus_edit_error": [
+    -0.09664442700156983,
+    -0.12246094987353118,
+    -0.03249172518518323
+   ]
+  },
+  "published edit": {
+   "correct_answers_always_looping": 747,
+   "coverage": [
+    0.9772423025435074,
+    0.9627584230807232,
+    0.9888423988842399
+   ],
+   "completion": 0.6905,
+   "common_completion": 0.6905,
+   "thinking_off_minus_edit_error": [
+    0.07462774891248569,
+    0.039207852996119306,
+    0.10945570460547936
+   ]
+  }
+ },
+ "GSM8K": {
+  "gpt-6.1-sol": {
+   "correct_answers_always_looping": 1774,
+   "coverage": [
+    0.9937993235625705,
+    0.9890992107219221,
+    0.9977246871444824
+   ],
+   "completion": 0.7975739196360879,
+   "common_completion": 0.7975739196360879,
+   "thinking_off_minus_edit_error": [
+    0.044825909831613275,
+    0.024729998160385326,
+    0.06777276653594111
+   ]
+  },
+  "Claude Opus 5.5": {
+   "correct_answers_always_looping": 1186,
+   "coverage": [
+    0.9898819561551433,
+    0.9821727962230239,
+    0.9958982772764561
+   ],
+   "completion": 0.5432145564821834,
+   "common_completion": 0.5432145564821834,
+   "thinking_off_minus_edit_error": [
+    -0.09950810097393725,
+    -0.11823039992127227,
+    -0.07125524416007209
+   ]
+  },
+  "published edit": {
+   "correct_answers_always_looping": 2138,
+   "coverage": [
+    0.9925163704396632,
+    0.9879125987912599,
+    0.9963948535822689
+   ],
+   "completion": 0.9311978771796816,
+   "common_completion": 0.9311978771796816,
+   "thinking_off_minus_edit_error": [
+    0.1094347939867989,
+    0.09312527677740613,
+    0.12664324232188884
+   ]
+  }
+ }
+}

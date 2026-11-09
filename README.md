@@ -4,24 +4,22 @@ Code, per-problem results and analysis scripts for the paper *Steering Out of th
 Within Reach* (preprint: link to follow). Repository: <https://github.com/Yangxinyee/steering-out-of-the-loop>.
 
 An AI agent edited two weight matrices of Qwen3.5-0.8B, a small reasoning model, and in our reproduction lifted its
-MATH-500 accuracy from 7.6% to 51.7%. The paper shows that the edit releases answers within the model's reach, and
-that decoding recovers most of the gain:
+MATH-500 accuracy from 7.6% to 51.7%. The paper shows that the edit releases answers within the model's reach (answers
+the unedited model also gives under some decoding):
 
-- Thinking off at the full token budget recovers 93% of the gain on MATH-500 and 82% on GSM8K. Majority voting over
-  samples, at no more tokens than the edit uses, ties the edit on both.
-- On problems where the model always loops, the unedited model reaches 97.7% of the edit's correct answers on MATH-500
-  under other decodings.
-- A distilled 0.8B model (fine-tuned on Qwen3.5-9B's solutions) solves 41 always-looping GSM8K problems beyond that
-  reach, against the edit's 13, and its correct answers are covered 2.2 points less often than the edit's. Where it
-  adds no more than the edit (MATH-500, MMLU-Pro math), the tests read both alike.
-- On MMLU-Pro math, where the model's own answers leave room, the edit leads every decoding fix, but its released
-  answers are less accurate than the model's own on the same questions (84.6% against 90.1%). On the questions the
-  model never finishes, five decoding fixes reach 87.3% of the edit's correct answers after correcting for guessing;
-  on the same question and seed, the edit's answers are right 84.5% of the time and loop stop's 88.8%.
-- In medicine the released answers are no more accurate than the model's own (42.2% against 42.9% on MedQA): the
-  edit adds no medical knowledge.
-- Two frontier agents redoing the task find edits with the same released-against-own profile.
-- Deferring looping medical questions to a 9B model beats random deferral by 5.3 points.
+- Thinking off at the full token budget recovers 93% of the gain on MATH-500 and 82% on GSM8K, and majority voting at
+  no more tokens than the edit leaves it +0.1 and +0.3 points ahead, with intervals across zero.
+- On problems where the model always loops, the unedited model covers 97.7% of the edit's correct answers on MATH-500,
+  more than those of Qwen3.5-2B (92.0%).
+- A spike-in analysis measures what coverage can see: a model falls below every decoding fix once 8%, 2% and 5% of its
+  correct answers lie beyond reach (MATH-500, GSM8K, MMLU-Pro math). A distilled 0.8B model (fine-tuned on Qwen3.5-9B's
+  solutions) that adds such answers on GSM8K is covered 2.2 points [1.3, 3.1] less often than the edit (97.1% against
+  99.3%).
+- MMLU-Pro math is the exception: decoding recovers 56% of the gain, and voting at matched tokens leaves the edit 9.4
+  points ahead.
+- In medicine the edit gains at most 3.3 points over a temperature change (strict +1.7 [0.1, 3.3] on MedQA).
+- Two frontier agents redoing the task find edits with the same profile, and deferring looping medical questions to a
+  9B model beats random deferral by 5.3 points, earlier than a length threshold.
 
 ## Contents
 
@@ -56,9 +54,9 @@ Run from the repository root:
 
 ```bash
 python paper/figures/make_figures.py   # Figures 1-6 -> paper/figures/*.pdf
-python -m wsa.paper_numbers            # every number in the text -> paper/numbers.tex; Tables 1-4 and 9-11
-python -m wsa.paper_tables             # coverage and risk-coverage -> paper/tables/{coverage,riskcov}.tex (Tables 5, 7)
-python -m wsa.appendix_tables          # coverage calibration and majority vote -> paper/tables/{covref,majk}.tex (6, 8)
+python -m wsa.paper_numbers            # every number in the text -> paper/numbers.tex; Tables 1-5 and 10-12
+python -m wsa.paper_tables             # coverage and risk-coverage -> paper/tables/{coverage,riskcov}.tex (Tables 6, 8)
+python -m wsa.appendix_tables          # coverage calibration and majority vote -> paper/tables/{covref,majk}.tex (7, 9)
 ```
 
 These outputs match the paper exactly: every table and `numbers.tex` byte for byte, the figures pixel for pixel. No
@@ -68,23 +66,24 @@ as computed (7.55 -> 7.6).
 | Paper | Content | Result files | Analysis (writes the result files) | Drawn or typeset by |
 |---|---|---|---|---|
 | Figure 1 | Teaser: one released answer per domain; coverage on always-looping MATH-500 problems; released against own on MedQA | `teaser_examples.json`, `coverage.json`, `coverage_match.json`, `rescue.json` | `wsa.teaser_examples`, `wsa.coverage`, `wsa.coverage_match`, `wsa.rescue` | `make_figures.py` |
-| Figure 2 | Strict accuracy against answers finished; 32 textbook edits; released minus own | `abstain.json`, `part1b_grid.json`, `rescue.json`, `rescue_more.json`, `headroom.json` | `wsa.abstain`, `wsa.rescue`, `wsa.rescue_more`, `wsa.headroom_report` | `make_figures.py` |
+| Figure 2 | Strict accuracy against answers finished, every fix; 32 textbook edits; released minus own | `abstain.json`, `completion_points.json`, `part1b_grid.json`, `rescue.json`, `rescue_more.json`, `headroom.json` | `wsa.abstain`, `wsa.completion_points`, `wsa.rescue`, `wsa.rescue_more`, `wsa.headroom_report` | `make_figures.py` |
 | Figure 3 | Coverage on always-looping problems; risk-coverage | `coverage_match.json`, `riskcov.json` | `wsa.coverage_match`, `wsa.riskcov` | `make_figures.py` |
 | Figure 4 | Medicine | `abstain.json`, `rescue.json` | `wsa.abstain`, `wsa.rescue` | `make_figures.py` |
-| Figure 5 | The agent's edit on practice problems: strength, flips, direction against neurons | `csweep.json` | `wsa.csweep` | `make_figures.py` |
-| Figure 6 | Deferral to Qwen3.5-9B against random deferral | `defer_control.json` | `wsa.defer_control` | `make_figures.py` |
-| Table 1 | Qwen3.5-0.8B on MATH-500 and GSM8K | `e3.json`, `e6.json`; prompt only and repetition penalty: `runs/prompt/think35_pr2_*.scores.json`, `runs/base/think35_rep11_*.scores.json` | `wsa.e3`, `wsa.e6`, `wsa.score` | `wsa.paper_numbers` |
-| Table 2 | Medical QA | `part2_full.json`, `part2_mmlu_health.json`, `prompt_only.json` | `wsa.analyze_med`, `wsa.prompt_only` | `wsa.paper_numbers` |
-| Table 3 | Released against own answers, same problems | `rescue.json`, `rescue_more.json`, `headroom.json`, `r1d.json` | `wsa.rescue`, `wsa.rescue_more`, `wsa.headroom_report`, `wsa.r1d` | `wsa.paper_numbers` |
-| Table 4 | What each fix releases | `rescue.json`, `rescue_more.json`, `net_extra.json` | `wsa.rescue`, `wsa.rescue_more`, `wsa.net_extra` | `wsa.paper_numbers` |
-| Table 5 | Coverage by setting | `coverage.json` | `wsa.coverage` | `wsa.paper_tables` |
-| Table 6 | Calibrating coverage (Qwen3.5-2B references, leave-one-fix-out) | `coverage_ref.json`, `coverage_match.json`, `coverage_null.json` | `wsa.coverage_ref`, `wsa.coverage_match`, `wsa.coverage_null` | `wsa.appendix_tables` |
-| Table 7 | Risk-coverage under one selector | `riskcov.json` | `wsa.riskcov` | `wsa.paper_tables` |
-| Table 8 | Thinking off with majority vote at matched tokens | `majk.json` | `wsa.majk` | `wsa.appendix_tables` |
-| Table 9 | MATH-500 by difficulty level | `abstain.json` | `wsa.abstain` | `wsa.paper_numbers` |
-| Table 10 | Other models (Qwen3.5-2B, R1-Distill-Qwen-1.5B) | `c2b.json`, `r1d.json` | `wsa.c2b`, `wsa.r1d` | `wsa.paper_numbers` |
-| Table 11 | Edits found by two frontier agents | `agent_eval.json` | `wsa.agent_eval_report` | `wsa.paper_numbers` |
-| Text | Every number, including MMLU-Pro math reach against guessing and released against loop stop (Section 4) and the frontier agents' runs (appendix) | `results/*.json`, among them `headroom_reach.json`, `agent_decontam.json`, `agent_audit.json`, `agent_usage.json`, `reconcile.json` (the authors' per-problem results against ours), `quoted.json` (a run quoted from the edited checkpoint's model card) | the modules above, `wsa.headroom_reach`, `wsa.agent_decontam`, `wsa.agent_audit`, `wsa.agent_usage` | `wsa.paper_numbers` |
+| Figure 5 | Deferral to Qwen3.5-9B against random deferral and a length threshold | `defer_control.json` | `wsa.defer_control` | `make_figures.py` |
+| Figure 6 | The agent's edit on practice problems: strength, flips, direction against neurons (appendix) | `csweep.json` | `wsa.csweep` | `make_figures.py` |
+| Table 1 | The audit at a glance | the files of the other rows, `coverage_power.json`, `majk.json` | the modules of the other rows, `wsa.coverage_power`, `wsa.majk` | `wsa.paper_numbers` |
+| Table 2 | Qwen3.5-0.8B on MATH-500 and GSM8K | `e3.json`, `e6.json`; prompt only and repetition penalty: `runs/prompt/think35_pr2_*.scores.json`, `runs/base/think35_rep11_*.scores.json` | `wsa.e3`, `wsa.e6`, `wsa.score` | `wsa.paper_numbers` |
+| Table 3 | Medical QA | `part2_full.json`, `part2_mmlu_health.json`, `prompt_only.json` | `wsa.analyze_med`, `wsa.prompt_only` | `wsa.paper_numbers` |
+| Table 4 | Released against own answers, same problems | `rescue.json`, `rescue_more.json`, `headroom.json`, `r1d.json` | `wsa.rescue`, `wsa.rescue_more`, `wsa.headroom_report`, `wsa.r1d` | `wsa.paper_numbers` |
+| Table 5 | What each fix releases | `rescue.json`, `rescue_more.json`, `net_extra.json` | `wsa.rescue`, `wsa.rescue_more`, `wsa.net_extra` | `wsa.paper_numbers` |
+| Table 6 | Coverage by setting, with MedQA against chance | `coverage.json` | `wsa.coverage` | `wsa.paper_tables` |
+| Table 7 | Calibrating coverage (Qwen3.5-2B references, leave-one-fix-out) | `coverage_ref.json`, `coverage_match.json`, `coverage_null.json` | `wsa.coverage_ref`, `wsa.coverage_match`, `wsa.coverage_null` | `wsa.appendix_tables` |
+| Table 8 | Risk-coverage under one selector | `riskcov.json` | `wsa.riskcov` | `wsa.paper_tables` |
+| Table 9 | Thinking off with majority vote at matched tokens | `majk.json` | `wsa.majk` | `wsa.appendix_tables` |
+| Table 10 | MATH-500 by difficulty level | `abstain.json` | `wsa.abstain` | `wsa.paper_numbers` |
+| Table 11 | Other models (Qwen3.5-2B, R1-Distill-Qwen-1.5B) | `c2b.json`, `r1d.json` | `wsa.c2b`, `wsa.r1d` | `wsa.paper_numbers` |
+| Table 12 | Edits found by two frontier agents | `agent_eval.json` | `wsa.agent_eval_report` | `wsa.paper_numbers` |
+| Text | Every number, among them MMLU-Pro math reach and loop stop, coverage's sensitivity (spike-in), the frontier edits' coverage and matched completion, and the frontier agents' runs | `results/*.json`, among them `headroom_reach.json`, `coverage_power.json`, `agent_reach.json`, `agent_decontam.json`, `agent_audit.json`, `agent_usage.json`, `reconcile.json` (the authors' per-problem results against ours), `quoted.json` (a run quoted from the edited checkpoint's model card) | the modules above, `wsa.headroom_reach`, `wsa.coverage_power`, `wsa.agent_reach`, `wsa.agent_decontam`, `wsa.agent_audit`, `wsa.agent_usage` | `wsa.paper_numbers` |
 | Text, Section 4 | What the tests detect: the distilled 0.8B on MATH-500, GSM8K, MMLU-Pro math and MedQA | `coverage_sft_906.json`, `sft_battery.json`, `headroom_reach_sft.json`, `runs/sft_ref3/`, `data/sft_pool.jsonl` (its training problems) | `wsa.sft_data` and `wsa.sft` (the model), `wsa.coverage_sft`, `wsa.sft_battery`, `wsa.headroom_reach --target sft_ref3/eval/think35_mmlupro_math` | `wsa.paper_numbers` |
 
 Figure and table numbers follow the paper.

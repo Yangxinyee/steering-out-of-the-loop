@@ -686,6 +686,49 @@ for k, tag in (("t1", "Tone"), ("loop", "Loop"), ("prompt", "Prompt")):
     g = rk["GSM8K"]["vs_edit"][k]["mean_error_gap_over_common_range"]
     put(f"wRiskMean{tag}Gsm", sg(g[0] * 100)); put(f"wRiskMean{tag}GsmCI", ci(g[1], g[2]))
 
+# ==== coverage's sensitivity, MMLU-Pro math voting, the frontier edits' reach, MedQA against chance ====
+pw = J("coverage_power.json")
+for ds, tag in (("MATH-500", "Math"), ("GSM8K", "Gsm"), ("MMLU-Pro math", "Mmlu")):
+    v = pw[ds]
+    put(f"wPower{tag}", fx(v["below_every_fix_minimum_share"] * 100, 0))
+    put(f"wEditBeyondShare{tag}", fx(v["edit_beyond_reach_answers"] / v["edit_correct_answers"] * 100))
+put("wPowerFloor", fx(max(v["against_edit"]["minimum_detectable_share"] for v in pw.values()) * 100))
+mm = mk["MMLU-Pro math"]
+et = mm["arms"]["agent's edit"]["1"]["tokens"]
+jm = max(int(j) for j, v in mm["edit_minus_thinking_off_majj"].items() if v["thinking_off_tokens"] <= et)
+vm = mm["edit_minus_thinking_off_majj"][str(jm)]
+put("wMajMmluJ", {1: "one", 2: "two", 3: "three", 4: "four"}[jm])
+put("wMajMmlu", sg(vm["diff"][0] * 100)); put("wMajMmluCI", ci(vm["diff"][1], vm["diff"][2]))
+put("wMajMmluAbs", fx(abs(vm["diff"][0]) * 100))
+put("wMajMmluTok", fx(vm["thinking_off_tokens"] / 1000) + "k"); put("wMajMmluEditTok", fx(et / 1000) + "k")
+ar = J("agent_reach.json")
+for ds, tag in (("MATH-500", "Math"), ("GSM8K", "Gsm")):
+    for nm, a in (("gpt-6.1-sol", "Gpt"), ("Claude Opus 5.5", "Claude")):
+        v = ar[ds][nm]
+        put(f"wAgent{a}Cov{tag}", f1(v["coverage"][0]))
+        g = v["thinking_off_minus_edit_error"]
+        put(f"wAgent{a}RiskOff{tag}", sg(g[0] * 100)); put(f"wAgent{a}RiskOff{tag}CI", ci(g[1], g[2]))
+mq = J("coverage.json")["MedQA"]["chance_corrected_all_decodings"]
+put("wMedCovGuess", f1(mq["guessing"])); put("wMedCovCorr", f1(mq["chance_corrected"][0]))
+put("wMedCovCorrCI", ci(mq["chance_corrected"][1], mq["chance_corrected"][2]))
+put("wMedToneBound", fx(p2["pairwise"]["med_edit/think35 - med_base/card_think (strict)"]["ci95"][1] * 100)
+    if "med_edit/think35 - med_base/card_think (strict)" in p2["pairwise"] else M["wMedEditMinusToneStrictCI"].split(", ")[1].rstrip("]"))
+for ds, tag in (("MATH-500", "Math"), ("GSM8K", "Gsm")):
+    c = cr[ds]["targets"]["Qwen3.5-2B, matched"]["per_answer"]
+    put(f"wTwoBReliable{tag}CI", ci(c[1], c[2]))
+    on = J("coverage.json")[ds]["coverage"]["thinking on"]["per_answer"]
+    put(f"wCovOn{tag}", f1(on[0])); put(f"wCovOn{tag}CI", ci(on[1], on[2]))
+    tb = cn[ds]["left_out"]["thinking off (both budgets)"]["targets"]
+    put(f"wCovOnTwoB{tag}", f1(tb["Qwen3.5-2B"]["coverage"][0])); put(f"wCovOnFix{tag}", f1(tb["left-out fix"]["coverage"][0]))
+# Figure 2 (left): how far each setting lies below the line of the model's own accuracy (points of strict accuracy)
+cpm = J("completion_points.json")["MATH-500"]
+x0, y0, own = cpm["base"]["finished"], cpm["base"]["strict"], ab["MATH-500"]["arms"]["base"]["finished_accuracy"]
+below = {k: (y0 + (v["finished"] - x0) * own - v["strict"]) * 100 for k, v in cpm.items()}
+mdx = ab["MATH-500"]["arms"]["meandiff"]
+below["meandiff"] = (y0 + (mdx["coverage"] - x0) * own - mdx["accuracy_strict"]) * 100
+put("wLineOnMax", fx(max(abs(below[k]) for k in ("t1", "bf8k", "loop", "prompt"))))
+put("wLineRep", fx(below["rep_penalty"])); put("wLineTextbook", fx(below["meandiff"])); put("wLineEot", fx(below["eot_bias"], 0))
+
 # ---- Table (tab:pair): released against own answers on the same problems, every fix and test set
 def rel_cell(w):
     return f"{sg(w['diff'] * 100)} {ci(w['lo'], w['hi'])}"
@@ -821,6 +864,32 @@ Sc += [r"\midrule", r"R1-Distill-1.5B & \multicolumn{3}{l}{MATH-500} \\", r"\mid
        r"\caption{Other models (accuracy \%). Qwen3.5-2B: 4 samples per problem; each model's own textbook edit. R1-Distill: 1 sample per problem, greedy ($T=0$, where it loops) except at its recommended $T=0.6$.}",
        r"\label{tab:scale}", r"\end{table}"]
 (OUT / "tables" / "scale.tex").write_text("\n".join(Sc) + "\n")
+
+# ---- Table (tab:summary): the audit at a glance, from the macros above
+medT = p2["test"]
+med_share = fx((medT["med_base/card_think"]["official"] - medT["med_base/think35"]["official"])
+               / (medT["med_edit/think35"]["official"] - medT["med_base/think35"]["official"]) * 100, 0)
+put("wTOneShareMed", med_share)
+mmlu_off = hd["MMLU-Pro math, thinking off, full budget"]["fix"]["acc"]
+c2gsm = cm["GSM8K"]["references"]["Qwen3.5-2B, random"]["coverage"]["32"][0]
+Ssum = [r"\begin{table*}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{3.2pt}", r"\begin{tabular}{@{}lllll@{}}",
+        r"\toprule", r"& MATH-500 & GSM8K & MMLU-Pro math & MedQA \\", r"\midrule",
+        rf"Accuracy, base $\to$ edit (\%) & {M['wBaseMath']} $\to$ {M['wEditMath']} & {M['wBaseGsm']} $\to$ {M['wEditGsm']} & {M['wMmluBase']} $\to$ {M['wMmluEdit']} & {M['wMedBase']} $\to$ {M['wMedEdit']} \\",
+        rf"Gain recovered by thinking off$^{{t}}$ (\%) & {M['wOffShareMath']} & {M['wOffShareGsm']} & {M['wOffShareMmlu']} & {med_share} \\",
+        rf"Edit $-$ voting thinking off, $\le$ edit's tokens & {M['wMajMath']} {M['wMajMathCI']} & {M['wMajGsm']} {M['wMajGsmCI']} & {M['wMajMmlu']} {M['wMajMmluCI']} & -- \\",
+        r"\midrule",
+        r"\multicolumn{5}{@{}l}{\emph{Always-looping problems: correct answers covered by the unedited model (\%)}} \\",
+        rf"Edit, all fixes / thinking on & {M['wCovMath']} / {M['wCovOnMath']} & {M['wCovGsm']} / {M['wCovOnGsm']} & {M['wMmluCorr']}$^{{c}}$ & {M['wMedCovCorr']}$^{{c,w}}$ \\",
+        rf"Qwen3.5-2B, random / most reliable & {M['wCovTwoBMath']} / {M['wTwoBReliableMath']} & {f1(c2gsm)} / {M['wTwoBReliableGsm']} & -- & -- \\",
+        rf"The distilled 0.8B & {M['wSftCovMath']} & {M['wSftCovGsm']} & {M['wSftMmluCorr']}$^{{c}}$ & -- \\",
+        rf"Beyond reach: flagged / edit's share & {M['wPowerMath']} / {M['wEditBeyondShareMath']} & {M['wPowerGsm']} / {M['wEditBeyondShareGsm']} & {M['wPowerMmlu']} / {M['wEditBeyondShareMmlu']} & -- \\",
+        r"\midrule",
+        rf"Released $-$ own (points) & {M['wRelMinusOwnMath']} {M['wRelMinusOwnMathCI']} & {M['wRelMinusOwnGsm']} {M['wRelMinusOwnGsmCI']} & {M['wRelMinusOwnMmlu']} {M['wRelMinusOwnMmluCI']} & {M['wRelMinusOwnMed']} {M['wRelMinusOwnMedCI']} \\",
+        r"\bottomrule", r"\end{tabular}",
+        r"\caption{The audit at a glance (Qwen3.5-0.8B, 4 samples per problem, 95\% intervals; points unless \%). $^{t}$MedQA: $T = 1.0$. $^{c}$Chance-corrected; $^{w}$interval $[-67, 100]$. Flagged:",
+        r"the smallest share of a model's correct answers lying beyond reach at which its coverage falls below every decoding fix (\S\ref{sec:fixes}).}",
+        r"\label{tab:summary}", r"\end{table*}"]
+(OUT / "tables" / "summary.tex").write_text("\n".join(Ssum) + "\n")
 
 lines = ["% generated by wsa/paper_numbers.py from results/; do not edit"]
 lines += [f"\\newcommand{{\\{k}}}{{{v}}}" for k, v in M.items()]

@@ -250,7 +250,8 @@ def fig1_examples():
 STY = {"base": ("base", REF, "o", 24), "t1": ("T = 1.0", OTHER, "v", 24), "bf8k": ("budget forcing,\nloop stop", OTHER, "s", 22),
        "loop": (None, OTHER, "D", 16), "meandiff": ("textbook edit", OTHER_EDIT, "^", 28),
        "nothink": ("thinking off, 8k", STRONG8K, "X", 28), "nothink32k": ("thinking off,\nfull budget", STRONG, "h", 40),
-       "authors_edit": ("agent's edit", EDIT, "P", 56)}
+       "authors_edit": ("agent's edit", EDIT, "P", 56), "eot_bias": ("end-of-thinking\nbias", OTHER, "<", 24),
+       "rep_penalty": ("repetition\npenalty", OTHER, ">", 24), "prompt": ("prompt", OTHER, "*", 34)}
 
 
 def mark(ax, k, x, y, s=None, hollow=False, **kw):
@@ -263,7 +264,10 @@ def scatter(ax, ds, arms, lab, own_lab, gain_at):
     """strict accuracy against answers finished on one test set. The dashed line leaves the base model with the base
     model's own finished accuracy as slope, so a fix on it releases answers as accurate as the model's own; the arrow
     (up, then across) is the agent's edit's gain"""
-    A = json.load(open(os.path.join(R, "abstain.json")))["a"][ds]["arms"]
+    A = dict(json.load(open(os.path.join(R, "abstain.json")))["a"][ds]["arms"])
+    if ds == "MATH-500":                                 # the settings wsa.abstain does not cover (wsa.completion_points)
+        cp = json.load(open(os.path.join(R, "completion_points.json")))[ds]
+        A.update({k: {"coverage": v["finished"], "accuracy_strict": v["strict"]} for k, v in cp.items() if k not in A})
     b = A["base"]
     x0, y0, own = b["coverage"] * 100, b["accuracy_strict"] * 100, b["finished_accuracy"]
     xr = ax.get_xlim()
@@ -274,10 +278,13 @@ def scatter(ax, ds, arms, lab, own_lab, gain_at):
         x, y = A[k]["coverage"] * 100, A[k]["accuracy_strict"] * 100
         mark(ax, k, x, y)
         if k in lab:
-            dx, dy, ha, va = lab[k]
-            ax.annotate(STY[k][0], (x, y), xytext=(dx, dy), textcoords="offset points", ha=ha, va=va, fontsize=LAB,
+            dx, dy, ha, va = lab[k][:4]
+            name = lab[k][5] if len(lab[k]) > 5 else STY[k][0]
+            lead = {"arrowprops": {"arrowstyle": "-", "lw": 0.5, "color": MUTED, "shrinkA": 1, "shrinkB": 3}} \
+                if len(lab[k]) > 4 and lab[k][4] else {}
+            ax.annotate(name, (x, y), xytext=(dx, dy), textcoords="offset points", ha=ha, va=va, fontsize=LAB,
                         fontweight="bold" if k in ("authors_edit", "nothink32k") else "normal", linespacing=1.25, zorder=2,
-                        bbox={"fc": "white", "ec": "none", "pad": 0.3})
+                        bbox={"fc": "white", "ec": "none", "pad": 0.3}, **lead)
     e = A["authors_edit"]
     ax.annotate("", (e["coverage"] * 100, e["accuracy_strict"] * 100), xytext=(x0, y0), zorder=2,
                 arrowprops={"arrowstyle": "-|>,head_length=0.45,head_width=0.22", "color": EDIT, "lw": 1.0,
@@ -295,10 +302,14 @@ def fig2():
     fig = canvas(TW, 154)
     a = place(fig, 30, 190, 28, 142)
     a.set(xlim=(0, 101), ylim=(0, 62))
-    scatter(a, "MATH-500", ("base", "t1", "meandiff", "bf8k", "loop", "nothink32k", "authors_edit"),
-            {"base": (5, -2, "left", "top"), "t1": (5, -2, "left", "top"), "meandiff": (5, -6, "left", "top"),
-             "bf8k": (6, 0, "left", "top"), "nothink32k": (0, -6, "center", "top"), "authors_edit": (5, 3, "left", "bottom")},
-            (47, 61.5), (3.5, 30))
+    scatter(a, "MATH-500", ("base", "prompt", "t1", "rep_penalty", "meandiff", "bf8k", "loop", "eot_bias", "nothink",
+                            "nothink32k", "authors_edit"),
+            {"base": (5, -2, "left", "top", False, "base, prompt"), "t1": (5, -2, "left", "top"),
+             "rep_penalty": (-5, 0, "right", "center"), "meandiff": (5, -6, "left", "top"),
+             "bf8k": (6, 0, "left", "top"), "eot_bias": (22, -26, "left", "top", True),
+             "nothink": (-5, 1, "right", "bottom", False, "8k"), "nothink32k": (0, -6, "center", "top"),
+             "authors_edit": (5, 3, "left", "bottom")},
+            (47, 61.5), (8.6, 40))
     # b: the 32 textbook edits on practice problems
     g = json.load(open(os.path.join(R, "part1b_grid.json")))
     c = g["cells"]

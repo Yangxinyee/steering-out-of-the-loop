@@ -77,6 +77,26 @@ def main():
                                 "per_answer": [pa, pl, ph], "per_problem": [pp, ql, qh],
                                 "base_solves_always_looping": int(sum(cov.values())),
                                 "base_solves_but_edit_never": int(sum(1 for p in always if cov[p] and not right[p]))}
+        # multiple choice: coverage against chance (a ruler of uniform guesses among the options, with the same number
+        # of finished samples per problem), chance-corrected as (coverage - guessing) / (1 - guessing)
+        if kind == "mc":
+            from wsa.headroom_reach import guessk, n_options
+            n_opt = {r["id"]: n_options(r["prompt"]) for r in map(json.loads, open(f"results/data/{tag}.jsonl"))}
+            keys = tuple(D)
+            fin = {p: sum(1 for d in keys for k in range(4) if (p, k) in D[d] and D[d][(p, k)][1]) for p in always}
+            n_s = 4 * len(keys)
+            g = {p: guessk(n_s, fin[p], n_opt[p], n_s) for p in always}
+            cv = {p: solved(keys, p) for p in always}
+            w = np.array([right[p] for p in always], float)
+            cvv, gg = np.array([cv[p] for p in always], float), np.array([g[p] for p in always])
+            idx = np.random.default_rng(0).integers(0, len(always), (10000, len(always)))
+            obs = (w * cvv).sum() / w.sum(); gue = (w * gg).sum() / w.sum()
+            o_b = (w[idx] * cvv[idx]).sum(1) / w[idx].sum(1); g_b = (w[idx] * gg[idx]).sum(1) / w[idx].sum(1)
+            cc = (o_b - g_b) / (1 - g_b)
+            R["chance_corrected_all_decodings"] = {"coverage": float(obs), "guessing": float(gue),
+                                                   "chance_corrected": [float((obs - gue) / (1 - gue)),
+                                                                        float(np.percentile(cc, 2.5)), float(np.percentile(cc, 97.5))]}
+            print("   chance-corrected:", R["chance_corrected_all_decodings"])
         # solved problems with four samples: thinking off at the full budget against the edit (paired over problems)
         if "nothink32k" in D:
             a = np.array([solved(("nothink32k",), p) for p in always], float)

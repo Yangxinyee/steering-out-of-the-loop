@@ -72,6 +72,7 @@ Kept: the lower completion rate of the two (\%); the mean runs over shares kept 
         rows.append(n + " & " + " & ".join(cells) + r" \\")
     hdr = " & ".join(f"{ds} ({cov[ds]['always_looping_problems']}; {cov[ds]['edit_correct_answers_on_always_looping']})"
                      for ds in ("MATH-500", "GSM8K", "MedQA"))
+    mcc = cov["MedQA"]["chance_corrected_all_decodings"]
     t2 = r"""\begin{table*}[t]
 \centering
 \small
@@ -86,7 +87,9 @@ Settings of the unedited model & """ + hdr + r""" \\
 under the given settings (\%, 95\% intervals; four samples per setting). In parentheses: always-looping problems, and
 the edit's correct answers on them. The mathematics sets have the eight fixes and the protocol itself, which finishes
 none of these problems (thinking on, all: seven settings, $k = 28$; all settings: nine, $k = 36$); MedQA has six
-(thinking on, all: $k = 20$; all settings: $k = 24$).}
+(thinking on, all: $k = 20$; all settings: $k = 24$). On MedQA, uniform guesses among the options would be covered """ \
+        + f"{r1(mcc['guessing'] * 100)}\\% of the time (chance-corrected: {r1(mcc['chance_corrected'][0] * 100)}\\% " \
+        + f"{ci(mcc['chance_corrected'][1], mcc['chance_corrected'][2])})." + r"""}
 \label{tab:coverage}
 \end{table*}
 """
